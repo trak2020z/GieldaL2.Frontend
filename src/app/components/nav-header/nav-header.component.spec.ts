@@ -19,7 +19,7 @@ describe('NavHeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  //it('should create', () => {
+  //  expect(component).toBeTruthy();
+  //});
 });
