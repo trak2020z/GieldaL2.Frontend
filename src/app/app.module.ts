@@ -4,13 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatSortModule } from '@angular/material';
+import {MatTableModule} from '@angular/material/table'; 
 import { NavHeaderComponent } from './components/nav-header/nav-header.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavHeaderComponent
+    NavHeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,9 @@ import { NavHeaderComponent } from './components/nav-header/nav-header.component
     MatIconModule,
     MatButtonModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
