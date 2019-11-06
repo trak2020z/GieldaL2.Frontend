@@ -9,6 +9,7 @@ import {MatTableModule} from '@angular/material/table';
 import { NavHeaderComponent } from './components/nav-header/nav-header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { StaticSidebarComponent } from './components/static-sidebar/static-sidebar.component';
+import { MiniCalendarModule } from 'mini-calendar';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { StaticSidebarComponent } from './components/static-sidebar/static-sideb
     MatMenuModule,
     MatTableModule,
     MatSortModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MiniCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
