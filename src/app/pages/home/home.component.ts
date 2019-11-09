@@ -33,7 +33,8 @@ export class HomeComponent implements OnInit {
   }
 
   getStocks(): void {
-    this.dataSource = this.stockService.getStocks();
+    this.stockService.getStocks()
+      .subscribe(stocks => this.dataSource = stocks);
     
     //this.stockService.getStocks()
    // .subscribe(stock => this.dataSource = stock);

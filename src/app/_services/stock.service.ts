@@ -11,8 +11,8 @@ export class StockService {
 
   constructor() { }
 
-  getStocks() : Stock[]{
-    return STOCK;
+  getStocks() : Observable<Stock[]>{
+    return of(STOCK);
   }
 
   getStock(id : number) : Observable<Stock>{
