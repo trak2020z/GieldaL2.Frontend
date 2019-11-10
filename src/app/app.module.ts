@@ -1,22 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { MatButtonModule, 
+  MatIconModule, 
+  MatMenuModule, 
+  MatSidenavModule, 
+  MatSortModule, 
+  MatToolbarModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MiniCalendarModule } from 'mini-calendar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, MatSortModule, MatSidenavModule} from '@angular/material';
-import {MatTableModule} from '@angular/material/table'; 
 import { NavHeaderComponent } from './components/nav-header/nav-header.component';
-import { HomeComponent } from './pages/home/home.component';
 import { StaticSidebarComponent } from './components/static-sidebar/static-sidebar.component';
-import { MiniCalendarModule } from 'mini-calendar';
+import { HomeComponent } from './pages/home/home.component';
+import { StockComponent } from './pages/stock/stock.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavHeaderComponent,
     HomeComponent,
-    StaticSidebarComponent
+    StaticSidebarComponent,
+    StockComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +39,9 @@ import { MiniCalendarModule } from 'mini-calendar';
     MatTableModule,
     MatSortModule,
     MatSidenavModule,
-    MiniCalendarModule
+    MiniCalendarModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
