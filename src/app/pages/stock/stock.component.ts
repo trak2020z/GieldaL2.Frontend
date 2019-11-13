@@ -38,7 +38,7 @@ export class StockComponent implements OnInit {
       .subscribe(stocks => this.stocks = stocks);
   }
 
-  createPredicate(data: Stock, filter: string): boolean{
+  customPredicate(data: Stock): boolean{
     return (!this.filterMaxValue || data.value <= this.filterMaxValue) 
       && (!this.filterMinValue || data.value >= this.filterMinValue)
       && (!this.filterName || data.name.trim().toLowerCase().includes(this.filterName))
@@ -47,24 +47,24 @@ export class StockComponent implements OnInit {
   applyFilterName(filterValue: string) {
     this.filterName = filterValue.trim().toLowerCase()
     this.dataSource.filterPredicate = 
-    (data: Stock, filter: string) => this.createPredicate(data, filter);
+    (data: Stock, filter: string) => this.customPredicate(data);
 
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = " ";
   }
 
   applyFilterMaxValue(filterValue: number) {
     this.filterMaxValue = filterValue;
     this.dataSource.filterPredicate = 
-    (data: Stock, filter: string) => this.createPredicate(data, filter);
+    (data: Stock, filter: string) => this.customPredicate(data);
 
-    this.dataSource.filter = "asd";
+    this.dataSource.filter = " ";
   }
 
   applyFilterMinValue(filterValue: number) {
     this.filterMinValue = filterValue;
     this.dataSource.filterPredicate = 
-    (data: Stock, filter: string) => this.createPredicate(data, filter);
+    (data: Stock, filter: string) => this.customPredicate(data);
 
-    this.dataSource.filter = "asd";
+    this.dataSource.filter = " ";
   }
 }
