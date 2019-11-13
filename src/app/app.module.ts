@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { MatButtonModule, 
-  MatIconModule, 
-  MatMenuModule, 
-  MatSidenavModule, 
-  MatSortModule, 
-  MatToolbarModule } from '@angular/material';
+import {MatButtonModule, MatCardModule, MatIconModule, 
+  MatMenuModule, MatProgressSpinnerModule,
+  MatSidenavModule, MatSortModule, MatToolbarModule} from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +19,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +28,8 @@ import { RegisterComponent } from './components/register/register.component';
     HomeComponent,
     StaticSidebarComponent,
     StockComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +49,8 @@ import { RegisterComponent } from './components/register/register.component';
     MatInputModule,
     MatStepperModule,
     MatSnackBarModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule
   ],
