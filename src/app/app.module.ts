@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, 
-  MatIconModule, 
-  MatMenuModule, 
-  MatSidenavModule, 
-  MatSortModule, 
-  MatToolbarModule } from '@angular/material';
+import {
+  MatButtonModule, MatCardModule,
+  MatIconModule,
+  MatMenuModule, MatProgressSpinnerModule,
+  MatSidenavModule,
+  MatSortModule,
+  MatToolbarModule
+} from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +19,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { StockComponent } from './pages/stock/stock.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import {MatInputModule} from '@angular/material/input';
     NavHeaderComponent,
     HomeComponent,
     StaticSidebarComponent,
-    StockComponent
+    StockComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,10 @@ import {MatInputModule} from '@angular/material/input';
     MatSidenavModule,
     MiniCalendarModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
