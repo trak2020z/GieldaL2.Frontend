@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatButtonModule, 
   MatIconModule, 
   MatMenuModule, 
@@ -16,7 +18,10 @@ import { StaticSidebarComponent } from './components/static-sidebar/static-sideb
 import { HomeComponent } from './pages/home/home.component';
 import { StockComponent } from './pages/stock/stock.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,8 @@ import {MatInputModule} from '@angular/material/input';
     NavHeaderComponent,
     HomeComponent,
     StaticSidebarComponent,
-    StockComponent
+    StockComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,11 @@ import {MatInputModule} from '@angular/material/input';
     MatSidenavModule,
     MiniCalendarModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatStepperModule,
+    MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

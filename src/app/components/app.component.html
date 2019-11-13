@@ -6,12 +6,11 @@
         </h1>
     </div>
 </div>
-<mat-drawer-container class="main-container">
-  <mat-drawer mode="side" opened position="end" class="static-sidebar">
-    <app-static-sidebar></app-static-sidebar>
-  </mat-drawer>
-  <mat-drawer-content>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
+<mat-drawer-container style="height: calc(100vh - 64px) " class="main-container" autosize>
+    <mat-drawer mode="side" opened position="end" class="static-sidebar">
+        <app-static-sidebar></app-static-sidebar>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
 </mat-drawer-container>
-
