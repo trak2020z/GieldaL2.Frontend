@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule } from '@angular/material';
 import { NavHeaderComponent } from './nav-header/nav-header.component';
-import { AppRoutingModule } from '../app-routing.module';
+import { AppRoutingModule } from '../../../app-routing.module';
 import { RouterModule } from '@angular/router';
 
 describe('AppComponent', () => {
