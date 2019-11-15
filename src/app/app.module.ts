@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatButtonModule, MatCardModule, MatIconModule, 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatButtonModule, MatCardModule, MatIconModule,
   MatMenuModule, MatProgressSpinnerModule,
-  MatSidenavModule, MatSortModule, MatToolbarModule} from '@angular/material';
+  MatSidenavModule, MatSortModule, MatToolbarModule
+} from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,12 +16,13 @@ import { NavHeaderComponent } from './components/nav-header/nav-header.component
 import { StaticSidebarComponent } from './components/static-sidebar/static-sidebar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { StockComponent } from './pages/stock/stock.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatInputModule} from '@angular/material/input';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { UserModule } from './modules/user/user.module';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     MatCardModule,
     MatProgressSpinnerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
