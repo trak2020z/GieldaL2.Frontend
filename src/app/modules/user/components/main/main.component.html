@@ -1,1 +1,17 @@
-<p>main works!</p>
+<div fxLayout="row nowrap" fxFill fxLayoutAlign="space-around center" fxlayoutgap="50px">
+    <div fxLayout="column" fxFlex="20" fxlayoutgap="50px" fxFlexFill>
+        <mat-button-toggle-group aria-label="Font Style" vertical>
+            <mat-button-toggle [routerLink]="'/user/edit'" style="height: 50px;">User details</mat-button-toggle>
+            <mat-button-toggle [routerLink]="'/user/history'" style="height: 50px;">History</mat-button-toggle>
+            <mat-button-toggle [routerLink]="'/user/buyoffers'" style="height: 50px;">Buy Offers</mat-button-toggle>
+            <mat-button-toggle [routerLink]="'/user/selloffers'" style="height: 50px;">Sell Offers</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+
+    <div fxFlex="80" fxFlexFill style="padding: 0 20px 20px 20px;">
+        <mat-card>
+            <router-outlet></router-outlet>
+        </mat-card>
+    </div>
+
+</div>

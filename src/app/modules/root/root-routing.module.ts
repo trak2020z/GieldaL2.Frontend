@@ -4,7 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { StockComponent } from './pages/stock/stock.component';
 import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { MainComponent as UserMainComponent } from '../user/main/main.component';
+import { MainComponent as UserMainComponent } from '../user/components/main/main.component';
 
 
 const routes: Routes = [

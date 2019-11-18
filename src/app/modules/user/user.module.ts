@@ -1,14 +1,50 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MainComponent } from './main/main.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatTableModule, MatSortModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatStepperModule, MatSnackBarModule, MatCardModule, MatProgressSpinnerModule, MatButtonToggleModule } from '@angular/material';
+import { MiniCalendarModule } from 'mini-calendar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FlexLayoutModule} from '@angular/flex-layout';
+
+import { userRoutingModule } from './user-routing.module';
+// import { NavHeaderComponent } from '../root/components/nav-header/nav-header.component';
+// import { StaticSidebarComponent } from '../root/components/static-sidebar/static-sidebar.component';
+import { MainComponent } from './components/main/main.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { UserHistoryComponent } from './components/user-history/user-history.component';
+import { UserBuyOffersComponent } from './components/user-buy-offers/user-buy-offers.component';
+import { UserSellOffersComponent } from './components/user-sell-offers/user-sell-offers.component';
 
 
 
 @NgModule({
-  declarations: [MainComponent],
+  declarations: [ MainComponent, UserEditComponent, UserHistoryComponent, UserBuyOffersComponent, UserSellOffersComponent],
   imports: [
-    CommonModule
-
+    userRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatTableModule,
+    MatSortModule,
+    MatSidenavModule,
+    MiniCalendarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatStepperModule,
+    MatSnackBarModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatButtonToggleModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    FlexLayoutModule
   ],
   exports: [MainComponent],
   bootstrap: [MainComponent]
