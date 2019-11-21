@@ -14,11 +14,11 @@ import { DataSource } from '@angular/cdk/table';
 export class StockComponent implements OnInit {
   stocks: Stock[];
   dataSource;
-  displayedColumns: string[] = ['name', 'value', 'change'];
+  displayedColumns: string[] = ['name', 'abbreviation', 'currentPrice', 'priceDelta'];
 
   filterName: string;
-  filterMaxValue: number;
-  filterMinValue: number;
+  filterMaxCurrentPrice: number;
+  filterMinCurrentPrice: number;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private stockService: StockService) {
@@ -39,8 +39,8 @@ export class StockComponent implements OnInit {
   }
 
   customPredicate(data: Stock): boolean{
-    return (!this.filterMaxValue || data.value <= this.filterMaxValue) 
-      && (!this.filterMinValue || data.value >= this.filterMinValue)
+    return (!this.filterMaxCurrentPrice || data.currentPrice <= this.filterMaxCurrentPrice) 
+      && (!this.filterMinCurrentPrice || data.currentPrice >= this.filterMinCurrentPrice)
       && (!this.filterName || data.name.trim().toLowerCase().includes(this.filterName))
   }
 
@@ -53,7 +53,7 @@ export class StockComponent implements OnInit {
   }
 
   applyFilterMaxValue(filterValue: number) {
-    this.filterMaxValue = filterValue;
+    this.filterMaxCurrentPrice = filterValue;
     this.dataSource.filterPredicate = 
     (data: Stock, filter: string) => this.customPredicate(data);
 
@@ -61,7 +61,7 @@ export class StockComponent implements OnInit {
   }
 
   applyFilterMinValue(filterValue: number) {
-    this.filterMinValue = filterValue;
+    this.filterMinCurrentPrice = filterValue;
     this.dataSource.filterPredicate = 
     (data: Stock, filter: string) => this.customPredicate(data);
 

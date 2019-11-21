@@ -12,7 +12,7 @@ import { StockService } from 'src/app/_services/stock.service';
 
 export class HomeComponent implements OnInit {
   dataSource: Stock[];
-  displayedColumns: string[] = ['name', 'value', 'change'];
+  displayedColumns: string[] = ['name', 'abbreviation', 'currentPrice', 'priceDelta'];
   refreshTime: String;
 
   constructor(private stockService: StockService) { 
@@ -23,13 +23,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getStocks();
     this.dataSource.sort(this.compare);
-    this.dataSource.reverse();
   }
 
   private compare(a:Stock, b:Stock) {
-    if (a.value > b.value) return 1;
-    if (a.value = b.value) return 0;
-    if (a.value < b.value) return 11;
+    if (a.currentPrice > b.currentPrice) return -1;
+    if (a.currentPrice = b.currentPrice) return 0;
+    if (a.currentPrice < b.currentPrice) return 1;
   }
 
   getStocks(): void {
