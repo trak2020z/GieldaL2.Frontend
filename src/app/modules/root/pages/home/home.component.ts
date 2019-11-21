@@ -15,9 +15,8 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['name', 'value', 'change'];
   refreshTime: String;
 
-  constructor(private stockService: StockService) { 
-    var d = new Date();
-    this.refreshTime = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+  constructor(private stockService: StockService) {
+
   }
 
   ngOnInit() {
@@ -26,7 +25,7 @@ export class HomeComponent implements OnInit {
     this.dataSource.reverse();
   }
 
-  private compare(a:Stock, b:Stock) {
+  private compare(a: Stock, b: Stock) {
     if (a.value > b.value) return 1;
     if (a.value = b.value) return 0;
     if (a.value < b.value) return 11;

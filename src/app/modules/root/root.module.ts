@@ -30,6 +30,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Interceptor } from './components/app.interceptor';
 import { AuthService } from '../../_services/auth.service';
 import { TokenStorage } from './components/token.storage';
+import { TableUpdateTimeComponent } from './components/table-update-time/table-update-time.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { TokenStorage } from './components/token.storage';
     StaticSidebarComponent,
     StockComponent,
     RegisterComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    TableUpdateTimeComponent
   ],
   imports: [
     RootRoutingModule,
