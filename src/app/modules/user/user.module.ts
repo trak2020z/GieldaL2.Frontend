@@ -6,10 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { userRoutingModule } from './user-routing.module';
 import { MainComponent } from './components/main/main.component';
-import { UserEditComponent } from './components/user-edit/user-edit.component';
-import { UserHistoryComponent } from './components/user-history/user-history.component';
-import { UserBuyOffersComponent } from './components/user-buy-offers/user-buy-offers.component';
-import { UserSellOffersComponent } from './components/user-sell-offers/user-sell-offers.component';
+import { UserEditComponent } from './pages/user-edit/user-edit.component';
+import { UserHistoryComponent } from './pages/user-history/user-history.component';
+import { UserBuyOffersComponent } from './pages/user-buy-offers/user-buy-offers.component';
+import { UserSellOffersComponent } from './pages/user-sell-offers/user-sell-offers.component';
 
 
 
@@ -17,8 +17,6 @@ import { UserSellOffersComponent } from './components/user-sell-offers/user-sell
   declarations: [MainComponent, UserEditComponent, UserHistoryComponent, UserBuyOffersComponent, UserSellOffersComponent],
   imports: [
     userRoutingModule,
-    //BrowserModule,
-    //BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
