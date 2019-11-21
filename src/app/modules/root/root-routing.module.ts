@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'stock', component: StockComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'user', component: UserMainComponent},
+  { path: 'user', loadChildren: '../user/user.module#UserModule' },
 ];
 
 @NgModule({

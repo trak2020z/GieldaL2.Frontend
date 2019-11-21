@@ -1,5 +1,3 @@
-// user-routing.module.ts
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -10,7 +8,7 @@ import { UserBuyOffersComponent } from './components/user-buy-offers/user-buy-of
 import { UserSellOffersComponent } from './components/user-sell-offers/user-sell-offers.component';
 const routes: Routes = [
     {
-        path: 'user',
+        path: '',
         component: UserMainComponent,
         children: [
             { path: '', redirectTo: 'edit', pathMatch: 'full' },
@@ -24,7 +22,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
 export class userRoutingModule { }

@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatTableModule, MatSortModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatStepperModule, MatSnackBarModule, MatCardModule, MatProgressSpinnerModule, MatButtonToggleModule } from '@angular/material';
 import { MiniCalendarModule } from 'mini-calendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {FlexLayoutModule} from '@angular/flex-layout';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { userRoutingModule } from './user-routing.module';
-// import { NavHeaderComponent } from '../root/components/nav-header/nav-header.component';
-// import { StaticSidebarComponent } from '../root/components/static-sidebar/static-sidebar.component';
 import { MainComponent } from './components/main/main.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UserHistoryComponent } from './components/user-history/user-history.component';
@@ -19,11 +14,11 @@ import { UserSellOffersComponent } from './components/user-sell-offers/user-sell
 
 
 @NgModule({
-  declarations: [ MainComponent, UserEditComponent, UserHistoryComponent, UserBuyOffersComponent, UserSellOffersComponent],
+  declarations: [MainComponent, UserEditComponent, UserHistoryComponent, UserBuyOffersComponent, UserSellOffersComponent],
   imports: [
     userRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
+    //BrowserModule,
+    //BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
