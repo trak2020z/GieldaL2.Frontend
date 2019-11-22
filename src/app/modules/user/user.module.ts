@@ -39,7 +39,6 @@ import { UserSellOffersComponent } from './pages/user-sell-offers/user-sell-offe
     CommonModule,
     FlexLayoutModule
   ],
-  exports: [MainComponent],
   bootstrap: [MainComponent]
 })
 export class UserModule { }
