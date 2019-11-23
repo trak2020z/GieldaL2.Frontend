@@ -1,5 +1,7 @@
 import { Stock } from '../_models/stock.model';
-
+/**
+ * Mock data for app testing
+ */
 export const STOCK: Stock[] = [
     {id: 1, name: 'name1', value: 1.0079, change: -1},
     {id: 2, name: 'name2', value: 4.0026, change: 2.4},

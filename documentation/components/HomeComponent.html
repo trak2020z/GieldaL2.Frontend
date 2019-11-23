@@ -64,6 +64,13 @@
     <code>src/app/modules/root/pages/home/home.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The home component</p>
+
+    </p>
 
 
     <p class="comment">
@@ -135,9 +142,6 @@
                             <li>
                                 <a href="#displayedColumns">displayedColumns</a>
                             </li>
-                            <li>
-                                <a href="#refreshTime">refreshTime</a>
-                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -183,12 +187,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:22</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Defines a private stockService property and identifies it as a StockService injection site.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -254,14 +260,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:48</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Comparator for Stock objects. Compare them by value</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -271,6 +279,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -285,6 +294,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>first Stock object</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>b</td>
@@ -297,6 +310,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>second Stock object</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -304,11 +321,12 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>1 | 0 | 11</code>
+                        <b>Returns : </b>    <code>1 | 0 | -1</code>
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>comparator value:</p>
+
                     </div>
                 </td>
             </tr>
@@ -336,14 +354,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:57</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Subscribe stockServie to aquire Stock data</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -375,14 +395,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:36</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Actualize dataSource and sorts it every time page is refreshed</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -418,10 +440,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:18</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Stores Stock (data)</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -450,37 +478,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:22</a></div>
                             </td>
                         </tr>
 
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="refreshTime"></a>
-                        <span class="name">
-                            <b>
-                            refreshTime</b>
-                            <a href="#refreshTime"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <div class="io-description"><p>Displayed column by mat-table  </p>
+</div>
                     </td>
                 </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" >String</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:16</a></div>
-                            </td>
-                        </tr>
-
 
             </tbody>
         </table>
@@ -494,35 +501,58 @@
 import { Stock } from &#x27;src/app/_models/stock.model&#x27;;
 import { StockService } from &#x27;src/app/_services/stock.service&#x27;;
 
+/**
+ * The home component
+ */
 @Component({
   selector: &#x27;app-home&#x27;,
   templateUrl: &#x27;./home.component.html&#x27;,
   styleUrls: [&#x27;./home.component.scss&#x27;]
 })
 
-
-
 export class HomeComponent implements OnInit {
+  /**
+   * Stores Stock (data)
+   */
   dataSource: Stock[];
+  /**
+   * Displayed column by mat-table  
+   */
   displayedColumns: string[] &#x3D; [&#x27;name&#x27;, &#x27;value&#x27;, &#x27;change&#x27;];
-  refreshTime: String;
 
+ /**
+  * Defines a private stockService property and identifies it as a StockService injection site.
+  * 
+  * @param stockService 
+  */
   constructor(private stockService: StockService) {
-
   }
 
+
+  /**
+   * Actualize dataSource and sorts it every time page is refreshed
+   */
   ngOnInit() {
     this.getStocks();
     this.dataSource.sort(this.compare);
-    this.dataSource.reverse();
   }
 
+  /**
+  * Comparator for Stock objects. Compare them by value
+  * 
+  * @param {Stock} a first Stock object
+  * @param {Stock} b second Stock object
+  * @returns comparator value:
+  */
   private compare(a: Stock, b: Stock) {
     if (a.value &gt; b.value) return 1;
     if (a.value &#x3D; b.value) return 0;
-    if (a.value &lt; b.value) return 11;
+    if (a.value &lt; b.value) return -1;
   }
 
+  /**
+   * Subscribe stockServie to aquire Stock data
+   */
   getStocks(): void {
     this.stockService.getStocks()
       .subscribe(stocks &#x3D;&gt; this.dataSource &#x3D; stocks);
