@@ -8,9 +8,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegisterService {
 
-  constructor() { }
+  baseUrl = 'http://gieldal2.azurewebsites.net/api/Users';
 
-  public register(model: RegisterModel): Observable<number> {
-    return of(0);
+  constructor(private http: HttpClient) { }
+
+  public register(model: RegisterModel): Observable<any> {
+    return this.http.post<any>(this.baseUrl, model);
   }
 }
