@@ -8,13 +8,29 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatTableModule, MatSortModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatStepperModule, MatSnackBarModule, MatCardModule, MatProgressSpinnerModule } from '@angular/material';
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatIconModule,
+  MatMenuModule,
+  MatTableModule,
+  MatSortModule,
+  MatSidenavModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatStepperModule,
+  MatSnackBarModule,
+  MatCardModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
 import { MiniCalendarModule } from 'mini-calendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RootRoutingModule } from './root-routing.module';
-import { UserModule } from '../user/user.module';
-
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { Interceptor } from './components/app.interceptor';
+import { AuthService } from '../../_services/auth.service';
+import { TokenStorage } from './components/token.storage';
+import { TableUpdateTimeComponent } from './components/table-update-time/table-update-time.component';
 
 
 @NgModule({
@@ -25,7 +41,8 @@ import { UserModule } from '../user/user.module';
     StaticSidebarComponent,
     StockComponent,
     RegisterComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    TableUpdateTimeComponent
   ],
   imports: [
     RootRoutingModule,
@@ -49,9 +66,16 @@ import { UserModule } from '../user/user.module';
     MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule,
-    UserModule
+    HttpClientModule
   ],
   exports: [AppComponent],
+  providers: [AuthService, TokenStorage,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
-export class RootModule { }
+export class RootModule {
+}

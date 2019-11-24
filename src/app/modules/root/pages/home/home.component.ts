@@ -1,36 +1,59 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock } from 'src/app/_models/stock.model';
 import { StockService } from 'src/app/_services/stock.service';
-
+ 
+/**
+ * The home component
+ */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 
-
-
 export class HomeComponent implements OnInit {
+  /**
+   * Stores Stock (data)
+   */
   dataSource: Stock[];
+  /**
+   * Displayed column by mat-table  
+   */
   displayedColumns: string[] = ['name', 'abbreviation', 'currentPrice', 'priceDelta'];
-  refreshTime: String;
 
-  constructor(private stockService: StockService) { 
-    var d = new Date();
-    this.refreshTime = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+ /**
+  * Defines a private stockService property and identifies it as a StockService injection site.
+  * 
+  * @param stockService 
+  */
+  constructor(private stockService: StockService) {
   }
 
+
+  /**
+   * Actualize dataSource and sorts it every time page is refreshed
+   */
   ngOnInit() {
     this.getStocks();
     this.dataSource.sort(this.compare);
   }
 
+  /**
+  * Comparator for Stock objects. Compare them by value
+  * 
+  * @param {Stock} a first Stock object
+  * @param {Stock} b second Stock object
+  * @returns comparator value:
+  */
   private compare(a:Stock, b:Stock) {
     if (a.currentPrice > b.currentPrice) return -1;
     if (a.currentPrice = b.currentPrice) return 0;
     if (a.currentPrice < b.currentPrice) return 1;
   }
 
+  /**
+   * Subscribe stockServie to aquire Stock data
+   */
   getStocks(): void {
     this.stockService.getStocks()
       .subscribe(stocks => this.dataSource = stocks);
