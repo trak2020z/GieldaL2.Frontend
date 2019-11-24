@@ -136,20 +136,6 @@
                     </td>
                 </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#ngOnInit">ngOnInit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
@@ -170,10 +156,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/modules/root/components/table-update-time/table-update-time.component.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/root/components/table-update-time/table-update-time.component.ts:13</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Gets current time and parse it to string every time component is created. Adds &quot;0&quot; if minutes or seconds &lt; 10</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -182,51 +174,7 @@
 
 
 
-    <section>
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <b>
-                            ngOnInit
-                        </b>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
 
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/app/modules/root/components/table-update-time/table-update-time.component.ts:21</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
     <section>
     
         <h3 id="inputs">
@@ -252,10 +200,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/modules/root/components/table-update-time/table-update-time.component.ts:9</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/root/components/table-update-time/table-update-time.component.ts:13</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Parsed date</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -272,8 +226,15 @@
   templateUrl: &#x27;./table-update-time.component.html&#x27;,
   styleUrls: [&#x27;./table-update-time.component.scss&#x27;]
 })
+
 export class TableUpdateTimeComponent implements OnInit {
+  /**
+   * Parsed date
+   */
   tableUpdateTime: String;
+  /**
+  * Gets current time and parse it to string every time component is created. Adds &quot;0&quot; if minutes or seconds &lt; 10
+  */
   constructor() {
     var date &#x3D; new Date();
     var minutes;
@@ -285,6 +246,9 @@ export class TableUpdateTimeComponent implements OnInit {
     this.tableUpdateTime &#x3D; date.getHours() + &#x27;:&#x27; + minutes + &#x27;:&#x27; + seconds;
   }
 
+  /**
+   * @ignore
+   */
   ngOnInit() {
   }
 

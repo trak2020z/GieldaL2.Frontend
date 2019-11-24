@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock } from 'src/app/_models/stock.model';
 import { StockService } from 'src/app/_services/stock.service';
-
+ 
 /**
  * The home component
  */

@@ -5,8 +5,15 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './table-update-time.component.html',
   styleUrls: ['./table-update-time.component.scss']
 })
+
 export class TableUpdateTimeComponent implements OnInit {
+  /**
+   * Parsed date
+   */
   tableUpdateTime: String;
+  /**
+  * Gets current time and parse it to string every time component is created. Adds "0" if minutes or seconds < 10
+  */
   constructor() {
     var date = new Date();
     var minutes;
@@ -18,6 +25,9 @@ export class TableUpdateTimeComponent implements OnInit {
     this.tableUpdateTime = date.getHours() + ':' + minutes + ':' + seconds;
   }
 
+  /**
+   * @ignore
+   */
   ngOnInit() {
   }
 
