@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormBuilder, FormGroup, FormControl, FormGroupDirective, Validators, NgForm} from '@angular/forms';
@@ -22,11 +23,11 @@ export class RegisterComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   registerModel: RegisterModel;
-  registerService: RegisterService;
 
   errorMatcher = new CrossFieldErrorMatcher();
 
-  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private stockService: RegisterService) {}
+  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private registerService: RegisterService,
+              private router: Router) {}
 
   ngOnInit() {
     this.registerModel = new RegisterModel();
@@ -46,11 +47,15 @@ export class RegisterComponent implements OnInit {
 
   register() {
     if (this.registerModel) {
-      //this.registerService.register(this.registerModel);
+      this.registerService.register(this.registerModel).subscribe(
+        data => {
+          this.snackBar.open('Registered successfully', 'Close', {
+            duration: 2000,
+          });
 
-      this.snackBar.open("Registered successfully", 'Close', {
-        duration: 2000,
-      });
+          this.router.navigate(['login']);
+        }
+      );
     }
   }
 
