@@ -11,6 +11,6 @@ export const TRANSACTION: Transaction[] = [
     {id: 3, buyerId: 2, sellerId: 1, stockId: 3, amount: 2, price: 45},
     {id: 4, buyerId: 3, sellerId: 2, stockId: 1, amount: 46, price: 45},
     {id: 5, buyerId: 1, sellerId: 3, stockId: 2, amount: 9, price: 45},
-    {id: 6, buyerId: 2, sellerId: 3, stockId: 3, amount: 2489, price: 45}
+    {id: 6, buyerId: 2, sellerId: 3, stockId: 3, amount: 2489, price: 45},
     {id: 6, buyerId: 2, sellerId: 3, stockId: 4, amount: 46, price: 45}
   ];
