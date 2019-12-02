@@ -6,6 +6,7 @@ import { StockService } from 'src/app/_services/stock.service';
 import { forkJoin } from 'rxjs';
 import { Stock } from 'src/app/_models/stock.model';
 import { ApiResponse } from 'src/app/_models/apiResponse';
+import { ContextService } from 'src/app/_services/context.service';
 
 /**
  * The User transaction history component
@@ -17,11 +18,6 @@ import { ApiResponse } from 'src/app/_models/apiResponse';
 })
 
 export class UserHistoryComponent implements OnInit {
-  /**
-   * Temporary used for test only
-   */
-  readonly USER_ID: Number = 1;
-
   /**
    * Stores transactions history fo user
    */
@@ -36,14 +32,22 @@ export class UserHistoryComponent implements OnInit {
   dataSource: UserHistoryDataElement[] = [];
 
   /**
+   * Currently logged ueser id
+   */
+  loggedUserId: Number;
+
+  /**
   * Default constructor defining services
   * 
   * @param tansactionService
   * @param stockService 
+  * @param contextService
   */
-  constructor(private tansactionService: TransactionService,
-    private stockService: StockService) {
-  }
+  constructor(
+    private tansactionService: TransactionService,
+    private stockService: StockService,
+    private contextService: ContextService
+  ) { }
 
 
   ngOnInit() {
@@ -56,9 +60,11 @@ export class UserHistoryComponent implements OnInit {
   getTableData(): void {
     forkJoin([
       this.tansactionService.getTransactions(),
-      this.stockService.getStocks()
-    ]).subscribe(([t, s]: [Transaction[], ApiResponse]) => {
-      this.transactions = t.filter(t => t.buyerId == this.USER_ID || t.sellerId == this.USER_ID)
+      this.stockService.getStocks(),
+      this.contextService.getContext()
+    ]).subscribe(([t, s, c]: [ApiResponse, ApiResponse, ApiResponse]) => {
+      this.loggedUserId = c.data.user.id;
+      this.transactions = t.data.filter(t => t.buyerId == this.loggedUserId || t.sellerId == this.loggedUserId)
       this.transactions.forEach((t: Transaction) => this.pushDataElemet(t, s.data))
     })
   }
@@ -74,7 +80,7 @@ export class UserHistoryComponent implements OnInit {
       amount: t.amount,
       price: t.price,
       finalPrice: t.amount.valueOf() * t.price.valueOf(),
-      type: (t.buyerId == this.USER_ID) ? "bougth" : (t.sellerId == this.USER_ID) ? "sold" : " ",
+      type: (t.buyerId == this.loggedUserId) ? "bougth" : (t.sellerId == this.loggedUserId) ? "sold" : " ",
     }
     this.dataSource.push(dataElement);
   }
