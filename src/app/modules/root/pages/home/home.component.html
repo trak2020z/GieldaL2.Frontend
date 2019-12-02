@@ -6,20 +6,24 @@
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="value">
-            <th mat-header-cell *matHeaderCellDef> Value </th>
-            <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-        </ng-container>
+    <ng-container matColumnDef="abbreviation">
+        <th mat-header-cell *matHeaderCellDef> Abbreviation </th>
+        <td mat-cell *matCellDef="let element"> {{element.abbreviation}} </td>
+    </ng-container>
 
-        <ng-container matColumnDef="change">
-            <th mat-header-cell *matHeaderCellDef> Change </th>
-            <td mat-cell *matCellDef="let element">
-                <p class=changeGreen *ngIf="element.change > 0"> {{element.change}}% </p>
-                <p class=changeBlack *ngIf="element.change == 0"> {{element.change}}% </p>
-                <p class=changeRed *ngIf="element.change < 0"> {{element.change}}% </p>
-            </td>
-        </ng-container>
+    <ng-container matColumnDef="currentPrice">
+        <th mat-header-cell *matHeaderCellDef> Current price </th>
+        <td mat-cell *matCellDef="let element"> {{element.currentPrice}} </td>
+    </ng-container>
 
+    <ng-container matColumnDef="priceDelta">
+        <th mat-header-cell *matHeaderCellDef> Price delta </th>
+        <td mat-cell *matCellDef="let element">
+            <p class=changeGreen *ngIf="element.priceDelta > 0"> {{element.priceDelta}}% </p>
+            <p class=changeBlack *ngIf="element.priceDelta == 0"> {{element.priceDelta}}% </p>
+            <p class=changeRed *ngIf="element.priceDelta < 0"> {{element.priceDelta}}% </p>
+        </td>
+    </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

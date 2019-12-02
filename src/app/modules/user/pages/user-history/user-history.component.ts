@@ -5,6 +5,7 @@ import { UserHistoryDataElement } from './userHistoryDataElement';
 import { StockService } from 'src/app/_services/stock.service';
 import { forkJoin } from 'rxjs';
 import { Stock } from 'src/app/_models/stock.model';
+import { ApiResponse } from 'src/app/_models/apiResponse';
 
 /**
  * The User transaction history component
@@ -56,9 +57,9 @@ export class UserHistoryComponent implements OnInit {
     forkJoin([
       this.tansactionService.getTransactions(),
       this.stockService.getStocks()
-    ]).subscribe(([t, s]: [Transaction[], Stock[]]) => {
+    ]).subscribe(([t, s]: [Transaction[], ApiResponse]) => {
       this.transactions = t.filter(t => t.buyerId == this.USER_ID || t.sellerId == this.USER_ID)
-      this.transactions.forEach((t: Transaction) => this.pushDataElemet(t, s))
+      this.transactions.forEach((t: Transaction) => this.pushDataElemet(t, s.data))
     })
   }
 
