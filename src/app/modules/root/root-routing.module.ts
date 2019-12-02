@@ -5,6 +5,7 @@ import { StockComponent } from './pages/stock/stock.component';
 import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MainComponent as UserMainComponent } from '../user/components/main/main.component';
+import { CreateBuyOfferComponent } from '../offer/pages/create-buy-offer/create-buy-offer.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'user', loadChildren: '../user/user.module#UserModule' },
+  { path: 'buyOffer/:stockId', component: CreateBuyOfferComponent }
 ];
 
 @NgModule({

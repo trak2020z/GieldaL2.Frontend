@@ -1,0 +1,23 @@
+<mat-card anlign='center'>
+    <mat-card-title> {{stockData?.name}} ( {{stockData?.abbreviation}} ) </mat-card-title>
+    <mat-grid-list cols="2" rowHeight="100px">
+        <mat-grid-tile>
+            <p>Current pize: {{stockData?.currentPrice}}</p>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p>Price delta: {{stockData?.priceDelta}}%</p>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <form [formGroup]="buyForm">
+        <mat-form-field>
+            <input matInput type="number" formControlName="amount" placeholder="Amount">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" formControlName="price" placeholder="Price">
+        </mat-form-field>
+    </form>
+    <mat-card-actions>
+        <button mat-button (click)="createOffer()" [disabled]="!isValidForm(buyForm)">Create Buy Offer</button>
+        <button mat-button (click)="goBack()">Back</button>
+    </mat-card-actions>
+</mat-card>

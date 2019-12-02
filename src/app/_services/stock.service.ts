@@ -28,7 +28,7 @@ export class StockService {
     return this.http.get<ApiResponse>(API_URL + '/Stocks', httpOptions);
   }
 
-  getStock(id: number): Observable<Stock> {
-    return of(STOCK[id]);
+  getStock(id: number): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(API_URL + '/Stocks/' + id);
   }
 }

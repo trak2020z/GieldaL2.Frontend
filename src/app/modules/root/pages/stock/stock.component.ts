@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DataSource } from '@angular/cdk/table';
 import { ApiResponse } from 'src/app/_models/apiResponse';
 import { STOCK } from 'src/app/_mocks/stockMock';
+import { TokenStorage } from '../../components/token.storage';
 
 /**
  * The Stock component
@@ -45,14 +46,15 @@ export class StockComponent implements OnInit {
   * 
   * @param stockService 
   */
-  constructor(private stockService: StockService) {
-    this.getStocks();
+  constructor(private stockService: StockService, private tokenStorage: TokenStorage) {
+    if (tokenStorage.getToken()) this.displayedColumns.push("buttons")
   }
 
   /**
    * @ignore
    */
   ngOnInit() {
+    this.getStocks();
 
   }
 
@@ -62,7 +64,7 @@ export class StockComponent implements OnInit {
   getStocks(): void {
     this.stockService.getStocks()
       .subscribe((r: ApiResponse) => {
-      this.dataSource = new MatTableDataSource(r.data);
+        this.dataSource = new MatTableDataSource(r.data);
         this.dataSource.sort = this.sort;
       });
   }

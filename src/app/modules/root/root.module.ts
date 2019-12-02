@@ -31,6 +31,7 @@ import { Interceptor } from './components/app.interceptor';
 import { AuthService } from '../../_services/auth.service';
 import { TokenStorage } from './components/token.storage';
 import { TableUpdateTimeComponent } from './components/table-update-time/table-update-time.component';
+import { OfferModule } from '../offer/offer.module';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { TableUpdateTimeComponent } from './components/table-update-time/table-u
     MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    OfferModule
   ],
   exports: [AppComponent],
   providers: [AuthService, TokenStorage,
