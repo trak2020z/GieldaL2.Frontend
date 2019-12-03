@@ -187,7 +187,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -260,8 +260,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:48</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:50</a></div>
                 </td>
             </tr>
 
@@ -321,7 +321,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>1 | 0 | -1</code>
+                        <b>Returns : </b>    <code>1 | -1 | 0</code>
 
                     </div>
                     <div class="io-description">
@@ -354,8 +354,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:59</a></div>
                 </td>
             </tr>
 
@@ -395,8 +395,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:38</a></div>
                 </td>
             </tr>
 
@@ -440,7 +440,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -473,12 +473,12 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>[&#x27;name&#x27;, &#x27;value&#x27;, &#x27;change&#x27;]</code>
+                            <i>Default value : </i><code>[&#x27;name&#x27;, &#x27;abbreviation&#x27;, &#x27;currentPrice&#x27;, &#x27;priceDelta&#x27;]</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/modules/root/pages/home/home.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -500,6 +500,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { Stock } from &#x27;src/app/_models/stock.model&#x27;;
 import { StockService } from &#x27;src/app/_services/stock.service&#x27;;
+import { ApiResponse } from &#x27;src/app/_models/apiResponse&#x27;;
  
 /**
  * The home component
@@ -518,7 +519,7 @@ export class HomeComponent implements OnInit {
   /**
    * Displayed column by mat-table  
    */
-  displayedColumns: string[] &#x3D; [&#x27;name&#x27;, &#x27;value&#x27;, &#x27;change&#x27;];
+  displayedColumns: string[] &#x3D; [&#x27;name&#x27;, &#x27;abbreviation&#x27;, &#x27;currentPrice&#x27;, &#x27;priceDelta&#x27;];
 
  /**
   * Defines a private stockService property and identifies it as a StockService injection site.
@@ -526,6 +527,7 @@ export class HomeComponent implements OnInit {
   * @param stockService 
   */
   constructor(private stockService: StockService) {
+    this.getStocks();
   }
 
 
@@ -533,8 +535,8 @@ export class HomeComponent implements OnInit {
    * Actualize dataSource and sorts it every time page is refreshed
    */
   ngOnInit() {
-    this.getStocks();
-    this.dataSource.sort(this.compare);
+    //this.getStocks();
+    //this.dataSource.sort(this.compare);
   }
 
   /**
@@ -544,10 +546,10 @@ export class HomeComponent implements OnInit {
   * @param {Stock} b second Stock object
   * @returns comparator value:
   */
-  private compare(a: Stock, b: Stock) {
-    if (a.value &gt; b.value) return 1;
-    if (a.value &#x3D; b.value) return 0;
-    if (a.value &lt; b.value) return -1;
+  private compare(a:Stock, b:Stock) {
+    if (a.currentPrice &gt; b.currentPrice) return -1;
+    if (a.currentPrice &#x3D; b.currentPrice) return 0;
+    if (a.currentPrice &lt; b.currentPrice) return 1;
   }
 
   /**
@@ -555,7 +557,9 @@ export class HomeComponent implements OnInit {
    */
   getStocks(): void {
     this.stockService.getStocks()
-      .subscribe(stocks &#x3D;&gt; this.dataSource &#x3D; stocks);
+    .subscribe((r: ApiResponse) &#x3D;&gt; {
+    this.dataSource &#x3D; r.data;
+    });
   }
 }
 </code></pre>
@@ -570,20 +574,24 @@ export class HomeComponent implements OnInit {
             &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.name}} &lt;/td&gt;
         &lt;/ng-container&gt;
 
-        &lt;ng-container matColumnDef&#x3D;&quot;value&quot;&gt;
-            &lt;th mat-header-cell *matHeaderCellDef&gt; Value &lt;/th&gt;
-            &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.value}} &lt;/td&gt;
-        &lt;/ng-container&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;abbreviation&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Abbreviation &lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.abbreviation}} &lt;/td&gt;
+    &lt;/ng-container&gt;
 
-        &lt;ng-container matColumnDef&#x3D;&quot;change&quot;&gt;
-            &lt;th mat-header-cell *matHeaderCellDef&gt; Change &lt;/th&gt;
-            &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
-                &lt;p class&#x3D;changeGreen *ngIf&#x3D;&quot;element.change &gt; 0&quot;&gt; {{element.change}}% &lt;/p&gt;
-                &lt;p class&#x3D;changeBlack *ngIf&#x3D;&quot;element.change &#x3D;&#x3D; 0&quot;&gt; {{element.change}}% &lt;/p&gt;
-                &lt;p class&#x3D;changeRed *ngIf&#x3D;&quot;element.change &lt; 0&quot;&gt; {{element.change}}% &lt;/p&gt;
-            &lt;/td&gt;
-        &lt;/ng-container&gt;
+    &lt;ng-container matColumnDef&#x3D;&quot;currentPrice&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Current price &lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.currentPrice}} &lt;/td&gt;
+    &lt;/ng-container&gt;
 
+    &lt;ng-container matColumnDef&#x3D;&quot;priceDelta&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt; Price delta &lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+            &lt;p class&#x3D;changeGreen *ngIf&#x3D;&quot;element.priceDelta &gt; 0&quot;&gt; {{element.priceDelta}}% &lt;/p&gt;
+            &lt;p class&#x3D;changeBlack *ngIf&#x3D;&quot;element.priceDelta &#x3D;&#x3D; 0&quot;&gt; {{element.priceDelta}}% &lt;/p&gt;
+            &lt;p class&#x3D;changeRed *ngIf&#x3D;&quot;element.priceDelta &lt; 0&quot;&gt; {{element.priceDelta}}% &lt;/p&gt;
+        &lt;/td&gt;
+    &lt;/ng-container&gt;
         &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;displayedColumns&quot;&gt;&lt;/tr&gt;
         &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: displayedColumns;&quot;&gt;&lt;/tr&gt;
     &lt;/table&gt;
@@ -642,8 +650,8 @@ div {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div>    <table-update-time></table-update-time>    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">        <ng-container matColumnDef="name">            <th mat-header-cell *matHeaderCellDef> Name </th>            <td mat-cell *matCellDef="let element"> {{element.name}} </td>        </ng-container>        <ng-container matColumnDef="value">            <th mat-header-cell *matHeaderCellDef> Value </th>            <td mat-cell *matCellDef="let element"> {{element.value}} </td>        </ng-container>        <ng-container matColumnDef="change">            <th mat-header-cell *matHeaderCellDef> Change </th>            <td mat-cell *matCellDef="let element">                <p class=changeGreen *ngIf="element.change > 0"> {{element.change}}% </p>                <p class=changeBlack *ngIf="element.change == 0"> {{element.change}}% </p>                <p class=changeRed *ngIf="element.change < 0"> {{element.change}}% </p>            </td>        </ng-container>        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    </table></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'}];
+        var COMPONENT_TEMPLATE = '<div><div>    <table-update-time></table-update-time>    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">        <ng-container matColumnDef="name">            <th mat-header-cell *matHeaderCellDef> Name </th>            <td mat-cell *matCellDef="let element"> {{element.name}} </td>        </ng-container>    <ng-container matColumnDef="abbreviation">        <th mat-header-cell *matHeaderCellDef> Abbreviation </th>        <td mat-cell *matCellDef="let element"> {{element.abbreviation}} </td>    </ng-container>    <ng-container matColumnDef="currentPrice">        <th mat-header-cell *matHeaderCellDef> Current price </th>        <td mat-cell *matCellDef="let element"> {{element.currentPrice}} </td>    </ng-container>    <ng-container matColumnDef="priceDelta">        <th mat-header-cell *matHeaderCellDef> Price delta </th>        <td mat-cell *matCellDef="let element">            <p class=changeGreen *ngIf="element.priceDelta > 0"> {{element.priceDelta}}% </p>            <p class=changeBlack *ngIf="element.priceDelta == 0"> {{element.priceDelta}}% </p>            <p class=changeRed *ngIf="element.priceDelta < 0"> {{element.priceDelta}}% </p>        </td>    </ng-container>        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    </table></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
 </script>

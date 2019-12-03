@@ -130,8 +130,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="9"
-                            class="link-to-prism">src/app/modules/root/pages/register/register.component.ts:9</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="10"
+                            class="link-to-prism">src/app/modules/root/pages/register/register.component.ts:10</a></div>
                 </td>
             </tr>
 
@@ -201,6 +201,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import {Router} from &#x27;@angular/router&#x27;;
 import {ErrorStateMatcher} from &#x27;@angular/material&#x27;;
 import {MatSnackBar} from &#x27;@angular/material/snack-bar&#x27;;
 import {FormBuilder, FormGroup, FormControl, FormGroupDirective, Validators, NgForm} from &#x27;@angular/forms&#x27;;
@@ -224,11 +225,11 @@ export class RegisterComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   registerModel: RegisterModel;
-  registerService: RegisterService;
 
   errorMatcher &#x3D; new CrossFieldErrorMatcher();
 
-  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private stockService: RegisterService) {}
+  constructor(private formBuilder: FormBuilder, private snackBar: MatSnackBar, private registerService: RegisterService,
+              private router: Router) {}
 
   ngOnInit() {
     this.registerModel &#x3D; new RegisterModel();
@@ -248,11 +249,15 @@ export class RegisterComponent implements OnInit {
 
   register() {
     if (this.registerModel) {
-      //this.registerService.register(this.registerModel);
+      this.registerService.register(this.registerModel).subscribe(
+        data &#x3D;&gt; {
+          this.snackBar.open(&#x27;Registered successfully&#x27;, &#x27;Close&#x27;, {
+            duration: 2000,
+          });
 
-      this.snackBar.open(&quot;Registered successfully&quot;, &#x27;Close&#x27;, {
-        duration: 2000,
-      });
+          this.router.navigate([&#x27;login&#x27;]);
+        }
+      );
     }
   }
 

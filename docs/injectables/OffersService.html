@@ -38,7 +38,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>StockService</li>
+  <li>OffersService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -56,7 +56,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/_services/stock.service.ts</code>
+            <code>src/app/_services/offer.service.ts</code>
         </p>
 
 
@@ -76,10 +76,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getStock">getStock</a>
+                                <a href="#createBuyOffer">createBuyOffer</a>
                             </li>
                             <li>
-                                <a href="#getStocks">getStocks</a>
+                                <a href="#createSellOffer">createSellOffer</a>
                             </li>
                         </ul>
                     </td>
@@ -104,7 +104,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/_services/stock.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/_services/offer.service.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -151,26 +151,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getStock"></a>
+                    <a name="createBuyOffer"></a>
                     <span class="name">
                         <b>
-                            getStock
+                            createBuyOffer
                         </b>
-                        <a href="#getStock"><span class="icon ion-ios-link"></span></a>
+                        <a href="#createBuyOffer"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getStock(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+<code>createBuyOffer(buyOffer: <a href="../classes/Offer.html">Offer</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/app/_services/stock.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/app/_services/offer.service.ts:14</a></div>
                 </td>
             </tr>
 
@@ -190,9 +190,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>id</td>
+                                    <td>buyOffer</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                <code><a href="../classes/Offer.html" target="_self" >Offer</a></code>
                                     </td>
 
                                     <td>
@@ -207,7 +207,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/ApiResponse.html" target="_self" >Observable&lt;ApiResponse&gt;</a></code>
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -221,26 +221,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getStocks"></a>
+                    <a name="createSellOffer"></a>
                     <span class="name">
                         <b>
-                            getStocks
+                            createSellOffer
                         </b>
-                        <a href="#getStocks"><span class="icon ion-ios-link"></span></a>
+                        <a href="#createSellOffer"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getStocks()</code>
+<code>createSellOffer(sellOffer: <a href="../classes/Offer.html">Offer</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/app/_services/stock.service.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/app/_services/offer.service.ts:18</a></div>
                 </td>
             </tr>
 
@@ -249,8 +249,39 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/ApiResponse.html" target="_self" >Observable&lt;ApiResponse&gt;</a></code>
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sellOffer</td>
+                                    <td>
+                                                <code><a href="../classes/Offer.html" target="_self" >Offer</a></code>
+                                    </td>
 
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -263,38 +294,26 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { STOCK } from &#x27;src/app/_mocks/stockMock&#x27;;
-import { Stock } from &#x27;../_models/stock.model&#x27;;
-import { Observable, of } from &#x27;rxjs&#x27;;
+import { Offer } from &#x27;../_models/offer.model&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { API_URL } from &#x27;../_configs/API_URL&#x27;;
 import { HttpClient } from &#x27;@angular/common/http&#x27;;
-import { HttpHeaders } from &#x27;@angular/common/http&#x27;;
-import { API_URL } from &#x27;src/app/_configs/API_URL&#x27;
-import { ApiResponse } from &#x27;../_models/apiResponse&#x27;;
-
-/**
- * Temporary authorization
- */
-const httpOptions &#x3D; {
-  headers: new HttpHeaders({
-    &#x27;accept&#x27;: &#x27;application/json&#x27;,
-    &#x27;Authorization&#x27;: &#x27;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwibmJmIjoxNTc0NzU5NTQ4LCJleHAiOjE1NzUzNjQzNDgsImlhdCI6MTU3NDc1OTU0OH0.trVy_M7gyFJBxVxLMf1h9XE5E7LZxiTj1J9ppf06RjQ&#x27;
-  })
-};
 
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class StockService {
+export class OffersService {
 
   constructor(private http: HttpClient) { }
 
-  getStocks(): Observable&lt;ApiResponse&gt; {
-    return this.http.get&lt;ApiResponse&gt;(API_URL + &#x27;/Stocks&#x27;, httpOptions);
+  createBuyOffer(buyOffer: Offer): Observable&lt;any&gt;{
+    return this.http.post&lt;Offer&gt;(API_URL + &#x27;/Offers/buy&#x27;, buyOffer);
   }
 
-  getStock(id: number): Observable&lt;ApiResponse&gt; {
-    return this.http.get&lt;ApiResponse&gt;(API_URL + &#x27;/Stocks/&#x27; + id);
+  createSellOffer(sellOffer: Offer): Observable&lt;any&gt;{
+    return this.http.post&lt;Offer&gt;(API_URL + &#x27;/Offers/sell&#x27;, sellOffer);
   }
+
 }
 </code></pre>
     </div>
@@ -329,7 +348,7 @@ export class StockService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'StockService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'OffersService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

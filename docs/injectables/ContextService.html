@@ -38,7 +38,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>StockService</li>
+  <li>ContextService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -56,7 +56,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/_services/stock.service.ts</code>
+            <code>src/app/_services/context.service.ts</code>
         </p>
 
 
@@ -76,10 +76,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getStock">getStock</a>
-                            </li>
-                            <li>
-                                <a href="#getStocks">getStocks</a>
+                                <a href="#getContext">getContext</a>
                             </li>
                         </ul>
                     </td>
@@ -104,7 +101,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/_services/stock.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/_services/context.service.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -151,96 +148,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getStock"></a>
+                    <a name="getContext"></a>
                     <span class="name">
                         <b>
-                            getStock
+                            getContext
                         </b>
-                        <a href="#getStock"><span class="icon ion-ios-link"></span></a>
+                        <a href="#getContext"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getStock(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+<code>getContext()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/app/_services/stock.service.ts:31</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>id</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/ApiResponse.html" target="_self" >Observable&lt;ApiResponse&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getStocks"></a>
-                    <span class="name">
-                        <b>
-                            getStocks
-                        </b>
-                        <a href="#getStocks"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getStocks()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/app/_services/stock.service.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/app/_services/context.service.ts:14</a></div>
                 </td>
             </tr>
 
@@ -263,37 +190,20 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { STOCK } from &#x27;src/app/_mocks/stockMock&#x27;;
-import { Stock } from &#x27;../_models/stock.model&#x27;;
 import { Observable, of } from &#x27;rxjs&#x27;;
 import { HttpClient } from &#x27;@angular/common/http&#x27;;
-import { HttpHeaders } from &#x27;@angular/common/http&#x27;;
-import { API_URL } from &#x27;src/app/_configs/API_URL&#x27;
 import { ApiResponse } from &#x27;../_models/apiResponse&#x27;;
-
-/**
- * Temporary authorization
- */
-const httpOptions &#x3D; {
-  headers: new HttpHeaders({
-    &#x27;accept&#x27;: &#x27;application/json&#x27;,
-    &#x27;Authorization&#x27;: &#x27;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwibmJmIjoxNTc0NzU5NTQ4LCJleHAiOjE1NzUzNjQzNDgsImlhdCI6MTU3NDc1OTU0OH0.trVy_M7gyFJBxVxLMf1h9XE5E7LZxiTj1J9ppf06RjQ&#x27;
-  })
-};
+import { API_URL } from &#x27;../_configs/API_URL&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class StockService {
+export class ContextService {
 
   constructor(private http: HttpClient) { }
 
-  getStocks(): Observable&lt;ApiResponse&gt; {
-    return this.http.get&lt;ApiResponse&gt;(API_URL + &#x27;/Stocks&#x27;, httpOptions);
-  }
-
-  getStock(id: number): Observable&lt;ApiResponse&gt; {
-    return this.http.get&lt;ApiResponse&gt;(API_URL + &#x27;/Stocks/&#x27; + id);
+  getContext(): Observable&lt;ApiResponse&gt; {
+    return this.http.get&lt;ApiResponse&gt;(API_URL + &#x27;/Context&#x27;);
   }
 }
 </code></pre>
@@ -329,7 +239,7 @@ export class StockService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'StockService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'ContextService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

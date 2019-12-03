@@ -1,0 +1,997 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>gielda-l2-frontend documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">gielda-l2-frontend documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>CreateBuyOfferComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-create-buy-offer</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./create-buy-offer.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./create-buy-offer.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#buyOffer">buyOffer</a>
+                            </li>
+                            <li>
+                                <a href="#stockData">stockData</a>
+                            </li>
+                            <li>
+                                <a href="#stockId">stockId</a>
+                            </li>
+                            <li>
+                                <a href="#sumValue">sumValue</a>
+                            </li>
+                            <li>
+                                <a href="#user">user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createOffer">createOffer</a>
+                            </li>
+                            <li>
+                                <a href="#getData">getData</a>
+                            </li>
+                            <li>
+                                <a href="#goBack">goBack</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#updateSumValue">updateSumValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, stockService: <a href="../injectables/StockService.html">StockService</a>, formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, contextService: <a href="../injectables/ContextService.html">ContextService</a>, offersService: <a href="../injectables/OffersService.html">OffersService</a>, snackBar: MatSnackBar, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts:45</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor injecting dependencies</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>stockService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StockService.html" target="_self" >StockService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>contextService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ContextService.html" target="_self" >ContextService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>offersService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OffersService.html" target="_self" >OffersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>snackBar</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatSnackBar</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createOffer"></a>
+                    <span class="name">
+                        <b>
+                            createOffer
+                        </b>
+                        <a href="#createOffer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createOffer()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts:105</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Validate if user have enough money to make an offer. If validated succesfully create offer object, and send it to API</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getData"></a>
+                    <span class="name">
+                        <b>
+                            getData
+                        </b>
+                        <a href="#getData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getData()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Download userid and stock data from API</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goBack"></a>
+                    <span class="name">
+                        <b>
+                            goBack
+                        </b>
+                        <a href="#goBack"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goBack()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts:98</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>When button &quot;Back&quot; is pressed go to stock Component</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets param passed from previous component.
+Initialize new form group with validators.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSumValue"></a>
+                    <span class="name">
+                        <b>
+                            updateSumValue
+                        </b>
+                        <a href="#updateSumValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateSumValue()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts:140</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates final offer value</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="buyOffer"></a>
+                        <span class="name">
+                            <b>
+                            buyOffer</b>
+                            <a href="#buyOffer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Offer.html" target="_self" >Offer</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Buy offer object to post </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="stockData"></a>
+                        <span class="name">
+                            <b>
+                            stockData</b>
+                            <a href="#stockData"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Stock.html" target="_self" >Stock</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Selected stock data</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="stockId"></a>
+                        <span class="name">
+                            <b>
+                            stockId</b>
+                            <a href="#stockId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Selected Stock id</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sumValue"></a>
+                        <span class="name">
+                            <b>
+                            sumValue</b>
+                            <a href="#sumValue"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts:45</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Summary offer value</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="user"></a>
+                        <span class="name">
+                            <b>
+                            user</b>
+                            <a href="#user"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/User.html" target="_self" >User</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/modules/offer/pages/create-buy-offer/create-buy-offer.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>currently logged user id</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { StockService } from &#x27;src/app/_services/stock.service&#x27;;
+import { Stock } from &#x27;src/app/_models/stock.model&#x27;;
+import { ApiResponse } from &#x27;src/app/_models/apiResponse&#x27;;
+import { Offer } from &#x27;src/app/_models/offer.model&#x27;;
+import { FormBuilder, FormGroup, FormControl, FormGroupDirective, Validators, NgForm } from &#x27;@angular/forms&#x27;;
+import { ContextService } from &#x27;src/app/_services/context.service&#x27;;
+import { forkJoin } from &#x27;rxjs&#x27;;
+import { OffersService } from &#x27;src/app/_services/offer.service&#x27;;
+import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+import { GridColumnStyleBuilder } from &#x27;@angular/flex-layout/grid/typings/column/column&#x27;;
+import { User } from &#x27;src/app/_models/user.model&#x27;;
+
+@Component({
+  selector: &#x27;app-create-buy-offer&#x27;,
+  templateUrl: &#x27;./create-buy-offer.component.html&#x27;,
+  styleUrls: [&#x27;./create-buy-offer.component.scss&#x27;]
+})
+export class CreateBuyOfferComponent implements OnInit {
+  /**
+   * Selected Stock id
+   */
+  stockId: number;
+  /**
+   * Selected stock data
+   */
+  stockData: Stock;
+  /**
+   * Buy offer object to post 
+   */
+  buyOffer: Offer;
+  /**
+   * currently logged user id
+   */
+  user: User;
+  /**
+   * @ignore
+   */
+  buyForm: FormGroup;
+  /**
+   * Summary offer value
+   */
+  sumValue: number &#x3D; 0;
+
+  /**
+   * Constructor injecting dependencies
+   * @param route 
+   * @param stockService 
+   * @param location 
+   * @param formBuilder 
+   * @param contextService 
+   * @param offersService 
+   * @param snackBar 
+   */
+  constructor(
+    private route: ActivatedRoute,
+    private stockService: StockService,
+    private formBuilder: FormBuilder,
+    private contextService: ContextService,
+    private offersService: OffersService,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) { }
+
+  /**
+   * Gets param passed from previous component.
+   * Initialize new form group with validators.
+   */
+  ngOnInit() {
+    this.stockId &#x3D; +this.route.snapshot.paramMap.get(&#x27;stockId&#x27;);
+    this.getData();
+    this.buyOffer &#x3D; new Offer();
+    this.buyForm &#x3D; this.formBuilder.group({
+      amount: new FormControl(this.buyOffer.amount, [Validators.required, Validators.min(1)]),
+      price: new FormControl(this.buyOffer.price, [Validators.required, Validators.min(0)]),
+    });
+  }
+
+  /**
+   * Download userid and stock data from API
+   */
+  getData() {
+    forkJoin([
+      this.stockService.getStock(this.stockId),
+      this.contextService.getContext()
+    ])
+      .subscribe(([s, c]: [ApiResponse, ApiResponse]) &#x3D;&gt; {
+        this.stockData &#x3D; s.data
+        this.user &#x3D; c.data.user
+      })
+  }
+
+  /**
+   * When button &quot;Back&quot; is pressed go to stock Component
+   */
+  goBack() {
+    this.router.navigate([&#x27;stock&#x27;]);
+  }
+
+  /**
+   * Validate if user have enough money to make an offer. If validated succesfully create offer object, and send it to API
+   */
+  createOffer() {
+    if (this.sumValue &lt;&#x3D; this.user.value) {
+      this.buyOffer.userId &#x3D; this.user.id;
+      this.buyOffer.stockId &#x3D; this.stockId;
+      this.buyOffer.amount &#x3D; this.buyForm.controls[&#x27;amount&#x27;].value
+      this.buyOffer.price &#x3D; this.buyForm.controls[&#x27;price&#x27;].value
+      this.buyOffer.date &#x3D; new Date().toUTCString();;
+      console.log(this.buyOffer);
+
+      this.offersService.createBuyOffer(this.buyOffer).subscribe(d &#x3D;&gt; {
+        this.snackBar.open(&quot;Buy offer added sucesfully&quot;, &quot;Close&quot;, {
+          duration: 5000,
+        });
+        this.router.navigate([&#x27;stock&#x27;]);
+      });
+    }
+    else {
+      this.snackBar.open(&quot;Not enough money&quot;, &quot;Close&quot;, {
+        duration: 5000,
+      });
+    }
+
+  }
+
+  /**
+   * @ignore
+   * @param form 
+   */
+  isValidForm(form: FormGroup) {
+    return form.valid;
+  }
+
+  /**
+   * Updates final offer value
+   */
+  updateSumValue() {
+    if (this.buyForm.valid)
+      this.sumValue &#x3D; this.buyForm.controls[&#x27;amount&#x27;].value * this.buyForm.controls[&#x27;price&#x27;].value;
+    else this.sumValue &#x3D; 0;
+
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-card anlign&#x3D;&#x27;center&#x27;&gt;
+    &lt;mat-card-title&gt; {{stockData?.name}} ( {{stockData?.abbreviation}} ) &lt;/mat-card-title&gt;
+    &lt;mat-grid-list cols&#x3D;&quot;2&quot; rowHeight&#x3D;&quot;100px&quot;&gt;
+        &lt;mat-grid-tile&gt;
+            &lt;p&gt;Current pize: {{stockData?.currentPrice}}&lt;/p&gt;
+        &lt;/mat-grid-tile&gt;
+        &lt;mat-grid-tile&gt;
+            &lt;p&gt;Price delta: {{stockData?.priceDelta}}%&lt;/p&gt;
+        &lt;/mat-grid-tile&gt;
+        &lt;mat-grid-tile [colspan]&#x3D;2&gt;
+            &lt;form [formGroup]&#x3D;&quot;buyForm&quot;&gt;
+                &lt;mat-form-field&gt;
+                    &lt;input matInput type&#x3D;&quot;number&quot; formControlName&#x3D;&quot;amount&quot; placeholder&#x3D;&quot;Amount&quot;
+                        (change)&#x3D;&quot;updateSumValue()&quot;&gt;
+                &lt;/mat-form-field&gt;
+                &lt;mat-form-field&gt;
+                    &lt;input matInput type&#x3D;&quot;number&quot; formControlName&#x3D;&quot;price&quot; placeholder&#x3D;&quot;Price&quot;
+                        (change)&#x3D;&quot;updateSumValue()&quot;&gt;
+                &lt;/mat-form-field&gt;
+            &lt;/form&gt;
+        &lt;/mat-grid-tile&gt;
+        &lt;mat-grid-tile [colspan]&#x3D;2&gt;
+            &lt;p&gt; Sum: {{sumValue}} &lt;/p&gt;
+
+        &lt;/mat-grid-tile&gt;
+        &lt;mat-grid-tile [colspan]&#x3D;2&gt;
+            &lt;mat-card-actions&gt;
+                &lt;button mat-button (click)&#x3D;&quot;createOffer()&quot; [disabled]&#x3D;&quot;!isValidForm(buyForm)&quot;&gt;Create Buy Offer&lt;/button&gt;
+                &lt;button mat-button (click)&#x3D;&quot;goBack()&quot;&gt;Back&lt;/button&gt;
+            &lt;/mat-card-actions&gt;
+        &lt;/mat-grid-tile&gt;
+    &lt;/mat-grid-list&gt;
+
+
+&lt;/mat-card&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./create-buy-offer.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">mat-card{
+    margin: 50px 50px 50px 50px ;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-card anlign=\'center\'>    <mat-card-title> {{stockData?.name}} ( {{stockData?.abbreviation}} ) </mat-card-title>    <mat-grid-list cols="2" rowHeight="100px">        <mat-grid-tile>            <p>Current pize: {{stockData?.currentPrice}}</p>        </mat-grid-tile>        <mat-grid-tile>            <p>Price delta: {{stockData?.priceDelta}}%</p>        </mat-grid-tile>        <mat-grid-tile [colspan]=2>            <form [formGroup]="buyForm">                <mat-form-field>                    <input matInput type="number" formControlName="amount" placeholder="Amount"                        (change)="updateSumValue()">                </mat-form-field>                <mat-form-field>                    <input matInput type="number" formControlName="price" placeholder="Price"                        (change)="updateSumValue()">                </mat-form-field>            </form>        </mat-grid-tile>        <mat-grid-tile [colspan]=2>            <p> Sum: {{sumValue}} </p>        </mat-grid-tile>        <mat-grid-tile [colspan]=2>            <mat-card-actions>                <button mat-button (click)="createOffer()" [disabled]="!isValidForm(buyForm)">Create Buy Offer</button>                <button mat-button (click)="goBack()">Back</button>            </mat-card-actions>        </mat-grid-tile>    </mat-grid-list></mat-card></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'CreateBuyOfferComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CreateBuyOfferComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

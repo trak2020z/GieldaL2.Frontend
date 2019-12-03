@@ -271,7 +271,7 @@ export class Interceptor implements HttpInterceptor {
       (err: any) &#x3D;&gt; {
         if (err instanceof HttpErrorResponse) {
           if (err.status &#x3D;&#x3D;&#x3D; 401) {
-            this.router.navigate([&#x27;user&#x27;]);
+            this.router.navigate([&#x27;&#x27;]);
           }
         }
       }

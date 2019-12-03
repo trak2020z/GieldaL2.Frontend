@@ -27,7 +27,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content guard">
                    <div class="content-data">
 
 
@@ -36,9 +36,11 @@
 
 
 
+
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li>StockService</li>
+    <li>Guards</li>
+    <li>AuthGuard</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -51,18 +53,19 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
-        <p class="comment">
+        <div class="tab-pane fade active in" id="c-info">
+            <p class="comment">
             <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>src/app/_services/stock.service.ts</code>
-        </p>
+            </p>
+            <p class="comment">
+                <code>src/app/_guards/auth.guard.ts</code>
+            </p>
 
 
 
 
-            <section>
+
+                <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -76,10 +79,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getStock">getStock</a>
-                            </li>
-                            <li>
-                                <a href="#getStocks">getStocks</a>
+                                <a href="#canActivate">canActivate</a>
                             </li>
                         </ul>
                     </td>
@@ -93,18 +93,18 @@
     </table>
 </section>
 
-            <section>
+                <section>
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+<code>constructor(token: <a href="../injectables/TokenStorage.html">TokenStorage</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/_services/stock.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/_guards/auth.guard.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -122,10 +122,22 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>http</td>
+                                                        <td>token</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                                        <code><a href="../injectables/TokenStorage.html" target="_self" >TokenStorage</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -142,7 +154,7 @@
         </table>
 </section>
 
-            <section>
+                <section>
     
     <h3 id="methods">
         Methods
@@ -151,26 +163,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getStock"></a>
+                    <a name="canActivate"></a>
                     <span class="name">
                         <b>
-                            getStock
+                            canActivate
                         </b>
-                        <a href="#getStock"><span class="icon ion-ios-link"></span></a>
+                        <a href="#canActivate"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getStock(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+<code>canActivate(next: <a href="https://angular.io/api/router/ActivatedRouteSnapshot" target="_blank">ActivatedRouteSnapshot</a>, state: <a href="https://angular.io/api/router/RouterStateSnapshot" target="_blank">RouterStateSnapshot</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/app/_services/stock.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/app/_guards/auth.guard.ts:13</a></div>
                 </td>
             </tr>
 
@@ -190,9 +202,21 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>id</td>
+                                    <td>next</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                <code><a href="https://angular.io/api/router/ActivatedRouteSnapshot" target="_blank" >ActivatedRouteSnapshot</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>state</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/RouterStateSnapshot" target="_blank" >RouterStateSnapshot</a></code>
                                     </td>
 
                                     <td>
@@ -207,7 +231,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/ApiResponse.html" target="_self" >Observable&lt;ApiResponse&gt;</a></code>
+                        <b>Returns : </b>    <code>Observable | Promise | boolean | UrlTree</code>
 
                     </div>
                     <div class="io-description">
@@ -217,91 +241,38 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getStocks"></a>
-                    <span class="name">
-                        <b>
-                            getStocks
-                        </b>
-                        <a href="#getStocks"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getStocks()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/app/_services/stock.service.ts:27</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/ApiResponse.html" target="_self" >Observable&lt;ApiResponse&gt;</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>
+        </div>
 
-    </div>
 
-
-    <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { STOCK } from &#x27;src/app/_mocks/stockMock&#x27;;
-import { Stock } from &#x27;../_models/stock.model&#x27;;
-import { Observable, of } from &#x27;rxjs&#x27;;
-import { HttpClient } from &#x27;@angular/common/http&#x27;;
-import { HttpHeaders } from &#x27;@angular/common/http&#x27;;
-import { API_URL } from &#x27;src/app/_configs/API_URL&#x27;
-import { ApiResponse } from &#x27;../_models/apiResponse&#x27;;
-
-/**
- * Temporary authorization
- */
-const httpOptions &#x3D; {
-  headers: new HttpHeaders({
-    &#x27;accept&#x27;: &#x27;application/json&#x27;,
-    &#x27;Authorization&#x27;: &#x27;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwibmJmIjoxNTc0NzU5NTQ4LCJleHAiOjE1NzUzNjQzNDgsImlhdCI6MTU3NDc1OTU0OH0.trVy_M7gyFJBxVxLMf1h9XE5E7LZxiTj1J9ppf06RjQ&#x27;
-  })
-};
+        <div class="tab-pane fade  tab-source-code" id="c-source">
+            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from &#x27;@angular/router&#x27;;
+import {Observable} from &#x27;rxjs&#x27;;
+import {TokenStorage} from &#x27;../modules/root/components/token.storage&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class StockService {
-
-  constructor(private http: HttpClient) { }
-
-  getStocks(): Observable&lt;ApiResponse&gt; {
-    return this.http.get&lt;ApiResponse&gt;(API_URL + &#x27;/Stocks&#x27;, httpOptions);
+export class AuthGuard implements CanActivate {
+  constructor(private token: TokenStorage, private router: Router) {
   }
 
-  getStock(id: number): Observable&lt;ApiResponse&gt; {
-    return this.http.get&lt;ApiResponse&gt;(API_URL + &#x27;/Stocks/&#x27; + id);
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable&lt;boolean | UrlTree&gt; | Promise&lt;boolean | UrlTree&gt; | boolean | UrlTree {
+    if (this.token.getToken() !&#x3D; null) {
+      return true;
+    } else {
+      this.router.navigate([&#x27;login&#x27;]);
+      return false;
+    }
   }
+
 }
 </code></pre>
-    </div>
-
+        </div>
 </div>
-
-
 
 
 
@@ -328,8 +299,8 @@ export class StockService {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'StockService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'guard';
+            var COMPODOC_CURRENT_PAGE_URL = 'AuthGuard.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
