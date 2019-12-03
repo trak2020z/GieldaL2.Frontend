@@ -30,13 +30,13 @@ export class CreateSellOfferComponent implements OnInit {
   /**
    * Selected share data
    */
-  shareData:Share = new Share;
+  shareData: Share = new Share;
   /**
-   * Buy offer object to post 
+   * Sell offer object to post 
    */
   sellOffer: Offer;
   /**
-   * currently logged user id
+   * currently logged user
    */
   user: User;
   /**
@@ -47,7 +47,7 @@ export class CreateSellOfferComponent implements OnInit {
    * Summary offer value
    */
   sumValue: number = 0;
- 
+
   /**
    * Constructor injecting dependencies
    * @param route 
@@ -57,6 +57,7 @@ export class CreateSellOfferComponent implements OnInit {
    * @param contextService 
    * @param offersService 
    * @param snackBar 
+   * @param router
    */
   constructor(
     private route: ActivatedRoute,
@@ -78,14 +79,13 @@ export class CreateSellOfferComponent implements OnInit {
     this.getData();
     this.sellOffer = new Offer();
     this.sellForm = this.formBuilder.group({
-      amount: new FormControl(this.sellOffer.amount, [Validators.required, Validators.min(1),(control: AbstractControl) => Validators.max(this.shareData.amount)(control)]),
+      amount: new FormControl(this.sellOffer.amount, [Validators.required, Validators.min(1), (control: AbstractControl) => Validators.max(this.shareData.amount)(control)]),
       price: new FormControl(this.sellOffer.price, [Validators.required, Validators.min(0)]),
     });
-
   }
 
   /**
-   * Download userid and stock data from API
+   * Get user, stock and user share data from API
    */
   getData() {
     forkJoin([
@@ -111,27 +111,19 @@ export class CreateSellOfferComponent implements OnInit {
    * Validate if user have enough money to make an offer. If validated succesfully create offer object, and send it to API
    */
   createOffer() {
-    if (this.sumValue <= this.user.value) {
-      this.sellOffer.userId = this.user.id;
-      this.sellOffer.stockId = this.stockId;
-      this.sellOffer.amount = this.sellForm.controls['amount'].value
-      this.sellOffer.price = this.sellForm.controls['price'].value
-      this.sellOffer.date = new Date().toUTCString();;
-      console.log(this.sellOffer);
+    this.sellOffer.userId = this.user.id;
+    this.sellOffer.stockId = this.stockId;
+    this.sellOffer.amount = this.sellForm.controls['amount'].value
+    this.sellOffer.price = this.sellForm.controls['price'].value
+    this.sellOffer.date = new Date().toUTCString();;
+    console.log(this.sellOffer);
 
-      this.offersService.createSellOffer(this.sellOffer).subscribe(d => {
-        this.snackBar.open("Buy offer added sucesfully", "Close", {
-          duration: 5000,
-        });
-        this.router.navigate(['stock']);
-      });
-    }
-    else {
-      this.snackBar.open("Too few shares to create  offer", "Close", {
+    this.offersService.createSellOffer(this.sellOffer).subscribe(d => {
+      this.snackBar.open("Buy offer added sucesfully", "Close", {
         duration: 5000,
       });
-    }
-
+      this.router.navigate(['stock']);
+    });
   }
 
   /**
@@ -142,6 +134,9 @@ export class CreateSellOfferComponent implements OnInit {
     return form.valid;
   }
 
+  /**
+   * Updates final offer value
+   */
   updateSumValue() {
     if (this.sellForm.valid)
       this.sumValue = this.sellForm.controls['amount'].value * this.sellForm.controls['price'].value;
@@ -150,4 +145,3 @@ export class CreateSellOfferComponent implements OnInit {
   }
 }
 
- 

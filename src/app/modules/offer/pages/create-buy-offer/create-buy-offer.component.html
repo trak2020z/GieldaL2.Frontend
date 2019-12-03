@@ -10,16 +10,18 @@
         <mat-grid-tile [colspan]=2>
             <form [formGroup]="buyForm">
                 <mat-form-field>
-                    <input matInput type="number" formControlName="amount" placeholder="Amount" (change)="updateSumValue()">
+                    <input matInput type="number" formControlName="amount" placeholder="Amount"
+                        (change)="updateSumValue()">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput type="number" formControlName="price" placeholder="Price" (change)="updateSumValue()">
+                    <input matInput type="number" formControlName="price" placeholder="Price"
+                        (change)="updateSumValue()">
                 </mat-form-field>
             </form>
         </mat-grid-tile>
         <mat-grid-tile [colspan]=2>
             <p> Sum: {{sumValue}} </p>
-            
+
         </mat-grid-tile>
         <mat-grid-tile [colspan]=2>
             <mat-card-actions>
@@ -28,6 +30,6 @@
             </mat-card-actions>
         </mat-grid-tile>
     </mat-grid-list>
-    
-    
+
+
 </mat-card>

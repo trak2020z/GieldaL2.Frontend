@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { StockService } from 'src/app/_services/stock.service';
 import { Stock } from 'src/app/_models/stock.model';
@@ -76,7 +76,6 @@ export class CreateBuyOfferComponent implements OnInit {
       amount: new FormControl(this.buyOffer.amount, [Validators.required, Validators.min(1)]),
       price: new FormControl(this.buyOffer.price, [Validators.required, Validators.min(0)]),
     });
-
   }
 
   /**
@@ -135,6 +134,9 @@ export class CreateBuyOfferComponent implements OnInit {
     return form.valid;
   }
 
+  /**
+   * Updates final offer value
+   */
   updateSumValue() {
     if (this.buyForm.valid)
       this.sumValue = this.buyForm.controls['amount'].value * this.buyForm.controls['price'].value;

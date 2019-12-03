@@ -55,7 +55,7 @@ export class StockComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   /**
-  * Defines a private stockService property and identifies it as a StockService injection site.
+  * @ignore
   * 
   * @param stockService 
   */
@@ -67,7 +67,8 @@ export class StockComponent implements OnInit {
 
 
   /**
-   * @ignore
+   * If user is logged show column with buttons, download data form API
+   * else download data form API
    */
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
@@ -79,7 +80,7 @@ export class StockComponent implements OnInit {
   }
 
   /**
-   * Subscribe stockServie to aquire Stock data
+   * Get data from API for logged user
    */
   getDataWithLoggedUser(): void {
     forkJoin([
@@ -93,8 +94,11 @@ export class StockComponent implements OnInit {
     });
   }
 
+  /**
+   * Get data from API
+   */
   getData(): void {
-          this.stockService.getStocks().subscribe((s:ApiResponse) => {
+    this.stockService.getStocks().subscribe((s: ApiResponse) => {
       this.dataSource = new MatTableDataSource(this.createDataSource(s.data, null));
       this.dataSource.sort = this.sort;
     });
@@ -103,8 +107,8 @@ export class StockComponent implements OnInit {
   /**
    * Prediate for data filtering
    * 
-   * @param (Stock) data input data for preficate
-   * @returns (boolean) true if Stack fulfil predicate otherwise false
+   * @param data input data for preficate
+   * @returns true if Stack fulfil predicate otherwise false
    */
   customPredicate(data: TableDataSource): boolean {
     return (!this.filterMaxCurrentPrice || data.currentPrice <= this.filterMaxCurrentPrice)
@@ -151,19 +155,26 @@ export class StockComponent implements OnInit {
     this.dataSource.filter = " ";
   }
 
-  createDataSource(stocks:Stock[], shares:Share[]): TableDataSource[]{
+  /**
+   * Copy walues from stock to table data source.
+   * if stock is owned by user(share) add number of shares 
+   * 
+   * @param stocks stocks data
+   * @param shares shares owned by user
+   */
+  createDataSource(stocks: Stock[], shares: Share[]): TableDataSource[] {
     var tableDataSource: TableDataSource[] = [];
-      stocks.forEach((stock:Stock) => {
-        var dataElement: TableDataSource = new TableDataSource;
-        dataElement.id = stock.id;
-        dataElement.name = stock.name;
-        dataElement.abbreviation = stock.abbreviation;
-        dataElement.currentPrice = stock.currentPrice;
-        dataElement.priceDelta = stock.priceDelta;
-        if(shares.find(share => share.stockId == stock.id))
-          dataElement.ownedAmount = shares.find(share => share.stockId == stock.id).amount;
-        tableDataSource.push(dataElement)
-      })
+    stocks.forEach((stock: Stock) => {
+      var dataElement: TableDataSource = new TableDataSource;
+      dataElement.id = stock.id;
+      dataElement.name = stock.name;
+      dataElement.abbreviation = stock.abbreviation;
+      dataElement.currentPrice = stock.currentPrice;
+      dataElement.priceDelta = stock.priceDelta;
+      if (shares.find(share => share.stockId == stock.id))
+        dataElement.ownedAmount = shares.find(share => share.stockId == stock.id).amount;
+      tableDataSource.push(dataElement)
+    })
     return tableDataSource;
   }
 }
