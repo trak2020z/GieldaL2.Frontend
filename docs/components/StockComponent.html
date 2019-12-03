@@ -143,10 +143,10 @@
                                 <a href="#displayedColumns">displayedColumns</a>
                             </li>
                             <li>
-                                <a href="#filterMaxValue">filterMaxValue</a>
+                                <a href="#filterMaxCurrentPrice">filterMaxCurrentPrice</a>
                             </li>
                             <li>
-                                <a href="#filterMinValue">filterMinValue</a>
+                                <a href="#filterMinCurrentPrice">filterMinCurrentPrice</a>
                             </li>
                             <li>
                                 <a href="#filterName">filterName</a>
@@ -155,7 +155,7 @@
                                 <a href="#sort">sort</a>
                             </li>
                             <li>
-                                <a href="#stocks">stocks</a>
+                                <a href="#userContext">userContext</a>
                             </li>
                         </ul>
                     </td>
@@ -179,10 +179,16 @@
                                 <a href="#applyFilterName">applyFilterName</a>
                             </li>
                             <li>
+                                <a href="#createDataSource">createDataSource</a>
+                            </li>
+                            <li>
                                 <a href="#customPredicate">customPredicate</a>
                             </li>
                             <li>
-                                <a href="#getStocks">getStocks</a>
+                                <a href="#getData">getData</a>
+                            </li>
+                            <li>
+                                <a href="#getDataWithLoggedUser">getDataWithLoggedUser</a>
                             </li>
                             <li>
                                 <a href="#ngOnInit">ngOnInit</a>
@@ -199,56 +205,6 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(stockService: <a href="../injectables/StockService.html">StockService</a>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:42</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Defines a private stockService property and identifies it as a StockService injection site.</p>
-</div>
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>stockService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/StockService.html" target="_self" >StockService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
 
 
@@ -281,8 +237,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="137"
+                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:137</a></div>
                 </td>
             </tr>
 
@@ -358,8 +314,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="111"
-                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:111</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:150</a></div>
                 </td>
             </tr>
 
@@ -435,8 +391,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:124</a></div>
                 </td>
             </tr>
 
@@ -494,6 +450,100 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="createDataSource"></a>
+                    <span class="name">
+                        <b>
+                            createDataSource
+                        </b>
+                        <a href="#createDataSource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createDataSource(stocks: <a href="../classes/Stock.html">Stock[]</a>, shares: <a href="../classes/Share.html">Share[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:165</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Copy walues from stock to table data source.
+if stock is owned by user(share) add number of shares </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>stocks</td>
+                                    <td>
+                                                <code><a href="../classes/Stock.html" target="_self" >Stock[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>stocks data</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>shares</td>
+                                    <td>
+                                                <code><a href="../classes/Share.html" target="_self" >Share[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>shares owned by user</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/TableDataSource.html" target="_self" >TableDataSource[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="customPredicate"></a>
                     <span class="name">
                         <b>
@@ -505,15 +555,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>customPredicate(data: <a href="../classes/Stock.html">Stock</a>)</code>
+<code>customPredicate(data: <a href="../classes/TableDataSource.html">TableDataSource</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="74"
-                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:74</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:113</a></div>
                 </td>
             </tr>
 
@@ -531,13 +581,14 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>data</td>
                                     <td>
-                                                <code><a href="../classes/Stock.html" target="_self" >Stock</a></code>
+                                                <code><a href="../classes/TableDataSource.html" target="_self" >TableDataSource</a></code>
                                     </td>
 
                                     <td>
@@ -545,6 +596,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>input data for preficate</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -556,7 +611,7 @@
 
                     </div>
                     <div class="io-description">
-                        <p>(boolean) true if Stack fulfil predicate otherwise false</p>
+                        <p>true if Stack fulfil predicate otherwise false</p>
 
                     </div>
                 </td>
@@ -567,33 +622,74 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getStocks"></a>
+                    <a name="getData"></a>
                     <span class="name">
                         <b>
-                            getStocks
+                            getData
                         </b>
-                        <a href="#getStocks"><span class="icon ion-ios-link"></span></a>
+                        <a href="#getData"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getStocks()</code>
+<code>getData()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:100</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Subscribe stockServie to aquire Stock data</p>
+                    <div class="io-description"><p>Get data from API</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDataWithLoggedUser"></a>
+                    <span class="name">
+                        <b>
+                            getDataWithLoggedUser
+                        </b>
+                        <a href="#getDataWithLoggedUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDataWithLoggedUser()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get data from API for logged user</p>
 </div>
 
                     <div class="io-description">
@@ -626,15 +722,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:73</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Actualize dataSource and sorts it every time page is refreshed</p>
+                    <div class="io-description"><p>If user is logged show column with buttons, download data form API
+else download data form API</p>
 </div>
 
                     <div class="io-description">
@@ -665,7 +762,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:32</a></div>
                             </td>
                         </tr>
 
@@ -698,12 +795,12 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>[&#x27;name&#x27;, &#x27;value&#x27;, &#x27;change&#x27;]</code>
+                            <i>Default value : </i><code>[&#x27;name&#x27;, &#x27;abbreviation&#x27;, &#x27;currentPrice&#x27;, &#x27;priceDelta&#x27;]</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -720,11 +817,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="filterMaxValue"></a>
+                        <a name="filterMaxCurrentPrice"></a>
                         <span class="name">
                             <b>
-                            filterMaxValue</b>
-                            <a href="#filterMaxValue"><span class="icon ion-ios-link"></span></a>
+                            filterMaxCurrentPrice</b>
+                            <a href="#filterMaxCurrentPrice"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -736,7 +833,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -753,11 +850,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="filterMinValue"></a>
+                        <a name="filterMinCurrentPrice"></a>
                         <span class="name">
                             <b>
-                            filterMinValue</b>
-                            <a href="#filterMinValue"><span class="icon ion-ios-link"></span></a>
+                            filterMinCurrentPrice</b>
+                            <a href="#filterMinCurrentPrice"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -769,7 +866,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:49</a></div>
                             </td>
                         </tr>
 
@@ -802,7 +899,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -844,7 +941,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:55</a></div>
                             </td>
                         </tr>
 
@@ -855,29 +952,29 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="stocks"></a>
+                        <a name="userContext"></a>
                         <span class="name">
                             <b>
-                            stocks</b>
-                            <a href="#stocks"><span class="icon ion-ios-link"></span></a>
+                            userContext</b>
+                            <a href="#userContext"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Stock.html" target="_self" >Stock[]</a></code>
+                            <i>Type : </i>        <code><a href="../classes/Context.html" target="_self" >Context</a></code>
 
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/modules/root/pages/stock/stock.component.ts:53</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Stores Stock (data)</p>
+                        <div class="io-description"><p>Currently logged user data</p>
 </div>
                     </td>
                 </tr>
@@ -893,9 +990,21 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
 import { Stock } from &#x27;src/app/_models/stock.model&#x27;;
 import { StockService } from &#x27;src/app/_services/stock.service&#x27;;
-import {MatSort} from &#x27;@angular/material/sort&#x27;;
-import {MatTableDataSource} from &#x27;@angular/material/table&#x27;;
+import { MatSort } from &#x27;@angular/material/sort&#x27;;
+import { MatTableDataSource } from &#x27;@angular/material/table&#x27;;
 import { DataSource } from &#x27;@angular/cdk/table&#x27;;
+import { ApiResponse } from &#x27;src/app/_models/apiResponse&#x27;;
+import { STOCK } from &#x27;src/app/_mocks/stockMock&#x27;;
+import { TokenStorage } from &#x27;../../components/token.storage&#x27;;
+import { forkJoin } from &#x27;rxjs&#x27;;
+import { ContextService } from &#x27;src/app/_services/context.service&#x27;;
+import { UserHistoryComponent } from &#x27;src/app/modules/user/pages/user-history/user-history.component&#x27;;
+import { User } from &#x27;src/app/_models/user.model&#x27;;
+import { Context } from &#x27;src/app/_models/context.model&#x27;;
+import { SHARE } from &#x27;src/app/_mocks/shareMock&#x27;;
+import { TableDataSource } from &#x27;./tableDataSource&#x27;;
+import { Share } from &#x27;src/app/_models/share.model&#x27;;
+import { share } from &#x27;rxjs/operators&#x27;;
 
 /**
  * The Stock component
@@ -907,18 +1016,13 @@ import { DataSource } from &#x27;@angular/cdk/table&#x27;;
 })
 export class StockComponent implements OnInit {
   /**
-  * Stores Stock (data)
-  */
-  stocks: Stock[];
-  /**
    * Provided by Angular Material holds Stocks array for table
    */
   dataSource;
   /**
   * Displayed column by mat-table  
   */
-  displayedColumns: string[] &#x3D; [&#x27;name&#x27;, &#x27;value&#x27;, &#x27;change&#x27;];
-
+  displayedColumns: string[] &#x3D; [&#x27;name&#x27;, &#x27;abbreviation&#x27;, &#x27;currentPrice&#x27;, &#x27;priceDelta&#x27;];
   /**
    * Parameter for predicate stock name
    */
@@ -926,46 +1030,78 @@ export class StockComponent implements OnInit {
   /**
    * Parameter for predicate max stock price
    */
-  filterMaxValue: number;
+
+  filterMaxCurrentPrice: number;
   /**
-   * Parameter for predicate min stock price
+  * Parameter for predicate min stock price
+  */
+  filterMinCurrentPrice: number;
+  /**
+   * Currently logged user data
    */
-  filterMinValue: number;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  userContext: Context;
+
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   /**
-  * Defines a private stockService property and identifies it as a StockService injection site.
+  * @ignore
   * 
   * @param stockService 
   */
-  constructor(private stockService: StockService) {}
+  constructor(
+    private stockService: StockService,
+    private tokenStorage: TokenStorage,
+    private contextService: ContextService
+  ) { }
 
-   /**
-   * Actualize dataSource and sorts it every time page is refreshed
+
+  /**
+   * If user is logged show column with buttons, download data form API
+   * else download data form API
    */
   ngOnInit() {
-    this.getStocks();
-    this.dataSource &#x3D; new MatTableDataSource(this.stocks);
-    this.dataSource.sort &#x3D; this.sort;
+    if (this.tokenStorage.getToken()) {
+      this.displayedColumns.push(&quot;buttons&quot;)
+      this.getDataWithLoggedUser();
+    }
+    else this.getData();
+
   }
 
   /**
-   * Subscribe stockServie to aquire Stock data
+   * Get data from API for logged user
    */
-  getStocks(): void {
-    this.stockService.getStocks()
-      .subscribe(stocks &#x3D;&gt; this.stocks &#x3D; stocks);
+  getDataWithLoggedUser(): void {
+    forkJoin([
+      this.stockService.getStocks(),
+      this.contextService.getContext()
+    ]).subscribe(([s, c]: [ApiResponse, ApiResponse]) &#x3D;&gt; {
+      this.userContext &#x3D; c.data;
+      console.log(this.userContext);
+      this.dataSource &#x3D; new MatTableDataSource(this.createDataSource(s.data, SHARE));
+      this.dataSource.sort &#x3D; this.sort;
+    });
+  }
+
+  /**
+   * Get data from API
+   */
+  getData(): void {
+    this.stockService.getStocks().subscribe((s: ApiResponse) &#x3D;&gt; {
+      this.dataSource &#x3D; new MatTableDataSource(this.createDataSource(s.data, []));
+      this.dataSource.sort &#x3D; this.sort;
+    });
   }
 
   /**
    * Prediate for data filtering
    * 
-   * @param (Stock) data input data for preficate
-   * @returns (boolean) true if Stack fulfil predicate otherwise false
+   * @param data input data for preficate
+   * @returns true if Stack fulfil predicate otherwise false
    */
-  customPredicate(data: Stock): boolean{
-    return (!this.filterMaxValue || data.value &lt;&#x3D; this.filterMaxValue) 
-      &amp;&amp; (!this.filterMinValue || data.value &gt;&#x3D; this.filterMinValue)
+  customPredicate(data: TableDataSource): boolean {
+    return (!this.filterMaxCurrentPrice || data.currentPrice &lt;&#x3D; this.filterMaxCurrentPrice)
+      &amp;&amp; (!this.filterMinCurrentPrice || data.currentPrice &gt;&#x3D; this.filterMinCurrentPrice)
       &amp;&amp; (!this.filterName || data.name.trim().toLowerCase().includes(this.filterName))
   }
 
@@ -976,8 +1112,8 @@ export class StockComponent implements OnInit {
    */
   applyFilterName(filterValue: string) {
     this.filterName &#x3D; filterValue.trim().toLowerCase()
-    this.dataSource.filterPredicate &#x3D; 
-    (data: Stock, filter: string) &#x3D;&gt; this.customPredicate(data);
+    this.dataSource.filterPredicate &#x3D;
+      (data: TableDataSource, filter: string) &#x3D;&gt; this.customPredicate(data);
 
     this.dataSource.filter &#x3D; &quot; &quot;;
   }
@@ -988,9 +1124,9 @@ export class StockComponent implements OnInit {
    * @param filterValue (String) falue passed by input field
    */
   applyFilterMaxValue(filterValue: number) {
-    this.filterMaxValue &#x3D; filterValue;
-    this.dataSource.filterPredicate &#x3D; 
-    (data: Stock, filter: string) &#x3D;&gt; this.customPredicate(data);
+    this.filterMaxCurrentPrice &#x3D; filterValue;
+    this.dataSource.filterPredicate &#x3D;
+      (data: TableDataSource, filter: string) &#x3D;&gt; this.customPredicate(data);
 
     this.dataSource.filter &#x3D; &quot; &quot;;
   }
@@ -1001,11 +1137,34 @@ export class StockComponent implements OnInit {
    * @param filterValue (String) falue passed by input field
    */
   applyFilterMinValue(filterValue: number) {
-    this.filterMinValue &#x3D; filterValue;
-    this.dataSource.filterPredicate &#x3D; 
-    (data: Stock, filter: string) &#x3D;&gt; this.customPredicate(data);
+    this.filterMinCurrentPrice &#x3D; filterValue;
+    this.dataSource.filterPredicate &#x3D;
+      (data: TableDataSource, filter: string) &#x3D;&gt; this.customPredicate(data);
 
     this.dataSource.filter &#x3D; &quot; &quot;;
+  }
+
+  /**
+   * Copy walues from stock to table data source.
+   * if stock is owned by user(share) add number of shares 
+   * 
+   * @param stocks stocks data
+   * @param shares shares owned by user
+   */
+  createDataSource(stocks: Stock[], shares: Share[]): TableDataSource[] {
+    var tableDataSource: TableDataSource[] &#x3D; [];
+    stocks.forEach((stock: Stock) &#x3D;&gt; {
+      var dataElement: TableDataSource &#x3D; new TableDataSource;
+      dataElement.id &#x3D; stock.id;
+      dataElement.name &#x3D; stock.name;
+      dataElement.abbreviation &#x3D; stock.abbreviation;
+      dataElement.currentPrice &#x3D; stock.currentPrice;
+      dataElement.priceDelta &#x3D; stock.priceDelta;
+      if (shares.find(share &#x3D;&gt; share.stockId &#x3D;&#x3D; stock.id))
+        dataElement.ownedAmount &#x3D; shares.find(share &#x3D;&gt; share.stockId &#x3D;&#x3D; stock.id).amount;
+      tableDataSource.push(dataElement)
+    })
+    return tableDataSource;
   }
 }
 </code></pre>
@@ -1022,24 +1181,40 @@ export class StockComponent implements OnInit {
     &lt;mat-form-field&gt;
         &lt;input type&#x3D;&quot;number&quot; matInput (keyup)&#x3D;&quot;applyFilterMinValue($event.target.value)&quot; placeholder&#x3D;&quot;Min Value&quot;&gt;
     &lt;/mat-form-field&gt;
+
     &lt;table-update-time&gt;&lt;/table-update-time&gt;
+
     &lt;table mat-table [dataSource]&#x3D;&quot;dataSource&quot; matSort class&#x3D;&quot;mat-elevation-z8&quot;&gt;
         &lt;ng-container matColumnDef&#x3D;&quot;name&quot;&gt;
             &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Name &lt;/th&gt;
             &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.name}} &lt;/td&gt;
         &lt;/ng-container&gt;
 
-        &lt;ng-container matColumnDef&#x3D;&quot;value&quot;&gt;
-            &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Value &lt;/th&gt;
-            &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.value}} &lt;/td&gt;
+        &lt;ng-container matColumnDef&#x3D;&quot;abbreviation&quot;&gt;
+            &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Abbreviation &lt;/th&gt;
+            &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.abbreviation}} &lt;/td&gt;
         &lt;/ng-container&gt;
 
-        &lt;ng-container matColumnDef&#x3D;&quot;change&quot;&gt;
-            &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Change &lt;/th&gt;
+        &lt;ng-container matColumnDef&#x3D;&quot;currentPrice&quot;&gt;
+            &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Current price &lt;/th&gt;
+            &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.currentPrice}} &lt;/td&gt;
+        &lt;/ng-container&gt;
+
+        &lt;ng-container matColumnDef&#x3D;&quot;priceDelta&quot;&gt;
+            &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Price delta &lt;/th&gt;
             &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
-                &lt;p class&#x3D;changeGreen *ngIf&#x3D;&quot;element.change &gt; 0&quot;&gt; {{element.change}}% &lt;/p&gt;
-                &lt;p class&#x3D;changeBlack *ngIf&#x3D;&quot;element.change &#x3D;&#x3D; 0&quot;&gt; {{element.change}}% &lt;/p&gt;
-                &lt;p class&#x3D;changeRed *ngIf&#x3D;&quot;element.change &lt; 0&quot;&gt; {{element.change}}% &lt;/p&gt;
+                &lt;p class&#x3D;changeGreen *ngIf&#x3D;&quot;element.priceDelta &gt; 0&quot;&gt; {{element.priceDelta}}% &lt;/p&gt;
+                &lt;p class&#x3D;changeBlack *ngIf&#x3D;&quot;element.priceDelta &#x3D;&#x3D; 0&quot;&gt; {{element.priceDelta}}% &lt;/p&gt;
+                &lt;p class&#x3D;changeRed *ngIf&#x3D;&quot;element.priceDelta &lt; 0&quot;&gt; {{element.priceDelta}}% &lt;/p&gt;
+            &lt;/td&gt;
+        &lt;/ng-container&gt;
+
+        &lt;ng-container matColumnDef&#x3D;&quot;buttons&quot;&gt;
+            &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt;&lt;/th&gt;
+            &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+                &lt;button mat-raised-button color&#x3D;&quot;primary&quot; routerLink&#x3D;&quot;/buyOffer/{{ element.id }}&quot;&gt;Buy&lt;/button&gt;
+                &lt;button mat-raised-button color&#x3D;&quot;warn&quot; routerLink&#x3D;&quot;/sellOffer/{{ element.id }}&quot;
+                    *ngIf&#x3D;&quot;element.ownedAmount&quot;&gt;Sell( Owned: {{element.ownedAmount}} )&lt;/button&gt;
             &lt;/td&gt;
         &lt;/ng-container&gt;
 
@@ -1101,8 +1276,8 @@ div {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div>    <mat-form-field>        <input type="text" matInput (keyup)="applyFilterName($event.target.value)" placeholder="Name">    </mat-form-field>    <mat-form-field>        <input type="number" matInput (keyup)="applyFilterMaxValue($event.target.value)" placeholder="Max Value">    </mat-form-field>    <mat-form-field>        <input type="number" matInput (keyup)="applyFilterMinValue($event.target.value)" placeholder="Min Value">    </mat-form-field>    <table-update-time></table-update-time>    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">        <ng-container matColumnDef="name">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>            <td mat-cell *matCellDef="let element"> {{element.name}} </td>        </ng-container>        <ng-container matColumnDef="value">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Value </th>            <td mat-cell *matCellDef="let element"> {{element.value}} </td>        </ng-container>        <ng-container matColumnDef="change">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Change </th>            <td mat-cell *matCellDef="let element">                <p class=changeGreen *ngIf="element.change > 0"> {{element.change}}% </p>                <p class=changeBlack *ngIf="element.change == 0"> {{element.change}}% </p>                <p class=changeRed *ngIf="element.change < 0"> {{element.change}}% </p>            </td>        </ng-container>        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    </table></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'}];
+        var COMPONENT_TEMPLATE = '<div><div>    <mat-form-field>        <input type="text" matInput (keyup)="applyFilterName($event.target.value)" placeholder="Name">    </mat-form-field>    <mat-form-field>        <input type="number" matInput (keyup)="applyFilterMaxValue($event.target.value)" placeholder="Max Value">    </mat-form-field>    <mat-form-field>        <input type="number" matInput (keyup)="applyFilterMinValue($event.target.value)" placeholder="Min Value">    </mat-form-field>    <table-update-time></table-update-time>    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">        <ng-container matColumnDef="name">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>            <td mat-cell *matCellDef="let element"> {{element.name}} </td>        </ng-container>        <ng-container matColumnDef="abbreviation">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Abbreviation </th>            <td mat-cell *matCellDef="let element"> {{element.abbreviation}} </td>        </ng-container>        <ng-container matColumnDef="currentPrice">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Current price </th>            <td mat-cell *matCellDef="let element"> {{element.currentPrice}} </td>        </ng-container>        <ng-container matColumnDef="priceDelta">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Price delta </th>            <td mat-cell *matCellDef="let element">                <p class=changeGreen *ngIf="element.priceDelta > 0"> {{element.priceDelta}}% </p>                <p class=changeBlack *ngIf="element.priceDelta == 0"> {{element.priceDelta}}% </p>                <p class=changeRed *ngIf="element.priceDelta < 0"> {{element.priceDelta}}% </p>            </td>        </ng-container>        <ng-container matColumnDef="buttons">            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>            <td mat-cell *matCellDef="let element">                <button mat-raised-button color="primary" routerLink="/buyOffer/{{ element.id }}">Buy</button>                <button mat-raised-button color="warn" routerLink="/sellOffer/{{ element.id }}"                    *ngIf="element.ownedAmount">Sell( Owned: {{element.ownedAmount}} )</button>            </td>        </ng-container>        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    </table></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'StockComponent'};
 </script>

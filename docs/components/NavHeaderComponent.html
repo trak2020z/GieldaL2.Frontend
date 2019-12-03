@@ -171,15 +171,45 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor()</code>
+<code>constructor(auth: <a href="../injectables/AuthService.html">AuthService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:14</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -215,8 +245,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:17</a></div>
                 </td>
             </tr>
 
@@ -263,7 +293,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -295,7 +325,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -327,7 +357,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -341,6 +371,8 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import {TokenStorage} from &#x27;../token.storage&#x27;;
+import {AuthService} from &#x27;../../../../_services/auth.service&#x27;;
 
 @Component({
   selector: &#x27;app-nav-header&#x27;,
@@ -352,7 +384,7 @@ export class NavHeaderComponent implements OnInit {
   title &#x3D; &#x27;GieldaL2&#x27;;
   loginText &#x3D; &#x27;Log In&#x27;;
   logoutText &#x3D; &#x27;Logout&#x27;;
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
@@ -370,12 +402,13 @@ export class NavHeaderComponent implements OnInit {
 
         &lt;div class&#x3D;&quot;alignRightItems&quot;&gt;
             &lt;button mat-button *ngIf&#x3D;&quot;true&quot; [routerLink]&#x3D;&quot;&#x27;user&#x27;&quot;&gt;user&lt;/button&gt;
-            &lt;button mat-button [routerLink]&#x3D;&quot;&#x27;/register&#x27;&quot;&gt;Register&lt;/button&gt;
-            &lt;button mat-button *ngIf&#x3D;&quot;false&quot;&gt;{{logoutText}}&lt;/button&gt;
-            &lt;button mat-button *ngIf&#x3D;&quot;true&quot; [routerLink]&#x3D;&quot;&#x27;/login&#x27;&quot;&gt;{{loginText}}&lt;/button&gt;
+            &lt;button mat-button *ngIf&#x3D;&quot;!this.auth.isLoggedIn()&quot; [routerLink]&#x3D;&quot;&#x27;/register&#x27;&quot;&gt;Register&lt;/button&gt;
+            &lt;button mat-button *ngIf&#x3D;&quot;this.auth.isLoggedIn()&quot; (click)&#x3D;&quot;this.auth.logout()&quot;&gt;{{logoutText}}&lt;/button&gt;
+            &lt;button mat-button *ngIf&#x3D;&quot;!this.auth.isLoggedIn()&quot; [routerLink]&#x3D;&quot;&#x27;/login&#x27;&quot;&gt;{{loginText}}&lt;/button&gt;
         &lt;/div&gt;
     &lt;/mat-toolbar-row&gt;
-&lt;/mat-toolbar&gt;</code></pre>
+&lt;/mat-toolbar&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -414,8 +447,8 @@ export class NavHeaderComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- Fixed navbar --><mat-toolbar color="primary">    <mat-toolbar-row>        <button mat-button [routerLink]="\'/\'">{{title}}</button>        <button mat-button [routerLink]="\'/stock\'">Stock</button>        <div class="alignRightItems">            <button mat-button *ngIf="true" [routerLink]="\'user\'">user</button>            <button mat-button [routerLink]="\'/register\'">Register</button>            <button mat-button *ngIf="false">{{logoutText}}</button>            <button mat-button *ngIf="true" [routerLink]="\'/login\'">{{loginText}}</button>        </div>    </mat-toolbar-row></mat-toolbar></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'}];
+        var COMPONENT_TEMPLATE = '<div><!-- Fixed navbar --><mat-toolbar color="primary">    <mat-toolbar-row>        <button mat-button [routerLink]="\'/\'">{{title}}</button>        <button mat-button [routerLink]="\'/stock\'">Stock</button>        <div class="alignRightItems">            <button mat-button *ngIf="true" [routerLink]="\'user\'">user</button>            <button mat-button *ngIf="!this.auth.isLoggedIn()" [routerLink]="\'/register\'">Register</button>            <button mat-button *ngIf="this.auth.isLoggedIn()" (click)="this.auth.logout()">{{logoutText}}</button>            <button mat-button *ngIf="!this.auth.isLoggedIn()" [routerLink]="\'/login\'">{{loginText}}</button>        </div>    </mat-toolbar-row></mat-toolbar></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NavHeaderComponent'};
 </script>

@@ -99,15 +99,45 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor()</code>
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/_services/stock.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/_services/stock.service.ts:23</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -139,8 +169,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/_services/stock.service.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/_services/stock.service.ts:31</a></div>
                 </td>
             </tr>
 
@@ -177,7 +207,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/Stock.html" target="_self" >Observable&lt;Stock&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/ApiResponse.html" target="_self" >Observable&lt;ApiResponse&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -209,8 +239,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">src/app/_services/stock.service.ts:14</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/app/_services/stock.service.ts:27</a></div>
                 </td>
             </tr>
 
@@ -219,7 +249,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/Stock.html" target="_self" >Observable&lt;Stock[]&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/ApiResponse.html" target="_self" >Observable&lt;ApiResponse&gt;</a></code>
 
                     </div>
                 </td>
@@ -236,24 +266,35 @@
 import { STOCK } from &#x27;src/app/_mocks/stockMock&#x27;;
 import { Stock } from &#x27;../_models/stock.model&#x27;;
 import { Observable, of } from &#x27;rxjs&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { HttpHeaders } from &#x27;@angular/common/http&#x27;;
+import { API_URL } from &#x27;src/app/_configs/API_URL&#x27;
+import { ApiResponse } from &#x27;../_models/apiResponse&#x27;;
 
+/**
+ * Temporary authorization
+ */
+const httpOptions &#x3D; {
+  headers: new HttpHeaders({
+    &#x27;accept&#x27;: &#x27;application/json&#x27;,
+    &#x27;Authorization&#x27;: &#x27;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwibmJmIjoxNTc0NzU5NTQ4LCJleHAiOjE1NzUzNjQzNDgsImlhdCI6MTU3NDc1OTU0OH0.trVy_M7gyFJBxVxLMf1h9XE5E7LZxiTj1J9ppf06RjQ&#x27;
+  })
+};
 
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class StockService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getStocks() : Observable&lt;Stock[]&gt;{
-    return of(STOCK);
+  getStocks(): Observable&lt;ApiResponse&gt; {
+    return this.http.get&lt;ApiResponse&gt;(API_URL + &#x27;/Stocks&#x27;, httpOptions);
   }
 
-  getStock(id : number) : Observable&lt;Stock&gt;{
-    return of(STOCK[id]);
+  getStock(id: number): Observable&lt;ApiResponse&gt; {
+    return this.http.get&lt;ApiResponse&gt;(API_URL + &#x27;/Stocks/&#x27; + id);
   }
-
-  
 }
 </code></pre>
     </div>

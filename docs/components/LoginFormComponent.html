@@ -171,7 +171,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, authService: <a href="../injectables/AuthService.html">AuthService</a>, token: <a href="../injectables/TokenStorage.html">TokenStorage</a>)</code>
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, authService: <a href="../injectables/AuthService.html">AuthService</a>, token: <a href="../injectables/TokenStorage.html">TokenStorage</a>, alert: MatSnackBar)</code>
                     </td>
                 </tr>
                         <tr>
@@ -222,6 +222,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/TokenStorage.html" target="_self" >TokenStorage</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alert</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatSnackBar</code>
                                                         </td>
                                                   
                                                     <td>
@@ -393,7 +405,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, OnInit} from &#x27;@angular/core&#x27;;
 import {Router} from &#x27;@angular/router&#x27;;
-import {MatDialog} from &#x27;@angular/material&#x27;;
+import {MatDialog, MatSnackBar} from &#x27;@angular/material&#x27;;
 import {AuthService} from &#x27;../../../../_services/auth.service&#x27;;
 import {TokenStorage} from &#x27;../../components/token.storage&#x27;;
 
@@ -404,7 +416,7 @@ import {TokenStorage} from &#x27;../../components/token.storage&#x27;;
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService, private token: TokenStorage) {
+  constructor(private router: Router, private authService: AuthService, private token: TokenStorage, private alert: MatSnackBar) {
   }
 
   username: string;
@@ -416,8 +428,13 @@ export class LoginFormComponent implements OnInit {
   login(): void {
     this.authService.attemptAuth(this.username, this.password).subscribe(
       data &#x3D;&gt; {
-        this.token.saveToken(data.token);
-        this.router.navigate([&#x27;user&#x27;]);
+        if (data.token !&#x3D;&#x3D; &#x27;&#x27;) {
+          this.token.saveToken(data.token);
+          console.log(this.token.getToken());
+          this.router.navigate([&#x27;user&#x27;]);
+        } else {
+          this.alert.open(&#x27;Wrong login or password&#x27;, &#x27;Close&#x27;, {duration: 2000});
+        }
       }
     );
   }
@@ -522,7 +539,7 @@ export class LoginFormComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><mat-card class="login-card">  <mat-card-header>    <mat-card-title>Login</mat-card-title>  </mat-card-header>  <mat-card-content>    <form class="login-form">      <table class="full-width-content" cellspacing="0">        <tr>          <td>            <mat-form-field class="full-width-field">              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>            </mat-form-field>          </td>        </tr>        <tr>          <td><mat-form-field class="full-width-field">            <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>          </mat-form-field></td>        </tr></table>    </form>  </mat-card-content>  <mat-card-actions class="login-button">    <button mat-raised-button (click)="login()" color="primary" >Login</button>  </mat-card-actions>  <div class="register-alert">    <p>Don\'t have account yet?</p>    <button mat-button (click)="this.router.navigate([\'register\'])" color="warn" >Register</button>  </div></mat-card></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'}];
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'LoginFormComponent'};
 </script>

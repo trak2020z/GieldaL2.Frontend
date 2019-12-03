@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock } from 'src/app/_models/stock.model';
 import { StockService } from 'src/app/_services/stock.service';
+import { ApiResponse } from 'src/app/_models/apiResponse';
  
 /**
  * The home component
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
   /**
    * Displayed column by mat-table  
    */
-  displayedColumns: string[] = ['name', 'value', 'change'];
+  displayedColumns: string[] = ['name', 'abbreviation', 'currentPrice', 'priceDelta'];
 
  /**
   * Defines a private stockService property and identifies it as a StockService injection site.
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
   * @param stockService 
   */
   constructor(private stockService: StockService) {
+    this.getStocks();
   }
 
 
@@ -34,8 +36,8 @@ export class HomeComponent implements OnInit {
    * Actualize dataSource and sorts it every time page is refreshed
    */
   ngOnInit() {
-    this.getStocks();
-    this.dataSource.sort(this.compare);
+    //this.getStocks();
+    //this.dataSource.sort(this.compare);
   }
 
   /**
@@ -45,10 +47,10 @@ export class HomeComponent implements OnInit {
   * @param {Stock} b second Stock object
   * @returns comparator value:
   */
-  private compare(a: Stock, b: Stock) {
-    if (a.value > b.value) return 1;
-    if (a.value = b.value) return 0;
-    if (a.value < b.value) return -1;
+  private compare(a:Stock, b:Stock) {
+    if (a.currentPrice > b.currentPrice) return -1;
+    if (a.currentPrice = b.currentPrice) return 0;
+    if (a.currentPrice < b.currentPrice) return 1;
   }
 
   /**
@@ -56,6 +58,8 @@ export class HomeComponent implements OnInit {
    */
   getStocks(): void {
     this.stockService.getStocks()
-      .subscribe(stocks => this.dataSource = stocks);
+    .subscribe((r: ApiResponse) => {
+    this.dataSource = r.data;
+    });
   }
 }
