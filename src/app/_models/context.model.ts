@@ -3,7 +3,7 @@ import { Share } from './share.model';
 
 export class Context {
     user: User;
-    shares: Share;
+    shares: Share[];
     buyOffers;
     sellOffers;
 }
