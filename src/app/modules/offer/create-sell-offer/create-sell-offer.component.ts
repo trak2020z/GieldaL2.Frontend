@@ -118,12 +118,20 @@ export class CreateSellOfferComponent implements OnInit {
     this.sellOffer.date = new Date().toUTCString();;
     console.log(this.sellOffer);
 
-    this.offersService.createSellOffer(this.sellOffer).subscribe(d => {
-      this.snackBar.open("Buy offer added sucesfully", "Close", {
-        duration: 5000,
-      });
-      this.router.navigate(['stock']);
-    });
+    this.offersService.createSellOffer(this.sellOffer).subscribe(
+      d => {
+        this.snackBar.open("Sell offer added sucesfully", "Close", {
+          duration: 5000,
+        })
+        this.router.navigate(['stock']);
+    },
+      err => {
+        this.snackBar.open("Couldn't create offer: Service is temporarily not available.", "Close", {
+          duration: 5000,
+        })
+        this.router.navigate(['stock']);
+      }
+    );
   }
 
   /**

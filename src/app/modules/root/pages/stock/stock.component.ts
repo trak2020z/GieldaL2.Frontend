@@ -99,7 +99,7 @@ export class StockComponent implements OnInit {
    */
   getData(): void {
     this.stockService.getStocks().subscribe((s: ApiResponse) => {
-      this.dataSource = new MatTableDataSource(this.createDataSource(s.data, null));
+      this.dataSource = new MatTableDataSource(this.createDataSource(s.data, []));
       this.dataSource.sort = this.sort;
     });
   }
