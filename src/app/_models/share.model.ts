@@ -1,9 +1,9 @@
 export class Share {
- id:Number;
- stockId:Number;
- ownerId:Number;
- userId:Number;
- amount:Number; 
+ id:number;
+ stockId:number;
+ ownerId:number;
+ userId:number;
+ amount:number; 
 }
 
  

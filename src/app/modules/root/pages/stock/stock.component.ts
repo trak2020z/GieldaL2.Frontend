@@ -107,9 +107,9 @@ export class StockComponent implements OnInit {
    * @returns (boolean) true if Stack fulfil predicate otherwise false
    */
   customPredicate(data: TableDataSource): boolean {
-    return (!this.filterMaxCurrentPrice || data.stock.currentPrice <= this.filterMaxCurrentPrice)
-      && (!this.filterMinCurrentPrice || data.stock.currentPrice >= this.filterMinCurrentPrice)
-      && (!this.filterName || data.stock.name.trim().toLowerCase().includes(this.filterName))
+    return (!this.filterMaxCurrentPrice || data.currentPrice <= this.filterMaxCurrentPrice)
+      && (!this.filterMinCurrentPrice || data.currentPrice >= this.filterMinCurrentPrice)
+      && (!this.filterName || data.name.trim().toLowerCase().includes(this.filterName))
   }
 
   /**
@@ -162,7 +162,6 @@ export class StockComponent implements OnInit {
         dataElement.priceDelta = stock.priceDelta;
         if(shares.find(share => share.stockId == stock.id))
           dataElement.ownedAmount = shares.find(share => share.stockId == stock.id).amount;
-        
         tableDataSource.push(dataElement)
       })
     return tableDataSource;

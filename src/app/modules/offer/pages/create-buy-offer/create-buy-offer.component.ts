@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import {Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { StockService } from 'src/app/_services/stock.service';
 import { Stock } from 'src/app/_models/stock.model';
@@ -57,11 +57,11 @@ export class CreateBuyOfferComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private stockService: StockService,
-    private location: Location,
     private formBuilder: FormBuilder,
     private contextService: ContextService,
     private offersService: OffersService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   /**
@@ -97,7 +97,7 @@ export class CreateBuyOfferComponent implements OnInit {
    * When button "Back" is pressed go to stock Component
    */
   goBack() {
-    this.location.back();
+    this.router.navigate(['stock']);
   }
 
   /**
@@ -116,7 +116,7 @@ export class CreateBuyOfferComponent implements OnInit {
         this.snackBar.open("Buy offer added sucesfully", "Close", {
           duration: 5000,
         });
-        this.location.back();
+        this.router.navigate(['stock']);
       });
     }
     else {

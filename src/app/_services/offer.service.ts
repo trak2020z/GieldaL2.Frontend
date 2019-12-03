@@ -14,4 +14,9 @@ export class OffersService {
   createBuyOffer(buyOffer: Offer): Observable<any>{
     return this.http.post<Offer>(API_URL + '/Offers/buy', buyOffer);
   }
+
+  createSellOffer(buyOffer: Offer): Observable<any>{
+    return this.http.post<Offer>(API_URL + '/Offers/buy', buyOffer);
+  }
+
 }
