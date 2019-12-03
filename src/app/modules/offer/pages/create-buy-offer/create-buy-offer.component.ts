@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { StockService } from 'src/app/_services/stock.service';
 import { Stock } from 'src/app/_models/stock.model';
 import { ApiResponse } from 'src/app/_models/apiResponse';
-import { BuyOffer } from 'src/app/_models/buyOffer.model';
+import { Offer } from 'src/app/_models/offer.model';
 import { FormBuilder, FormGroup, FormControl, FormGroupDirective, Validators, NgForm } from '@angular/forms';
 import { ContextService } from 'src/app/_services/context.service';
 import { forkJoin } from 'rxjs';
 import { OffersService } from 'src/app/_services/offer.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { GridColumnStyleBuilder } from '@angular/flex-layout/grid/typings/column/column';
+import { User } from 'src/app/_models/user.model';
 
 @Component({
   selector: 'app-create-buy-offer',
@@ -28,15 +30,19 @@ export class CreateBuyOfferComponent implements OnInit {
   /**
    * Buy offer object to post 
    */
-  buyOffer: BuyOffer;
+  buyOffer: Offer;
   /**
    * currently logged user id
    */
-  userId: number;
+  user: User;
   /**
    * @ignore
    */
   buyForm: FormGroup;
+  /**
+   * Summary offer value
+   */
+  sumValue: number = 0;
 
   /**
    * Constructor injecting dependencies
@@ -51,11 +57,11 @@ export class CreateBuyOfferComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private stockService: StockService,
-    private location: Location,
     private formBuilder: FormBuilder,
     private contextService: ContextService,
     private offersService: OffersService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   /**
@@ -65,12 +71,11 @@ export class CreateBuyOfferComponent implements OnInit {
   ngOnInit() {
     this.stockId = +this.route.snapshot.paramMap.get('stockId');
     this.getData();
-    this.buyOffer = new BuyOffer();
+    this.buyOffer = new Offer();
     this.buyForm = this.formBuilder.group({
       amount: new FormControl(this.buyOffer.amount, [Validators.required, Validators.min(1)]),
       price: new FormControl(this.buyOffer.price, [Validators.required, Validators.min(0)]),
     });
-
   }
 
   /**
@@ -83,7 +88,7 @@ export class CreateBuyOfferComponent implements OnInit {
     ])
       .subscribe(([s, c]: [ApiResponse, ApiResponse]) => {
         this.stockData = s.data
-        this.userId = c.data.user.id
+        this.user = c.data.user
       })
   }
 
@@ -91,26 +96,33 @@ export class CreateBuyOfferComponent implements OnInit {
    * When button "Back" is pressed go to stock Component
    */
   goBack() {
-    this.location.back();
+    this.router.navigate(['stock']);
   }
 
   /**
-   * Create offer object then send if to API via service.
+   * Validate if user have enough money to make an offer. If validated succesfully create offer object, and send it to API
    */
   createOffer() {
-    this.buyOffer.userId = this.userId;
-    this.buyOffer.stockId = this.stockId;
-    this.buyOffer.amount = this.buyForm.controls['amount'].value
-    this.buyOffer.price = this.buyForm.controls['price'].value
-    this.buyOffer.date = new Date().toUTCString();;
-    console.log(this.buyOffer);
+    if (this.sumValue <= this.user.value) {
+      this.buyOffer.userId = this.user.id;
+      this.buyOffer.stockId = this.stockId;
+      this.buyOffer.amount = this.buyForm.controls['amount'].value
+      this.buyOffer.price = this.buyForm.controls['price'].value
+      this.buyOffer.date = new Date().toUTCString();;
+      console.log(this.buyOffer);
 
-    this.offersService.createBuyOffer(this.buyOffer).subscribe(d => {
-      this.snackBar.open("Buy offer addes sucesfully", "Close", {
+      this.offersService.createBuyOffer(this.buyOffer).subscribe(d => {
+        this.snackBar.open("Buy offer added sucesfully", "Close", {
+          duration: 5000,
+        });
+        this.router.navigate(['stock']);
+      });
+    }
+    else {
+      this.snackBar.open("Not enough money", "Close", {
         duration: 5000,
       });
-      this.location.back();
-    });
+    }
 
   }
 
@@ -120,5 +132,15 @@ export class CreateBuyOfferComponent implements OnInit {
    */
   isValidForm(form: FormGroup) {
     return form.valid;
+  }
+
+  /**
+   * Updates final offer value
+   */
+  updateSumValue() {
+    if (this.buyForm.valid)
+      this.sumValue = this.buyForm.controls['amount'].value * this.buyForm.controls['price'].value;
+    else this.sumValue = 0;
+
   }
 }

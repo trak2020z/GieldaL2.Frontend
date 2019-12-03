@@ -7,6 +7,15 @@ import { DataSource } from '@angular/cdk/table';
 import { ApiResponse } from 'src/app/_models/apiResponse';
 import { STOCK } from 'src/app/_mocks/stockMock';
 import { TokenStorage } from '../../components/token.storage';
+import { forkJoin } from 'rxjs';
+import { ContextService } from 'src/app/_services/context.service';
+import { UserHistoryComponent } from 'src/app/modules/user/pages/user-history/user-history.component';
+import { User } from 'src/app/_models/user.model';
+import { Context } from 'src/app/_models/context.model';
+import { SHARE } from 'src/app/_mocks/shareMock';
+import { TableDataSource } from './tableDataSource';
+import { Share } from 'src/app/_models/share.model';
+import { share } from 'rxjs/operators';
 
 /**
  * The Stock component
@@ -35,47 +44,73 @@ export class StockComponent implements OnInit {
 
   filterMaxCurrentPrice: number;
   /**
- * Parameter for predicate min stock price
- */
+  * Parameter for predicate min stock price
+  */
   filterMinCurrentPrice: number;
+  /**
+   * Currently logged user data
+   */
+  userContext: Context;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   /**
-  * Defines a private stockService property and identifies it as a StockService injection site.
+  * @ignore
   * 
   * @param stockService 
   */
-  constructor(private stockService: StockService, private tokenStorage: TokenStorage) {
-    if (tokenStorage.getToken()) this.displayedColumns.push("buttons")
-  }
+  constructor(
+    private stockService: StockService,
+    private tokenStorage: TokenStorage,
+    private contextService: ContextService
+  ) { }
+
 
   /**
-   * @ignore
+   * If user is logged show column with buttons, download data form API
+   * else download data form API
    */
   ngOnInit() {
-    this.getStocks();
+    if (this.tokenStorage.getToken()) {
+      this.displayedColumns.push("buttons")
+      this.getDataWithLoggedUser();
+    }
+    else this.getData();
 
   }
 
   /**
-   * Subscribe stockServie to aquire Stock data
+   * Get data from API for logged user
    */
-  getStocks(): void {
-    this.stockService.getStocks()
-      .subscribe((r: ApiResponse) => {
-        this.dataSource = new MatTableDataSource(r.data);
-        this.dataSource.sort = this.sort;
-      });
+  getDataWithLoggedUser(): void {
+    forkJoin([
+      this.stockService.getStocks(),
+      this.contextService.getContext()
+    ]).subscribe(([s, c]: [ApiResponse, ApiResponse]) => {
+      this.userContext = c.data;
+      console.log(this.userContext);
+      this.dataSource = new MatTableDataSource(this.createDataSource(s.data, SHARE));
+      this.dataSource.sort = this.sort;
+    });
+  }
+
+  /**
+   * Get data from API
+   */
+  getData(): void {
+    this.stockService.getStocks().subscribe((s: ApiResponse) => {
+      this.dataSource = new MatTableDataSource(this.createDataSource(s.data, []));
+      this.dataSource.sort = this.sort;
+    });
   }
 
   /**
    * Prediate for data filtering
    * 
-   * @param (Stock) data input data for preficate
-   * @returns (boolean) true if Stack fulfil predicate otherwise false
+   * @param data input data for preficate
+   * @returns true if Stack fulfil predicate otherwise false
    */
-  customPredicate(data: Stock): boolean {
+  customPredicate(data: TableDataSource): boolean {
     return (!this.filterMaxCurrentPrice || data.currentPrice <= this.filterMaxCurrentPrice)
       && (!this.filterMinCurrentPrice || data.currentPrice >= this.filterMinCurrentPrice)
       && (!this.filterName || data.name.trim().toLowerCase().includes(this.filterName))
@@ -89,7 +124,7 @@ export class StockComponent implements OnInit {
   applyFilterName(filterValue: string) {
     this.filterName = filterValue.trim().toLowerCase()
     this.dataSource.filterPredicate =
-      (data: Stock, filter: string) => this.customPredicate(data);
+      (data: TableDataSource, filter: string) => this.customPredicate(data);
 
     this.dataSource.filter = " ";
   }
@@ -102,7 +137,7 @@ export class StockComponent implements OnInit {
   applyFilterMaxValue(filterValue: number) {
     this.filterMaxCurrentPrice = filterValue;
     this.dataSource.filterPredicate =
-      (data: Stock, filter: string) => this.customPredicate(data);
+      (data: TableDataSource, filter: string) => this.customPredicate(data);
 
     this.dataSource.filter = " ";
   }
@@ -115,8 +150,31 @@ export class StockComponent implements OnInit {
   applyFilterMinValue(filterValue: number) {
     this.filterMinCurrentPrice = filterValue;
     this.dataSource.filterPredicate =
-      (data: Stock, filter: string) => this.customPredicate(data);
+      (data: TableDataSource, filter: string) => this.customPredicate(data);
 
     this.dataSource.filter = " ";
+  }
+
+  /**
+   * Copy walues from stock to table data source.
+   * if stock is owned by user(share) add number of shares 
+   * 
+   * @param stocks stocks data
+   * @param shares shares owned by user
+   */
+  createDataSource(stocks: Stock[], shares: Share[]): TableDataSource[] {
+    var tableDataSource: TableDataSource[] = [];
+    stocks.forEach((stock: Stock) => {
+      var dataElement: TableDataSource = new TableDataSource;
+      dataElement.id = stock.id;
+      dataElement.name = stock.name;
+      dataElement.abbreviation = stock.abbreviation;
+      dataElement.currentPrice = stock.currentPrice;
+      dataElement.priceDelta = stock.priceDelta;
+      if (shares.find(share => share.stockId == stock.id))
+        dataElement.ownedAmount = shares.find(share => share.stockId == stock.id).amount;
+      tableDataSource.push(dataElement)
+    })
+    return tableDataSource;
   }
 }

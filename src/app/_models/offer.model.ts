@@ -1,4 +1,4 @@
-export class BuyOffer {
+export class Offer {
     id: number;
     userId: number;
     stockId: number;
