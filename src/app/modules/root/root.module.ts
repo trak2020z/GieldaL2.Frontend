@@ -31,6 +31,7 @@ import { Interceptor } from './components/app.interceptor';
 import { AuthService } from '../../_services/auth.service';
 import { TokenStorage } from './components/token.storage';
 import { TableUpdateTimeComponent } from './components/table-update-time/table-update-time.component';
+import {AuthGuard} from '../../_guards/auth.guard';
 
 
 @NgModule({
@@ -69,7 +70,7 @@ import { TableUpdateTimeComponent } from './components/table-update-time/table-u
     HttpClientModule
   ],
   exports: [AppComponent],
-  providers: [AuthService, TokenStorage,
+  providers: [AuthService, TokenStorage, AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,

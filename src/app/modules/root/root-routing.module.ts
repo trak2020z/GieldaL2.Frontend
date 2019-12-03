@@ -5,6 +5,7 @@ import { StockComponent } from './pages/stock/stock.component';
 import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MainComponent as UserMainComponent } from '../user/components/main/main.component';
+import {AuthGuard} from '../../_guards/auth.guard';
 
 
 const routes: Routes = [
@@ -12,7 +13,7 @@ const routes: Routes = [
   { path: 'stock', component: StockComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'user', loadChildren: '../user/user.module#UserModule' },
+  { path: 'user', loadChildren: '../user/user.module#UserModule', canActivate: [AuthGuard] },
 ];
 
 @NgModule({
