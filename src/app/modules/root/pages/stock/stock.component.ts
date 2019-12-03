@@ -155,7 +155,11 @@ export class StockComponent implements OnInit {
     var tableDataSource: TableDataSource[] = [];
       stocks.forEach((stock:Stock) => {
         var dataElement: TableDataSource = new TableDataSource;
-        dataElement.stock = stock;
+        dataElement.id = stock.id;
+        dataElement.name = stock.name;
+        dataElement.abbreviation = stock.abbreviation;
+        dataElement.currentPrice = stock.currentPrice;
+        dataElement.priceDelta = stock.priceDelta;
         if(shares.find(share => share.stockId == stock.id))
           dataElement.ownedAmount = shares.find(share => share.stockId == stock.id).amount;
         
