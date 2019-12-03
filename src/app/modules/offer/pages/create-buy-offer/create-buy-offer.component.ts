@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { StockService } from 'src/app/_services/stock.service';
 import { Stock } from 'src/app/_models/stock.model';
 import { ApiResponse } from 'src/app/_models/apiResponse';
-import { BuyOffer } from 'src/app/_models/buyOffer.model';
+import { Offer } from 'src/app/_models/offer.model';
 import { FormBuilder, FormGroup, FormControl, FormGroupDirective, Validators, NgForm } from '@angular/forms';
 import { ContextService } from 'src/app/_services/context.service';
 import { forkJoin } from 'rxjs';
@@ -30,7 +30,7 @@ export class CreateBuyOfferComponent implements OnInit {
   /**
    * Buy offer object to post 
    */
-  buyOffer: BuyOffer;
+  buyOffer: Offer;
   /**
    * currently logged user id
    */
@@ -71,7 +71,7 @@ export class CreateBuyOfferComponent implements OnInit {
   ngOnInit() {
     this.stockId = +this.route.snapshot.paramMap.get('stockId');
     this.getData();
-    this.buyOffer = new BuyOffer();
+    this.buyOffer = new Offer();
     this.buyForm = this.formBuilder.group({
       amount: new FormControl(this.buyOffer.amount, [Validators.required, Validators.min(1)]),
       price: new FormControl(this.buyOffer.price, [Validators.required, Validators.min(0)]),

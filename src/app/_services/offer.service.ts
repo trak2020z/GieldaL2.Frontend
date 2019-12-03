@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BuyOffer } from '../_models/buyOffer.model';
+import { Offer } from '../_models/offer.model';
 import { Observable } from 'rxjs';
 import { API_URL } from '../_configs/API_URL';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +11,7 @@ export class OffersService {
 
   constructor(private http: HttpClient) { }
 
-  createBuyOffer(buyOffer: BuyOffer): Observable<any>{
-    return this.http.post<BuyOffer>(API_URL + '/Offers/buy', buyOffer);
+  createBuyOffer(buyOffer: Offer): Observable<any>{
+    return this.http.post<Offer>(API_URL + '/Offers/buy', buyOffer);
   }
 }
