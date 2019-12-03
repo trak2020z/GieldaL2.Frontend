@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {AuthService} from '../../../../_services/auth.service';
 import {TokenStorage} from '../../components/token.storage';
 
@@ -11,7 +11,7 @@ import {TokenStorage} from '../../components/token.storage';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService, private token: TokenStorage) {
+  constructor(private router: Router, private authService: AuthService, private token: TokenStorage, private alert: MatSnackBar) {
   }
 
   username: string;
@@ -23,8 +23,13 @@ export class LoginFormComponent implements OnInit {
   login(): void {
     this.authService.attemptAuth(this.username, this.password).subscribe(
       data => {
-        this.token.saveToken(data.token);
-        this.router.navigate(['user']);
+        if (data.token !== '') {
+          this.token.saveToken(data.token);
+          console.log(this.token.getToken());
+          this.router.navigate(['user']);
+        } else {
+          this.alert.open('Wrong login or password', 'Close', {duration: 2000});
+        }
       }
     );
   }
