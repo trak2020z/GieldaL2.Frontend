@@ -7,17 +7,27 @@
         <mat-grid-tile>
             <p>Price delta: {{stockData?.priceDelta}}%</p>
         </mat-grid-tile>
+        <mat-grid-tile [colspan]=2>
+            <form [formGroup]="buyForm">
+                <mat-form-field>
+                    <input matInput type="number" formControlName="amount" placeholder="Amount" (change)="updateSumValue()">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="number" formControlName="price" placeholder="Price" (change)="updateSumValue()">
+                </mat-form-field>
+            </form>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]=2>
+            <p> Sum: {{sumValue}} </p>
+            
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]=2>
+            <mat-card-actions>
+                <button mat-button (click)="createOffer()" [disabled]="!isValidForm(buyForm)">Create Buy Offer</button>
+                <button mat-button (click)="goBack()">Back</button>
+            </mat-card-actions>
+        </mat-grid-tile>
     </mat-grid-list>
-    <form [formGroup]="buyForm">
-        <mat-form-field>
-            <input matInput type="number" formControlName="amount" placeholder="Amount">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput type="number" formControlName="price" placeholder="Price">
-        </mat-form-field>
-    </form>
-    <mat-card-actions>
-        <button mat-button (click)="createOffer()" [disabled]="!isValidForm(buyForm)">Create Buy Offer</button>
-        <button mat-button (click)="goBack()">Back</button>
-    </mat-card-actions>
+    
+    
 </mat-card>
