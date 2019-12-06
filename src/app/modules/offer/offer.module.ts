@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CreateBuyOfferComponent } from './pages/create-buy-offer/create-buy-offer.component';
 import { MatButtonModule, MatCardModule, MatGridListModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CreateSellOfferComponent } from './create-sell-offer/create-sell-offer.component';
+import { CreateSellOfferComponent } from './pages/create-sell-offer/create-sell-offer.component';
 
 
 
