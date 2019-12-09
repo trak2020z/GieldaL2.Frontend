@@ -1,2 +1,1 @@
-
-export const API_URL: String = "http://gieldal2.azurewebsites.net/api";
+export const API_URL: String = "https://gieldal2.azurewebsites.net/api";
