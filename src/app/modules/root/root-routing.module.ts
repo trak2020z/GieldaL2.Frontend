@@ -7,7 +7,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { MainComponent as UserMainComponent } from '../user/components/main/main.component';
 import { CreateBuyOfferComponent } from '../offer/pages/create-buy-offer/create-buy-offer.component';
 import { AuthGuard } from '../../_guards/auth.guard';
-import { CreateSellOfferComponent } from '../offer/create-sell-offer/create-sell-offer.component';
+import { CreateSellOfferComponent } from '../offer/pages/create-sell-offer/create-sell-offer.component';
+
 
 
 
