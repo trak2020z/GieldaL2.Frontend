@@ -18,10 +18,10 @@ const routes: Routes = [
             { path: 'buyoffers', component: UserBuyOffersComponent },
             { path: 'selloffers', component: UserSellOffersComponent },
             { path: 'shares', component: UserSharesComponent },
+            { path: 'offer', loadChildren: '../offer/offer.module#OfferModule' },
         ]
     }
 ];
-
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
