@@ -18,8 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'user', loadChildren: '../user/user.module#UserModule', canActivate: [AuthGuard] },
-  { path: 'buyOffer/:stockId', component: CreateBuyOfferComponent },
-  { path: 'sellOffer/:stockId', component: CreateSellOfferComponent }
+  { path: 'offer', loadChildren: '../offer/offer.module#OfferModule' },
 ];
 
 @NgModule({
