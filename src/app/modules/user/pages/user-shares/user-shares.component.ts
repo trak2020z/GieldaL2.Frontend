@@ -6,10 +6,10 @@ import { forkJoin } from 'rxjs';
 import { ApiResponse } from 'src/app/_models/apiResponse';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { SHARE } from 'src/app/_mocks/shareMock';
-import { Context } from 'vm';
 import { Stock } from 'src/app/_models/stock.model';
 import { Share } from 'src/app/_models/share.model';
 import { StockTableDataSource } from 'src/app/_helpers/stockTableDataSource';
+import { Context } from 'src/app/_models/context.model';
 
 @Component({
   selector: 'app-user-shares',
