@@ -17,8 +17,7 @@ const routes: Routes = [
             { path: 'history', component: UserHistoryComponent },
             { path: 'buyoffers', component: UserBuyOffersComponent },
             { path: 'selloffers', component: UserSellOffersComponent },
-            { path: 'shares', component: UserSharesComponent },
-            { path: 'offer', loadChildren: '../offer/offer.module#OfferModule' },
+            { path: 'shares', component: UserSharesComponent }
         ]
     }
 ];

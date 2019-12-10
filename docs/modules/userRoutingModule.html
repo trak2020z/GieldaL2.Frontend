@@ -78,6 +78,7 @@ import { UserEditComponent } from &#x27;./pages/user-edit/user-edit.component&#x
 import { UserHistoryComponent } from &#x27;./pages/user-history/user-history.component&#x27;;
 import { UserBuyOffersComponent } from &#x27;./pages/user-buy-offers/user-buy-offers.component&#x27;;
 import { UserSellOffersComponent } from &#x27;./pages/user-sell-offers/user-sell-offers.component&#x27;;
+import { UserSharesComponent } from &#x27;./pages/user-shares/user-shares.component&#x27;;
 const routes: Routes &#x3D; [
     {
         path: &#x27;&#x27;,
@@ -88,10 +89,10 @@ const routes: Routes &#x3D; [
             { path: &#x27;history&#x27;, component: UserHistoryComponent },
             { path: &#x27;buyoffers&#x27;, component: UserBuyOffersComponent },
             { path: &#x27;selloffers&#x27;, component: UserSellOffersComponent },
+            { path: &#x27;shares&#x27;, component: UserSharesComponent }
         ]
     }
 ];
-
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

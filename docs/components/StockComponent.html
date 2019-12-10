@@ -530,7 +530,7 @@ if stock is owned by user(share) add number of shares </p>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TableDataSource.html" target="_self" >TableDataSource[]</a></code>
+                        <b>Returns : </b>    <code>StockTableDataSource[]</code>
 
                     </div>
                     <div class="io-description">
@@ -555,7 +555,7 @@ if stock is owned by user(share) add number of shares </p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>customPredicate(data: <a href="../classes/TableDataSource.html">TableDataSource</a>)</code>
+<code>customPredicate(data: <a href="../classes/StockTableDataSource.html">StockTableDataSource</a>)</code>
                 </td>
             </tr>
 
@@ -588,7 +588,7 @@ if stock is owned by user(share) add number of shares </p>
                                 <tr>
                                     <td>data</td>
                                     <td>
-                                                <code><a href="../classes/TableDataSource.html" target="_self" >TableDataSource</a></code>
+                                                <code><a href="../classes/StockTableDataSource.html" target="_self" >StockTableDataSource</a></code>
                                     </td>
 
                                     <td>
@@ -1002,7 +1002,7 @@ import { UserHistoryComponent } from &#x27;src/app/modules/user/pages/user-histo
 import { User } from &#x27;src/app/_models/user.model&#x27;;
 import { Context } from &#x27;src/app/_models/context.model&#x27;;
 import { SHARE } from &#x27;src/app/_mocks/shareMock&#x27;;
-import { TableDataSource } from &#x27;./tableDataSource&#x27;;
+import { StockTableDataSource } from &#x27;src/app/_helpers/stockTableDataSource&#x27;;
 import { Share } from &#x27;src/app/_models/share.model&#x27;;
 import { share } from &#x27;rxjs/operators&#x27;;
 
@@ -1099,7 +1099,7 @@ export class StockComponent implements OnInit {
    * @param data input data for preficate
    * @returns true if Stack fulfil predicate otherwise false
    */
-  customPredicate(data: TableDataSource): boolean {
+  customPredicate(data: StockTableDataSource): boolean {
     return (!this.filterMaxCurrentPrice || data.currentPrice &lt;&#x3D; this.filterMaxCurrentPrice)
       &amp;&amp; (!this.filterMinCurrentPrice || data.currentPrice &gt;&#x3D; this.filterMinCurrentPrice)
       &amp;&amp; (!this.filterName || data.name.trim().toLowerCase().includes(this.filterName))
@@ -1113,7 +1113,7 @@ export class StockComponent implements OnInit {
   applyFilterName(filterValue: string) {
     this.filterName &#x3D; filterValue.trim().toLowerCase()
     this.dataSource.filterPredicate &#x3D;
-      (data: TableDataSource, filter: string) &#x3D;&gt; this.customPredicate(data);
+      (data: StockTableDataSource, filter: string) &#x3D;&gt; this.customPredicate(data);
 
     this.dataSource.filter &#x3D; &quot; &quot;;
   }
@@ -1126,7 +1126,7 @@ export class StockComponent implements OnInit {
   applyFilterMaxValue(filterValue: number) {
     this.filterMaxCurrentPrice &#x3D; filterValue;
     this.dataSource.filterPredicate &#x3D;
-      (data: TableDataSource, filter: string) &#x3D;&gt; this.customPredicate(data);
+      (data: StockTableDataSource, filter: string) &#x3D;&gt; this.customPredicate(data);
 
     this.dataSource.filter &#x3D; &quot; &quot;;
   }
@@ -1139,7 +1139,7 @@ export class StockComponent implements OnInit {
   applyFilterMinValue(filterValue: number) {
     this.filterMinCurrentPrice &#x3D; filterValue;
     this.dataSource.filterPredicate &#x3D;
-      (data: TableDataSource, filter: string) &#x3D;&gt; this.customPredicate(data);
+      (data: StockTableDataSource, filter: string) &#x3D;&gt; this.customPredicate(data);
 
     this.dataSource.filter &#x3D; &quot; &quot;;
   }
@@ -1151,10 +1151,10 @@ export class StockComponent implements OnInit {
    * @param stocks stocks data
    * @param shares shares owned by user
    */
-  createDataSource(stocks: Stock[], shares: Share[]): TableDataSource[] {
-    var tableDataSource: TableDataSource[] &#x3D; [];
+  createDataSource(stocks: Stock[], shares: Share[]): StockTableDataSource[] {
+    var tableDataSource: StockTableDataSource[] &#x3D; [];
     stocks.forEach((stock: Stock) &#x3D;&gt; {
-      var dataElement: TableDataSource &#x3D; new TableDataSource;
+      var dataElement: StockTableDataSource &#x3D; new StockTableDataSource;
       dataElement.id &#x3D; stock.id;
       dataElement.name &#x3D; stock.name;
       dataElement.abbreviation &#x3D; stock.abbreviation;
@@ -1212,8 +1212,8 @@ export class StockComponent implements OnInit {
         &lt;ng-container matColumnDef&#x3D;&quot;buttons&quot;&gt;
             &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt;&lt;/th&gt;
             &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
-                &lt;button mat-raised-button color&#x3D;&quot;primary&quot; routerLink&#x3D;&quot;/buyOffer/{{ element.id }}&quot;&gt;Buy&lt;/button&gt;
-                &lt;button mat-raised-button color&#x3D;&quot;warn&quot; routerLink&#x3D;&quot;/sellOffer/{{ element.id }}&quot;
+                &lt;button mat-raised-button color&#x3D;&quot;primary&quot; routerLink&#x3D;&quot;/offer/createBuy/{{ element.id }}&quot;&gt;Buy&lt;/button&gt;
+                &lt;button mat-raised-button color&#x3D;&quot;warn&quot; routerLink&#x3D;&quot;/offer/createSell/{{ element.id }}&quot;
                     *ngIf&#x3D;&quot;element.ownedAmount&quot;&gt;Sell( Owned: {{element.ownedAmount}} )&lt;/button&gt;
             &lt;/td&gt;
         &lt;/ng-container&gt;
@@ -1230,7 +1230,6 @@ export class StockComponent implements OnInit {
                 </p>
                 <pre class="line-numbers"><code class="language-scss">table {
     width: 100%;
-
   }
 div {
     margin-top: 50px;
@@ -1276,8 +1275,8 @@ div {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div>    <mat-form-field>        <input type="text" matInput (keyup)="applyFilterName($event.target.value)" placeholder="Name">    </mat-form-field>    <mat-form-field>        <input type="number" matInput (keyup)="applyFilterMaxValue($event.target.value)" placeholder="Max Value">    </mat-form-field>    <mat-form-field>        <input type="number" matInput (keyup)="applyFilterMinValue($event.target.value)" placeholder="Min Value">    </mat-form-field>    <table-update-time></table-update-time>    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">        <ng-container matColumnDef="name">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>            <td mat-cell *matCellDef="let element"> {{element.name}} </td>        </ng-container>        <ng-container matColumnDef="abbreviation">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Abbreviation </th>            <td mat-cell *matCellDef="let element"> {{element.abbreviation}} </td>        </ng-container>        <ng-container matColumnDef="currentPrice">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Current price </th>            <td mat-cell *matCellDef="let element"> {{element.currentPrice}} </td>        </ng-container>        <ng-container matColumnDef="priceDelta">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Price delta </th>            <td mat-cell *matCellDef="let element">                <p class=changeGreen *ngIf="element.priceDelta > 0"> {{element.priceDelta}}% </p>                <p class=changeBlack *ngIf="element.priceDelta == 0"> {{element.priceDelta}}% </p>                <p class=changeRed *ngIf="element.priceDelta < 0"> {{element.priceDelta}}% </p>            </td>        </ng-container>        <ng-container matColumnDef="buttons">            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>            <td mat-cell *matCellDef="let element">                <button mat-raised-button color="primary" routerLink="/buyOffer/{{ element.id }}">Buy</button>                <button mat-raised-button color="warn" routerLink="/sellOffer/{{ element.id }}"                    *ngIf="element.ownedAmount">Sell( Owned: {{element.ownedAmount}} )</button>            </td>        </ng-container>        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    </table></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'}];
+        var COMPONENT_TEMPLATE = '<div><div>    <mat-form-field>        <input type="text" matInput (keyup)="applyFilterName($event.target.value)" placeholder="Name">    </mat-form-field>    <mat-form-field>        <input type="number" matInput (keyup)="applyFilterMaxValue($event.target.value)" placeholder="Max Value">    </mat-form-field>    <mat-form-field>        <input type="number" matInput (keyup)="applyFilterMinValue($event.target.value)" placeholder="Min Value">    </mat-form-field>    <table-update-time></table-update-time>    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">        <ng-container matColumnDef="name">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>            <td mat-cell *matCellDef="let element"> {{element.name}} </td>        </ng-container>        <ng-container matColumnDef="abbreviation">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Abbreviation </th>            <td mat-cell *matCellDef="let element"> {{element.abbreviation}} </td>        </ng-container>        <ng-container matColumnDef="currentPrice">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Current price </th>            <td mat-cell *matCellDef="let element"> {{element.currentPrice}} </td>        </ng-container>        <ng-container matColumnDef="priceDelta">            <th mat-header-cell *matHeaderCellDef mat-sort-header> Price delta </th>            <td mat-cell *matCellDef="let element">                <p class=changeGreen *ngIf="element.priceDelta > 0"> {{element.priceDelta}}% </p>                <p class=changeBlack *ngIf="element.priceDelta == 0"> {{element.priceDelta}}% </p>                <p class=changeRed *ngIf="element.priceDelta < 0"> {{element.priceDelta}}% </p>            </td>        </ng-container>        <ng-container matColumnDef="buttons">            <th mat-header-cell *matHeaderCellDef mat-sort-header></th>            <td mat-cell *matCellDef="let element">                <button mat-raised-button color="primary" routerLink="/offer/createBuy/{{ element.id }}">Buy</button>                <button mat-raised-button color="warn" routerLink="/offer/createSell/{{ element.id }}"                    *ngIf="element.ownedAmount">Sell( Owned: {{element.ownedAmount}} )</button>            </td>        </ng-container>        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    </table></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'OfferMainComponent', 'selector': 'app-offer-main'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'},{'name': 'UserSharesComponent', 'selector': 'app-user-shares'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'StockComponent'};
 </script>
