@@ -58,8 +58,7 @@ export class UserSharesComponent implements OnInit {
     });
   }
   /**
-   * Copy walues from stock to table data source.
-   * if stock is owned by user(share) add number of shares 
+   * Merge data from shares and stock. And create data source for table
    * 
    * @param stocks stocks data
    * @param shares shares owned by user
@@ -68,7 +67,7 @@ export class UserSharesComponent implements OnInit {
     var tableDataSource: StockTableDataSource[] = [];
     shares.forEach((share: Share) => {
       var dataElement: StockTableDataSource = new StockTableDataSource;
-      var stock = stocks.find(stock => stock.id == share.stockId); 
+      var stock = stocks.find(stock => stock.id == share.stockId);
       dataElement.id = stock.id;
       dataElement.name = stock.name;
       dataElement.abbreviation = stock.abbreviation;
