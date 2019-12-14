@@ -26,30 +26,6 @@
                 Please enter a valid email!
             </mat-error>
         </mat-form-field>
-    </form>
-
-    <form [formGroup]="editUserFormPassword" class="form-container">
-        <mat-form-field>
-            <input [type]="hidePassOld ? 'password' : 'text'" matInput [(ngModel)]="oldPassword" placeholder="Old password" formControlName="oldPassCtrl" required>
-            <button mat-icon-button matSuffix (click)="hidePassOld = !hidePassOld" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassOld">
-                <mat-icon>{{hidePassOld ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-        </mat-form-field>
-        <mat-form-field>
-            <input [type]="hidePass ? 'password' : 'text'" matInput [(ngModel)]="userEditModel.password" placeholder="New password" formControlName="passCtrl" required>
-            <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
-                <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-        </mat-form-field>
-        <mat-form-field>
-            <input [type]="hideRepeatPass ? 'password' : 'text'" matInput placeholder="Repeat new password" formControlName="repeatPassCtrl" [errorStateMatcher]="errorMatcher" required>
-            <button mat-icon-button matSuffix (click)="hideRepeatPass = !hideRepeatPass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeatPass">
-                <mat-icon>{{hideRepeatPass ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-            <mat-error *ngIf="editUserFormPassword.hasError('passwordsDoNotMatch')">
-                Passwords do not match!
-            </mat-error>
-        </mat-form-field>
 
         <button class="saveBtn" mat-button (click)="updateUserData()">Save</button>
     </form>
