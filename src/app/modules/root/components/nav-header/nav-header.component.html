@@ -5,7 +5,8 @@
         <button mat-button [routerLink]="'/stock'">Stock</button>
 
         <div class="alignRightItems">
-            <button mat-button *ngIf="true" [routerLink]="'user'">user</button>
+            <button mat-button *ngIf="!this.auth.isLoggedIn()" [routerLink]="'user'">user</button>
+            <button mat-button *ngIf="this.auth.isLoggedIn()" [routerLink]="'user'">{{userLogin}}<br>{{userCash}}</button>
             <button mat-button *ngIf="!this.auth.isLoggedIn()" [routerLink]="'/register'">Register</button>
             <button mat-button *ngIf="this.auth.isLoggedIn()" (click)="this.auth.logout()">{{logoutText}}</button>
             <button mat-button *ngIf="!this.auth.isLoggedIn()" [routerLink]="'/login'">{{loginText}}</button>
