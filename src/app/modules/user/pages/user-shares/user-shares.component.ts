@@ -75,7 +75,8 @@ export class UserSharesComponent implements OnInit {
       dataElement.currentPrice = stock.currentPrice;
       dataElement.priceDelta = stock.priceDelta;
       dataElement.ownedAmount = share.amount
-      tableDataSource.push(dataElement)
+      if(dataElement.ownedAmount > 0)
+        tableDataSource.push(dataElement)
     })
     return tableDataSource;
   }
