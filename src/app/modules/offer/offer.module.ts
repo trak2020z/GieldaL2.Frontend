@@ -21,10 +21,6 @@ import { OfferMainComponent } from './components/offer-main/offer-main.component
     FormsModule,
     ReactiveFormsModule,
     OfferRoutingModule
-  ],
-  exports: [
-    CreateBuyOfferComponent,
-    CreateSellOfferComponent
   ]
 })
 export class OfferModule { }

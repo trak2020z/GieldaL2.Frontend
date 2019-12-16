@@ -585,8 +585,8 @@ import { MatTableDataSource, MatSort } from &#x27;@angular/material&#x27;;
 import { SHARE } from &#x27;src/app/_mocks/shareMock&#x27;;
 import { Stock } from &#x27;src/app/_models/stock.model&#x27;;
 import { Share } from &#x27;src/app/_models/share.model&#x27;;
-import { StockTableDataSource } from &#x27;src/app/_helpers/stockTableDataSource&#x27;;
 import { Context } from &#x27;src/app/_models/context.model&#x27;;
+import { StockTableDataSource } from &#x27;./stockTableDataSource&#x27;;
 
 @Component({
   selector: &#x27;app-user-shares&#x27;,
@@ -630,7 +630,7 @@ export class UserSharesComponent implements OnInit {
     ]).subscribe(([s, c]: [ApiResponse, ApiResponse]) &#x3D;&gt; {
       this.userContext &#x3D; c.data;
       console.log(this.userContext);
-      this.dataSource &#x3D; new MatTableDataSource(this.createDataSource(s.data, SHARE));
+      this.dataSource &#x3D; new MatTableDataSource(this.createDataSource(s.data, this.userContext.shares));
       this.dataSource.sort &#x3D; this.sort;
     });
   }
@@ -645,7 +645,8 @@ export class UserSharesComponent implements OnInit {
     shares.forEach((share: Share) &#x3D;&gt; {
       var dataElement: StockTableDataSource &#x3D; new StockTableDataSource;
       var stock &#x3D; stocks.find(stock &#x3D;&gt; stock.id &#x3D;&#x3D; share.stockId);
-      dataElement.id &#x3D; stock.id;
+      dataElement.stockId &#x3D; stock.id;
+      dataElement.shareId &#x3D; share.id;
       dataElement.name &#x3D; stock.name;
       dataElement.abbreviation &#x3D; stock.abbreviation;
       dataElement.currentPrice &#x3D; stock.currentPrice;
@@ -689,7 +690,7 @@ export class UserSharesComponent implements OnInit {
     &lt;ng-container matColumnDef&#x3D;&quot;buttons&quot;&gt;
         &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt;&lt;/th&gt;
         &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
-            &lt;button mat-raised-button color&#x3D;&quot;warn&quot; routerLink&#x3D;&quot;/offer/createSell/{{ element.id }}&quot;
+            &lt;button mat-raised-button color&#x3D;&quot;warn&quot; routerLink&#x3D;&quot;/offer/createSell/{{ element.stockId }}/{{ element.shareId }}&quot;
                 *ngIf&#x3D;&quot;element.ownedAmount&quot;&gt;Sell( Owned: {{element.ownedAmount}} )&lt;/button&gt;
         &lt;/td&gt;
     &lt;/ng-container&gt;
@@ -733,7 +734,7 @@ export class UserSharesComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">    <ng-container matColumnDef="name">        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>        <td mat-cell *matCellDef="let element"> {{element.name}} </td>    </ng-container>    <ng-container matColumnDef="abbreviation">        <th mat-header-cell *matHeaderCellDef mat-sort-header> Abbreviation </th>        <td mat-cell *matCellDef="let element"> {{element.abbreviation}} </td>    </ng-container>    <ng-container matColumnDef="currentPrice">        <th mat-header-cell *matHeaderCellDef mat-sort-header> Current price </th>        <td mat-cell *matCellDef="let element"> {{element.currentPrice}} </td>    </ng-container>    <ng-container matColumnDef="priceDelta">        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price delta </th>        <td mat-cell *matCellDef="let element">            <p class=changeGreen *ngIf="element.priceDelta > 0"> {{element.priceDelta}}% </p>            <p class=changeBlack *ngIf="element.priceDelta == 0"> {{element.priceDelta}}% </p>            <p class=changeRed *ngIf="element.priceDelta < 0"> {{element.priceDelta}}% </p>        </td>    </ng-container>    <ng-container matColumnDef="buttons">        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>        <td mat-cell *matCellDef="let element">            <button mat-raised-button color="warn" routerLink="/offer/createSell/{{ element.id }}"                *ngIf="element.ownedAmount">Sell( Owned: {{element.ownedAmount}} )</button>        </td>    </ng-container>    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr></div>'
+        var COMPONENT_TEMPLATE = '<div><table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">    <ng-container matColumnDef="name">        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>        <td mat-cell *matCellDef="let element"> {{element.name}} </td>    </ng-container>    <ng-container matColumnDef="abbreviation">        <th mat-header-cell *matHeaderCellDef mat-sort-header> Abbreviation </th>        <td mat-cell *matCellDef="let element"> {{element.abbreviation}} </td>    </ng-container>    <ng-container matColumnDef="currentPrice">        <th mat-header-cell *matHeaderCellDef mat-sort-header> Current price </th>        <td mat-cell *matCellDef="let element"> {{element.currentPrice}} </td>    </ng-container>    <ng-container matColumnDef="priceDelta">        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price delta </th>        <td mat-cell *matCellDef="let element">            <p class=changeGreen *ngIf="element.priceDelta > 0"> {{element.priceDelta}}% </p>            <p class=changeBlack *ngIf="element.priceDelta == 0"> {{element.priceDelta}}% </p>            <p class=changeRed *ngIf="element.priceDelta < 0"> {{element.priceDelta}}% </p>        </td>    </ng-container>    <ng-container matColumnDef="buttons">        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>        <td mat-cell *matCellDef="let element">            <button mat-raised-button color="warn" routerLink="/offer/createSell/{{ element.stockId }}/{{ element.shareId }}"                *ngIf="element.ownedAmount">Sell( Owned: {{element.ownedAmount}} )</button>        </td>    </ng-container>    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'OfferMainComponent', 'selector': 'app-offer-main'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'},{'name': 'UserSharesComponent', 'selector': 'app-user-shares'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'UserSharesComponent'};

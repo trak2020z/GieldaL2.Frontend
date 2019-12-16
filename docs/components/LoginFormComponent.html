@@ -171,7 +171,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, authService: <a href="../injectables/AuthService.html">AuthService</a>, token: <a href="../injectables/TokenStorage.html">TokenStorage</a>, alert: MatSnackBar)</code>
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, authService: <a href="../injectables/AuthService.html">AuthService</a>, alert: MatSnackBar)</code>
                     </td>
                 </tr>
                         <tr>
@@ -210,18 +210,6 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>token</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/TokenStorage.html" target="_self" >TokenStorage</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -416,7 +404,7 @@ import {TokenStorage} from &#x27;../../components/token.storage&#x27;;
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService, private token: TokenStorage, private alert: MatSnackBar) {
+  constructor(private router: Router, private authService: AuthService, private alert: MatSnackBar) {
   }
 
   username: string;
@@ -425,18 +413,8 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(): void {
-    this.authService.attemptAuth(this.username, this.password).subscribe(
-      data &#x3D;&gt; {
-        if (data.token !&#x3D;&#x3D; &#x27;&#x27;) {
-          this.token.saveToken(data.token);
-          console.log(this.token.getToken());
-          this.router.navigate([&#x27;user&#x27;]);
-        } else {
-          this.alert.open(&#x27;Wrong login or password&#x27;, &#x27;Close&#x27;, {duration: 2000});
-        }
-      }
-    );
+  login() {
+    this.authService.login(this.username, this.password);
   }
 
 }
