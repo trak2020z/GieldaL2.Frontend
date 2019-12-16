@@ -39,8 +39,8 @@
         <ng-container matColumnDef="buttons">
             <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
             <td mat-cell *matCellDef="let element">
-                <button mat-raised-button color="primary" routerLink="/buyOffer/{{ element.id }}">Buy</button>
-                <button mat-raised-button color="warn" routerLink="/sellOffer/{{ element.id }}"
+                <button mat-raised-button color="primary" routerLink="/offer/createBuy/{{ element.id }}">Buy</button>
+                <button mat-raised-button color="warn" routerLink="/offer/createSell/{{ element.id }}"
                     *ngIf="element.ownedAmount">Sell( Owned: {{element.ownedAmount}} )</button>
             </td>
         </ng-container>

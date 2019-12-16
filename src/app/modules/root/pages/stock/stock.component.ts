@@ -13,7 +13,7 @@ import { UserHistoryComponent } from 'src/app/modules/user/pages/user-history/us
 import { User } from 'src/app/_models/user.model';
 import { Context } from 'src/app/_models/context.model';
 import { SHARE } from 'src/app/_mocks/shareMock';
-import { TableDataSource } from './tableDataSource';
+import { StockTableDataSource } from 'src/app/_helpers/stockTableDataSource';
 import { Share } from 'src/app/_models/share.model';
 import { share } from 'rxjs/operators';
 
@@ -89,7 +89,7 @@ export class StockComponent implements OnInit {
     ]).subscribe(([s, c]: [ApiResponse, ApiResponse]) => {
       this.userContext = c.data;
       console.log(this.userContext);
-      this.dataSource = new MatTableDataSource(this.createDataSource(s.data, SHARE));
+      this.dataSource = new MatTableDataSource(this.createDataSource(s.data, this.userContext.shares));
       this.dataSource.sort = this.sort;
     });
   }
@@ -110,7 +110,7 @@ export class StockComponent implements OnInit {
    * @param data input data for preficate
    * @returns true if Stack fulfil predicate otherwise false
    */
-  customPredicate(data: TableDataSource): boolean {
+  customPredicate(data: StockTableDataSource): boolean {
     return (!this.filterMaxCurrentPrice || data.currentPrice <= this.filterMaxCurrentPrice)
       && (!this.filterMinCurrentPrice || data.currentPrice >= this.filterMinCurrentPrice)
       && (!this.filterName || data.name.trim().toLowerCase().includes(this.filterName))
@@ -124,7 +124,7 @@ export class StockComponent implements OnInit {
   applyFilterName(filterValue: string) {
     this.filterName = filterValue.trim().toLowerCase()
     this.dataSource.filterPredicate =
-      (data: TableDataSource, filter: string) => this.customPredicate(data);
+      (data: StockTableDataSource, filter: string) => this.customPredicate(data);
 
     this.dataSource.filter = " ";
   }
@@ -137,7 +137,7 @@ export class StockComponent implements OnInit {
   applyFilterMaxValue(filterValue: number) {
     this.filterMaxCurrentPrice = filterValue;
     this.dataSource.filterPredicate =
-      (data: TableDataSource, filter: string) => this.customPredicate(data);
+      (data: StockTableDataSource, filter: string) => this.customPredicate(data);
 
     this.dataSource.filter = " ";
   }
@@ -150,7 +150,7 @@ export class StockComponent implements OnInit {
   applyFilterMinValue(filterValue: number) {
     this.filterMinCurrentPrice = filterValue;
     this.dataSource.filterPredicate =
-      (data: TableDataSource, filter: string) => this.customPredicate(data);
+      (data: StockTableDataSource, filter: string) => this.customPredicate(data);
 
     this.dataSource.filter = " ";
   }
@@ -162,10 +162,10 @@ export class StockComponent implements OnInit {
    * @param stocks stocks data
    * @param shares shares owned by user
    */
-  createDataSource(stocks: Stock[], shares: Share[]): TableDataSource[] {
-    var tableDataSource: TableDataSource[] = [];
+  createDataSource(stocks: Stock[], shares: Share[]): StockTableDataSource[] {
+    var tableDataSource: StockTableDataSource[] = [];
     stocks.forEach((stock: Stock) => {
-      var dataElement: TableDataSource = new TableDataSource;
+      var dataElement: StockTableDataSource = new StockTableDataSource;
       dataElement.id = stock.id;
       dataElement.name = stock.name;
       dataElement.abbreviation = stock.abbreviation;

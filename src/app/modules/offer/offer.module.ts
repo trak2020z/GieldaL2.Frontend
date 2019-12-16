@@ -4,11 +4,13 @@ import { CreateBuyOfferComponent } from './pages/create-buy-offer/create-buy-off
 import { MatButtonModule, MatCardModule, MatGridListModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSellOfferComponent } from './pages/create-sell-offer/create-sell-offer.component';
+import { OfferRoutingModule } from './offer-routing.module';
+import { OfferMainComponent } from './components/offer-main/offer-main.component';
 
 
 
 @NgModule({
-  declarations: [CreateBuyOfferComponent, CreateSellOfferComponent],
+  declarations: [CreateBuyOfferComponent, CreateSellOfferComponent, OfferMainComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -17,7 +19,8 @@ import { CreateSellOfferComponent } from './pages/create-sell-offer/create-sell-
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OfferRoutingModule
   ],
   exports: [
     CreateBuyOfferComponent,

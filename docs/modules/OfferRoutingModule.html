@@ -34,7 +34,7 @@
 
 <ol class="breadcrumb">
     <li>Modules</li>
-    <li>RootRoutingModule</li>
+    <li>OfferRoutingModule</li>
 </ol>
 
 
@@ -54,7 +54,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/modules/root/root-routing.module.ts</code>
+            <code>src/app/modules/offer/offer-routing.module.ts</code>
         </p>
 
 
@@ -72,29 +72,29 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { Routes, RouterModule } from &#x27;@angular/router&#x27;;
-import { HomeComponent } from &#x27;./pages/home/home.component&#x27;;
-import { StockComponent } from &#x27;./pages/stock/stock.component&#x27;;
-import { LoginFormComponent } from &#x27;./pages/login-form/login-form.component&#x27;;
-import { RegisterComponent } from &#x27;./pages/register/register.component&#x27;;
-import { AuthGuard } from &#x27;../../_guards/auth.guard&#x27;;
+
+import { CreateBuyOfferComponent } from &#x27;./pages/create-buy-offer/create-buy-offer.component&#x27;;
+import { CreateSellOfferComponent } from &#x27;./pages/create-sell-offer/create-sell-offer.component&#x27;;
+import { OfferMainComponent } from &#x27;./components/offer-main/offer-main.component&#x27;;
+
 
 const routes: Routes &#x3D; [
-  { path: &#x27;&#x27;, component: HomeComponent },
-  { path: &#x27;stock&#x27;, component: StockComponent },
-  { path: &#x27;login&#x27;, component: LoginFormComponent },
-  { path: &#x27;register&#x27;, component: RegisterComponent },
-  { path: &#x27;user&#x27;, loadChildren: &#x27;../user/user.module#UserModule&#x27;, canActivate: [AuthGuard] },
-  { path: &#x27;offer&#x27;, loadChildren: &#x27;../offer/offer.module#OfferModule&#x27;, canActivate: [AuthGuard] },
+    {
+        path: &#x27;&#x27;,
+        component: OfferMainComponent,
+        children: [
+            { path: &#x27;createBuy/:stockId&#x27;, component: CreateBuyOfferComponent },
+            { path: &#x27;createSell/:stockId&#x27;, component: CreateSellOfferComponent }
+        ]
+    }
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class RootRoutingModule {
-}
 
-</code></pre>
+@NgModule({
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
+})
+export class OfferRoutingModule { }</code></pre>
     </div>
 </div>
 
@@ -129,7 +129,7 @@ export class RootRoutingModule {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'RootRoutingModule.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'OfferRoutingModule.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
