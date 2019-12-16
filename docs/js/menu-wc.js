@@ -55,13 +55,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/OfferModule.html" data-type="entity-link">OfferModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-OfferModule-be685da37c129fb4cf1cd06fd300446b"' : 'data-target="#xs-components-links-module-OfferModule-be685da37c129fb4cf1cd06fd300446b"' }>
+                                            'data-target="#components-links-module-OfferModule-4708359e4a1215404effc879eb7ad558"' : 'data-target="#xs-components-links-module-OfferModule-4708359e4a1215404effc879eb7ad558"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-OfferModule-be685da37c129fb4cf1cd06fd300446b"' :
-                                            'id="xs-components-links-module-OfferModule-be685da37c129fb4cf1cd06fd300446b"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-OfferModule-4708359e4a1215404effc879eb7ad558"' :
+                                            'id="xs-components-links-module-OfferModule-4708359e4a1215404effc879eb7ad558"' }>
                                             <li class="link">
                                                 <a href="components/CreateBuyOfferComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">CreateBuyOfferComponent</a>
@@ -222,6 +222,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/StockTableDataSource.html" data-type="entity-link">StockTableDataSource</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/StockTableDataSource-1.html" data-type="entity-link">StockTableDataSource</a>
                             </li>
                             <li class="link">
                                 <a href="classes/Transaction.html" data-type="entity-link">Transaction</a>

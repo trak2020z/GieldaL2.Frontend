@@ -8,8 +8,8 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import { SHARE } from 'src/app/_mocks/shareMock';
 import { Stock } from 'src/app/_models/stock.model';
 import { Share } from 'src/app/_models/share.model';
-import { StockTableDataSource } from 'src/app/_helpers/stockTableDataSource';
 import { Context } from 'src/app/_models/context.model';
+import { StockTableDataSource } from './stockTableDataSource';
 
 @Component({
   selector: 'app-user-shares',
@@ -68,13 +68,15 @@ export class UserSharesComponent implements OnInit {
     shares.forEach((share: Share) => {
       var dataElement: StockTableDataSource = new StockTableDataSource;
       var stock = stocks.find(stock => stock.id == share.stockId);
-      dataElement.id = stock.id;
+      dataElement.stockId = stock.id;
+      dataElement.shareId = share.id;
       dataElement.name = stock.name;
       dataElement.abbreviation = stock.abbreviation;
       dataElement.currentPrice = stock.currentPrice;
       dataElement.priceDelta = stock.priceDelta;
       dataElement.ownedAmount = share.amount
-      tableDataSource.push(dataElement)
+      if(dataElement.ownedAmount > 0)
+        tableDataSource.push(dataElement)
     })
     return tableDataSource;
   }

@@ -26,7 +26,7 @@
     <ng-container matColumnDef="buttons">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let element">
-            <button mat-raised-button color="warn" routerLink="/offer/createSell/{{ element.id }}"
+            <button mat-raised-button color="warn" routerLink="/offer/createSell/{{ element.stockId }}/{{ element.shareId }}"
                 *ngIf="element.ownedAmount">Sell( Owned: {{element.ownedAmount}} )</button>
         </td>
     </ng-container>
