@@ -53,7 +53,7 @@ export class UserSharesComponent implements OnInit {
     ]).subscribe(([s, c]: [ApiResponse, ApiResponse]) => {
       this.userContext = c.data;
       console.log(this.userContext);
-      this.dataSource = new MatTableDataSource(this.createDataSource(s.data, SHARE));
+      this.dataSource = new MatTableDataSource(this.createDataSource(s.data, this.userContext.shares));
       this.dataSource.sort = this.sort;
     });
   }
