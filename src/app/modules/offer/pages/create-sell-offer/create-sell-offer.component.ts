@@ -23,6 +23,10 @@ export class CreateSellOfferComponent implements OnInit {
    * Selected Stock id
    */
   stockId: number;
+    /**
+   * Selected share id
+   */
+  shareId: number;
   /**
    * Selected stock data
    */
@@ -76,6 +80,7 @@ export class CreateSellOfferComponent implements OnInit {
   ngOnInit() {
     this.shareData.amount = 0;
     this.stockId = +this.route.snapshot.paramMap.get('stockId');
+    this.shareId = +this.route.snapshot.paramMap.get('shareId');
     this.getData();
     this.sellOffer = new Offer();
     this.sellForm = this.formBuilder.group({
@@ -95,7 +100,7 @@ export class CreateSellOfferComponent implements OnInit {
       .subscribe(([s, c]: [ApiResponse, ApiResponse]) => {
         this.stockData = s.data;
         this.user = c.data.user;
-        this.shareData = SHARE.find(share => share.stockId == this.stockId);
+        this.shareData = c.data.shares.find(share => share.stockId == this.stockId);
         console.log(this.shareData);
       })
   }
@@ -112,7 +117,7 @@ export class CreateSellOfferComponent implements OnInit {
    */
   createOffer() {
     this.sellOffer.userId = this.user.id;
-    this.sellOffer.stockId = this.stockId;
+    this.sellOffer.shareId = this.shareId;
     this.sellOffer.amount = this.sellForm.controls['amount'].value
     this.sellOffer.price = this.sellForm.controls['price'].value
     this.sellOffer.date = new Date().toUTCString();;

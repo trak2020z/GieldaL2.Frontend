@@ -12,7 +12,7 @@ const routes: Routes = [
         component: OfferMainComponent,
         children: [
             { path: 'createBuy/:stockId', component: CreateBuyOfferComponent },
-            { path: 'createSell/:stockId', component: CreateSellOfferComponent }
+            { path: 'createSell/:stockId/:shareId', component: CreateSellOfferComponent }
         ]
     }
 ];
