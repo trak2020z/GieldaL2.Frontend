@@ -7,6 +7,7 @@ import { forkJoin } from 'rxjs';
 import { Stock } from 'src/app/_models/stock.model';
 import { ApiResponse } from 'src/app/_models/apiResponse';
 import { ContextService } from 'src/app/_services/context.service';
+import { MatTableDataSource } from '@angular/material';
 
 /**
  * The User transaction history component
@@ -18,18 +19,14 @@ import { ContextService } from 'src/app/_services/context.service';
 })
 
 export class UserHistoryComponent implements OnInit {
-  /**
-   * Stores transactions history fo user
-   */
-  transactions: Transaction[];
-  /**
+/**
 * Displayed column by mat-table  
 */
   displayedColumns: string[] = ['stockName', 'amount', 'price', 'finalPrice'];
   /**
    * Stores data displayed by table
    */
-  dataSource: UserHistoryDataElement[] = [];
+  dataSource;
 
   /**
    * Currently logged ueser id
@@ -64,8 +61,9 @@ export class UserHistoryComponent implements OnInit {
       this.contextService.getContext()
     ]).subscribe(([t, s, c]: [ApiResponse, ApiResponse, ApiResponse]) => {
       this.loggedUserId = c.data.user.id;
-      this.transactions = t.data.filter(t => t.buyerId == this.loggedUserId || t.sellerId == this.loggedUserId)
-      this.transactions.forEach((t: Transaction) => this.pushDataElemet(t, s.data))
+      var transactions = t.data.filter(t => t.buyerId == this.loggedUserId || t.sellerId == this.loggedUserId)
+      this.dataSource = new MatTableDataSource(this.pushDataElemet(transactions, s.data));
+      console.log(transactions);
     })
   }
 
@@ -74,15 +72,19 @@ export class UserHistoryComponent implements OnInit {
    * @param t transaction to map
    * @param s stock list
    */
-  pushDataElemet(t: Transaction, s: Stock[]): void {
-    var dataElement: UserHistoryDataElement = {
-      stockName: s[t.stockId.toString()].name,
-      amount: t.amount,
-      price: t.price,
-      finalPrice: t.amount.valueOf() * t.price.valueOf(),
-      type: (t.buyerId == this.loggedUserId) ? "bougth" : (t.sellerId == this.loggedUserId) ? "sold" : " ",
-    }
-    this.dataSource.push(dataElement);
+  pushDataElemet(transactions: Transaction[], stocks: Stock[]): UserHistoryDataElement[] {
+    var tableDataSource: UserHistoryDataElement[] = []
+
+    transactions.forEach((transaction: Transaction) => {
+      var dataElement: UserHistoryDataElement = new UserHistoryDataElement;
+      dataElement.stockName = stocks.find(stock => stock.id == transaction.stockId).name;
+      dataElement.amount = transaction.amount;
+      dataElement.price = transaction.price;
+      dataElement.finalPrice = transaction.amount.valueOf() * transaction.price.valueOf();
+      dataElement.type = (transaction.buyerId == this.loggedUserId) ? "bougth" : (transaction.sellerId == this.loggedUserId) ? "sold" : " ";
+      tableDataSource.push(dataElement);
+    })
+    return tableDataSource;
   }
 
 }
