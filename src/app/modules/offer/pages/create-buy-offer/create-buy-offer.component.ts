@@ -44,6 +44,8 @@ export class CreateBuyOfferComponent implements OnInit {
    */
   sumValue: number = 0;
 
+  serviceStatus: string;
+
   /**
    * Constructor injecting dependencies
    * @param route 
@@ -82,6 +84,7 @@ export class CreateBuyOfferComponent implements OnInit {
    * Download userid and stock data from API
    */
   getData() {
+    this.serviceStatus = 'loading'
     forkJoin([
       this.stockService.getStock(this.stockId),
       this.contextService.getContext()
@@ -89,7 +92,11 @@ export class CreateBuyOfferComponent implements OnInit {
       .subscribe(([s, c]: [ApiResponse, ApiResponse]) => {
         this.stockData = s.data
         this.user = c.data.user
-      })
+        this.serviceStatus = 'OK'
+      },
+        error => {
+          this.serviceStatus = 'error'
+        })
   }
 
   /**

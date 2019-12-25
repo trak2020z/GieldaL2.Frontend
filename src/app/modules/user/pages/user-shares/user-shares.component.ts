@@ -30,6 +30,8 @@ export class UserSharesComponent implements OnInit {
    */
   userContext: Context;
 
+  serviceStatus: string;
+
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(
     private stockService: StockService,
@@ -47,6 +49,7 @@ export class UserSharesComponent implements OnInit {
   * Get data from API for logged user
   */
   getDataFromApi(): void {
+    this.serviceStatus = 'loading'
     forkJoin([
       this.stockService.getStocks(),
       this.contextService.getContext()
@@ -55,7 +58,11 @@ export class UserSharesComponent implements OnInit {
       console.log(this.userContext);
       this.dataSource = new MatTableDataSource(this.createDataSource(s.data, this.userContext.shares));
       this.dataSource.sort = this.sort;
-    });
+      this.serviceStatus = 'OK'
+    },
+      error => {
+        this.serviceStatus = 'error'
+      });
   }
   /**
    * Merge data from shares and stock. And create data source for table
@@ -75,7 +82,7 @@ export class UserSharesComponent implements OnInit {
       dataElement.currentPrice = stock.currentPrice;
       dataElement.priceDelta = stock.priceDelta;
       dataElement.ownedAmount = share.amount
-      if(dataElement.ownedAmount > 0)
+      if (dataElement.ownedAmount > 0)
         tableDataSource.push(dataElement)
     })
     return tableDataSource;

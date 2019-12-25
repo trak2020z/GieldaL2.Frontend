@@ -31,9 +31,8 @@ import { Interceptor } from './components/app.interceptor';
 import { AuthService } from '../../_services/auth.service';
 import { TokenStorage } from './components/token.storage';
 import { TableUpdateTimeComponent } from './components/table-update-time/table-update-time.component';
-import {AuthGuard} from '../../_guards/auth.guard';
-
-
+import { AuthGuard } from '../../_guards/auth.guard';
+import { SharedModule } from '../_shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,7 @@ import {AuthGuard} from '../../_guards/auth.guard';
     StockComponent,
     RegisterComponent,
     LoginFormComponent,
-    TableUpdateTimeComponent
+    TableUpdateTimeComponent,
   ],
   imports: [
     RootRoutingModule,
@@ -69,6 +68,7 @@ import {AuthGuard} from '../../_guards/auth.guard';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule
   ],
   exports: [AppComponent],
   providers: [AuthService, TokenStorage, AuthGuard,

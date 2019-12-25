@@ -1,4 +1,5 @@
-<mat-card anlign='center'>
+<app-service-status [serviceStatus]=serviceStatus *ngIf="serviceStatus != 'OK'"></app-service-status>
+<mat-card anlign='center' *ngIf="serviceStatus == 'OK'">
     <mat-card-title> {{stockData?.name}} ( {{stockData?.abbreviation}} ) Owned: {{shareData?.amount}} </mat-card-title>
     <mat-grid-list cols="2" rowHeight="100px">
         <mat-grid-tile>

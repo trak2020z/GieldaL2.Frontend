@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSellOfferComponent } from './pages/create-sell-offer/create-sell-offer.component';
 import { OfferRoutingModule } from './offer-routing.module';
 import { OfferMainComponent } from './components/offer-main/offer-main.component';
+import { SharedModule } from '../_shared/shared.module';
 
 
 
@@ -20,7 +21,8 @@ import { OfferMainComponent } from './components/offer-main/offer-main.component
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    OfferRoutingModule
+    OfferRoutingModule,
+    SharedModule
   ]
 })
 export class OfferModule { }

@@ -19,9 +19,9 @@ import { MatTableDataSource } from '@angular/material';
 })
 
 export class UserHistoryComponent implements OnInit {
-/**
-* Displayed column by mat-table  
-*/
+  /**
+  * Displayed column by mat-table  
+  */
   displayedColumns: string[] = ['stockName', 'amount', 'price', 'finalPrice'];
   /**
    * Stores data displayed by table
@@ -32,6 +32,8 @@ export class UserHistoryComponent implements OnInit {
    * Currently logged ueser id
    */
   loggedUserId: Number;
+
+  serviceStatus: string;
 
   /**
   * Default constructor defining services
@@ -55,6 +57,7 @@ export class UserHistoryComponent implements OnInit {
    * Gets data from services, and filter treasactions for currently logged user
    */
   getTableData(): void {
+    this.serviceStatus = 'loading';
     forkJoin([
       this.tansactionService.getTransactions(),
       this.stockService.getStocks(),
@@ -63,8 +66,11 @@ export class UserHistoryComponent implements OnInit {
       this.loggedUserId = c.data.user.id;
       var transactions = t.data.filter(t => t.buyerId == this.loggedUserId || t.sellerId == this.loggedUserId)
       this.dataSource = new MatTableDataSource(this.pushDataElemet(transactions, s.data));
-      console.log(transactions);
-    })
+      this.serviceStatus = 'OK'
+    },
+      error => {
+        this.serviceStatus = 'error'
+      });
   }
 
   /**

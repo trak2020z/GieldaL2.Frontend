@@ -23,9 +23,9 @@ export class CreateSellOfferComponent implements OnInit {
    * Selected Stock id
    */
   stockId: number;
-    /**
-   * Selected share id
-   */
+  /**
+ * Selected share id
+ */
   shareId: number;
   /**
    * Selected stock data
@@ -51,6 +51,8 @@ export class CreateSellOfferComponent implements OnInit {
    * Summary offer value
    */
   sumValue: number = 0;
+
+  serviceStatus: string;
 
   /**
    * Constructor injecting dependencies
@@ -93,6 +95,7 @@ export class CreateSellOfferComponent implements OnInit {
    * Get user, stock and user share data from API
    */
   getData() {
+    this.serviceStatus = 'loading'
     forkJoin([
       this.stockService.getStock(this.stockId),
       this.contextService.getContext()
@@ -101,15 +104,18 @@ export class CreateSellOfferComponent implements OnInit {
         this.stockData = s.data;
         this.user = c.data.user;
         this.shareData = c.data.shares.find(share => share.stockId == this.stockId);
-        console.log(this.shareData);
-      })
+        this.serviceStatus = 'OK'
+      },
+        error => {
+          this.serviceStatus = 'error'
+        })
   }
 
   /**
    * When button "Back" is pressed go to stock Component
    */
   goBack() {
-    this.router.navigate(['stock']);
+    this.router.navigate(['user/shares']);
   }
 
   /**
@@ -129,7 +135,7 @@ export class CreateSellOfferComponent implements OnInit {
           duration: 5000,
         })
         this.router.navigate(['stock']);
-    },
+      },
       err => {
         this.snackBar.open("Couldn't create offer: Service is temporarily not available.", "Close", {
           duration: 5000,

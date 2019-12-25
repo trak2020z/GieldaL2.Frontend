@@ -11,6 +11,7 @@ import { UserHistoryComponent } from './pages/user-history/user-history.componen
 import { UserBuyOffersComponent } from './pages/user-buy-offers/user-buy-offers.component';
 import { UserSellOffersComponent } from './pages/user-sell-offers/user-sell-offers.component';
 import { UserSharesComponent } from './pages/user-shares/user-shares.component';
+import { SharedModule } from '../_shared/shared.module';
 
 
 
@@ -38,7 +39,8 @@ import { UserSharesComponent } from './pages/user-shares/user-shares.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SharedModule
   ],
   bootstrap: [MainComponent]
 })

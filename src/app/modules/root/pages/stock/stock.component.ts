@@ -52,6 +52,8 @@ export class StockComponent implements OnInit {
    */
   userContext: Context;
 
+  serviceStatus: string;
+
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   /**
@@ -83,6 +85,7 @@ export class StockComponent implements OnInit {
    * Get data from API for logged user
    */
   getDataWithLoggedUser(): void {
+    this.serviceStatus = 'loading'
     forkJoin([
       this.stockService.getStocks(),
       this.contextService.getContext()
@@ -91,17 +94,26 @@ export class StockComponent implements OnInit {
       console.log(this.userContext);
       this.dataSource = new MatTableDataSource(this.createDataSource(s.data, this.userContext.shares));
       this.dataSource.sort = this.sort;
-    });
+      this.serviceStatus = 'OK'
+    },
+      error => {
+        this.serviceStatus = 'error'
+      });
   }
 
   /**
    * Get data from API
    */
   getData(): void {
+    this.serviceStatus = 'loading'
     this.stockService.getStocks().subscribe((s: ApiResponse) => {
       this.dataSource = new MatTableDataSource(this.createDataSource(s.data, []));
       this.dataSource.sort = this.sort;
-    });
+      this.serviceStatus = 'OK'
+    },
+      error => {
+        this.serviceStatus = 'error'
+      });
   }
 
   /**
