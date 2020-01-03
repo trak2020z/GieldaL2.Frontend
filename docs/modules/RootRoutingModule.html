@@ -76,12 +76,7 @@ import { HomeComponent } from &#x27;./pages/home/home.component&#x27;;
 import { StockComponent } from &#x27;./pages/stock/stock.component&#x27;;
 import { LoginFormComponent } from &#x27;./pages/login-form/login-form.component&#x27;;
 import { RegisterComponent } from &#x27;./pages/register/register.component&#x27;;
-import { MainComponent as UserMainComponent } from &#x27;../user/components/main/main.component&#x27;;
-import { CreateBuyOfferComponent } from &#x27;../offer/pages/create-buy-offer/create-buy-offer.component&#x27;;
 import { AuthGuard } from &#x27;../../_guards/auth.guard&#x27;;
-import { CreateSellOfferComponent } from &#x27;../offer/create-sell-offer/create-sell-offer.component&#x27;;
-
-
 
 const routes: Routes &#x3D; [
   { path: &#x27;&#x27;, component: HomeComponent },
@@ -89,8 +84,7 @@ const routes: Routes &#x3D; [
   { path: &#x27;login&#x27;, component: LoginFormComponent },
   { path: &#x27;register&#x27;, component: RegisterComponent },
   { path: &#x27;user&#x27;, loadChildren: &#x27;../user/user.module#UserModule&#x27;, canActivate: [AuthGuard] },
-  { path: &#x27;buyOffer/:stockId&#x27;, component: CreateBuyOfferComponent },
-  { path: &#x27;sellOffer/:stockId&#x27;, component: CreateSellOfferComponent }
+  { path: &#x27;offer&#x27;, loadChildren: &#x27;../offer/offer.module#OfferModule&#x27;, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

@@ -10,11 +10,13 @@ import { UserEditComponent } from './pages/user-edit/user-edit.component';
 import { UserHistoryComponent } from './pages/user-history/user-history.component';
 import { UserBuyOffersComponent } from './pages/user-buy-offers/user-buy-offers.component';
 import { UserSellOffersComponent } from './pages/user-sell-offers/user-sell-offers.component';
+import { UserSharesComponent } from './pages/user-shares/user-shares.component';
+import { SharedModule } from '../_shared/shared.module';
 
 
 
 @NgModule({
-  declarations: [MainComponent, UserEditComponent, UserHistoryComponent, UserBuyOffersComponent, UserSellOffersComponent],
+  declarations: [MainComponent, UserEditComponent, UserHistoryComponent, UserBuyOffersComponent, UserSellOffersComponent, UserSharesComponent],
   imports: [
     userRoutingModule,
     MatToolbarModule,
@@ -37,7 +39,8 @@ import { UserSellOffersComponent } from './pages/user-sell-offers/user-sell-offe
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SharedModule
   ],
   bootstrap: [MainComponent]
 })

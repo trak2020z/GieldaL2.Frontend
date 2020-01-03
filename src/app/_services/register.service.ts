@@ -9,11 +9,11 @@ import { API_URL } from '../_configs/API_URL';
 })
 export class RegisterService {
 
-  baseUrl = API_URL + '/Users';
+  baseUrl = 'http://gieldal2.azurewebsites.net/api/Users';
 
   constructor(private http: HttpClient) { }
 
   public register(model: RegisterModel): Observable<any> {
-    return this.http.post<any>(this.baseUrl, model);
+    return this.http.post<any>(API_URL + '/Users', model);
   }
 }

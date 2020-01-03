@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Stock } from 'src/app/_models/stock.model';
 import { StockService } from 'src/app/_services/stock.service';
 import { ApiResponse } from 'src/app/_models/apiResponse';
- 
+
 /**
  * The home component
  */
@@ -22,11 +22,13 @@ export class HomeComponent implements OnInit {
    */
   displayedColumns: string[] = ['name', 'abbreviation', 'currentPrice', 'priceDelta'];
 
- /**
-  * Defines a private stockService property and identifies it as a StockService injection site.
-  * 
-  * @param stockService 
-  */
+  serviceStatus: string;
+
+  /**
+   * Defines a private stockService property and identifies it as a StockService injection site.
+   * 
+   * @param stockService 
+   */
   constructor(private stockService: StockService) {
     this.getStocks();
   }
@@ -47,7 +49,7 @@ export class HomeComponent implements OnInit {
   * @param {Stock} b second Stock object
   * @returns comparator value:
   */
-  private compare(a:Stock, b:Stock) {
+  private compare(a: Stock, b: Stock) {
     if (a.currentPrice > b.currentPrice) return -1;
     if (a.currentPrice = b.currentPrice) return 0;
     if (a.currentPrice < b.currentPrice) return 1;
@@ -57,9 +59,14 @@ export class HomeComponent implements OnInit {
    * Subscribe stockServie to aquire Stock data
    */
   getStocks(): void {
+    this.serviceStatus = 'loading'
     this.stockService.getStocks()
-    .subscribe((r: ApiResponse) => {
-    this.dataSource = r.data;
-    });
+      .subscribe((r: ApiResponse) => {
+        this.dataSource = r.data.slice(0, 9);
+        this.serviceStatus = 'OK'
+      },
+        error => {
+          this.serviceStatus = 'error'
+        });
   }
 }

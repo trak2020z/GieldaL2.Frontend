@@ -1,4 +1,5 @@
-<div>
+<app-service-status [serviceStatus]=serviceStatus *ngIf="serviceStatus != 'OK'"></app-service-status>
+<div *ngIf="serviceStatus == 'OK'">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="stockName">
             <th mat-header-cell *matHeaderCellDef> Stock Name </th>
@@ -29,8 +30,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"
             [ngClass]="{'greenRow': row.type == 'bougth', 'redRow': row.type == 'sold'}"></tr>
     </table>
-</div>
-<div>
     <table class='legendTable'>
         <tr>
             <th class='greenRow'>Bought </th>

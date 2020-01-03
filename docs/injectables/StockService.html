@@ -104,7 +104,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/_services/stock.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/_services/stock.service.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -169,8 +169,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/app/_services/stock.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="21"
+                            class="link-to-prism">src/app/_services/stock.service.ts:21</a></div>
                 </td>
             </tr>
 
@@ -239,8 +239,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/app/_services/stock.service.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/app/_services/stock.service.ts:17</a></div>
                 </td>
             </tr>
 
@@ -271,16 +271,6 @@ import { HttpHeaders } from &#x27;@angular/common/http&#x27;;
 import { API_URL } from &#x27;src/app/_configs/API_URL&#x27;
 import { ApiResponse } from &#x27;../_models/apiResponse&#x27;;
 
-/**
- * Temporary authorization
- */
-const httpOptions &#x3D; {
-  headers: new HttpHeaders({
-    &#x27;accept&#x27;: &#x27;application/json&#x27;,
-    &#x27;Authorization&#x27;: &#x27;Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwibmJmIjoxNTc0NzU5NTQ4LCJleHAiOjE1NzUzNjQzNDgsImlhdCI6MTU3NDc1OTU0OH0.trVy_M7gyFJBxVxLMf1h9XE5E7LZxiTj1J9ppf06RjQ&#x27;
-  })
-};
-
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
@@ -289,7 +279,7 @@ export class StockService {
   constructor(private http: HttpClient) { }
 
   getStocks(): Observable&lt;ApiResponse&gt; {
-    return this.http.get&lt;ApiResponse&gt;(API_URL + &#x27;/Stocks&#x27;, httpOptions);
+    return this.http.get&lt;ApiResponse&gt;(API_URL + &#x27;/Stocks&#x27;);
   }
 
   getStock(id: number): Observable&lt;ApiResponse&gt; {

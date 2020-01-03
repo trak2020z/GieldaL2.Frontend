@@ -7,16 +7,6 @@ import { HttpHeaders } from '@angular/common/http';
 import { API_URL } from 'src/app/_configs/API_URL'
 import { ApiResponse } from '../_models/apiResponse';
 
-/**
- * Temporary authorization
- */
-const httpOptions = {
-  headers: new HttpHeaders({
-    'accept': 'application/json',
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwibmJmIjoxNTc0NzU5NTQ4LCJleHAiOjE1NzUzNjQzNDgsImlhdCI6MTU3NDc1OTU0OH0.trVy_M7gyFJBxVxLMf1h9XE5E7LZxiTj1J9ppf06RjQ'
-  })
-};
-
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +15,7 @@ export class StockService {
   constructor(private http: HttpClient) { }
 
   getStocks(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(API_URL + '/Stocks', httpOptions);
+    return this.http.get<ApiResponse>(API_URL + '/Stocks');
   }
 
   getStock(id: number): Observable<ApiResponse> {
