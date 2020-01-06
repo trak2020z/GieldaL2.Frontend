@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatTableModule, MatSortModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatStepperModule, MatSnackBarModule, MatCardModule, MatProgressSpinnerModule, MatButtonToggleModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatTableModule, MatSortModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatStepperModule, MatSnackBarModule, MatCardModule, MatProgressSpinnerModule, MatButtonToggleModule, MatDialogModule } from '@angular/material';
 import { MiniCalendarModule } from 'mini-calendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -12,11 +12,19 @@ import { UserBuyOffersComponent } from './pages/user-buy-offers/user-buy-offers.
 import { UserSellOffersComponent } from './pages/user-sell-offers/user-sell-offers.component';
 import { UserSharesComponent } from './pages/user-shares/user-shares.component';
 import { SharedModule } from '../_shared/shared.module';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 
 @NgModule({
-  declarations: [MainComponent, UserEditComponent, UserHistoryComponent, UserBuyOffersComponent, UserSellOffersComponent, UserSharesComponent],
+  declarations: [
+    MainComponent,
+    UserEditComponent,
+    UserHistoryComponent,
+    UserBuyOffersComponent,
+    UserSellOffersComponent,
+    UserSharesComponent,
+    ConfirmDialogComponent],
   imports: [
     userRoutingModule,
     MatToolbarModule,
@@ -36,12 +44,14 @@ import { SharedModule } from '../_shared/shared.module';
     MatCardModule,
     MatProgressSpinnerModule,
     MatButtonToggleModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
     FlexLayoutModule,
     SharedModule
   ],
+  entryComponents: [UserSellOffersComponent, ConfirmDialogComponent],
   bootstrap: [MainComponent]
 })
 export class UserModule { }
