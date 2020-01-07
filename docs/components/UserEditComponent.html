@@ -121,6 +121,26 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#editUserFormMain">editUserFormMain</a>
+                            </li>
+                            <li>
+                                <a href="#userEditModel">userEditModel</a>
+                            </li>
+                            <li>
+                                <a href="#userId">userId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -131,7 +151,22 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#createForm">createForm</a>
+                            </li>
+                            <li>
+                                <a href="#getFormControl">getFormControl</a>
+                            </li>
+                            <li>
+                                <a href="#getUserData">getUserData</a>
+                            </li>
+                            <li>
+                                <a href="#hasError">hasError</a>
+                            </li>
+                            <li>
                                 <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#updateUserData">updateUserData</a>
                             </li>
                         </ul>
                     </td>
@@ -151,15 +186,81 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor()</code>
+<code>constructor(formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, contextService: <a href="../injectables/ContextService.html">ContextService</a>, userService: <a href="../injectables/UserService.html">UserService</a>, snackBar: MatSnackBar)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:17</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>contextService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ContextService.html" target="_self" >ContextService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>snackBar</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatSnackBar</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -173,6 +274,248 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createForm"></a>
+                    <span class="name">
+                        <b>
+                            createForm
+                        </b>
+                        <a href="#createForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createForm()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:28</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFormControl"></a>
+                    <span class="name">
+                        <b>
+                            getFormControl
+                        </b>
+                        <a href="#getFormControl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getFormControl(form: <a href="https://angular.io/api/forms/FormGroup" target="_blank">FormGroup</a>, name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>form</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserData"></a>
+                    <span class="name">
+                        <b>
+                            getUserData
+                        </b>
+                        <a href="#getUserData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUserData()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:39</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasError"></a>
+                    <span class="name">
+                        <b>
+                            hasError
+                        </b>
+                        <a href="#hasError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hasError(form: <a href="https://angular.io/api/forms/FormGroup" target="_blank">FormGroup</a>, name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>form</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -195,8 +538,47 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUserData"></a>
+                    <span class="name">
+                        <b>
+                            updateUserData
+                        </b>
+                        <a href="#updateUserData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateUserData()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:53</a></div>
                 </td>
             </tr>
 
@@ -213,12 +595,104 @@
         </tbody>
     </table>
 </section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="editUserFormMain"></a>
+                        <span class="name">
+                            <b>
+                            editUserFormMain</b>
+                            <a href="#editUserFormMain"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userEditModel"></a>
+                        <span class="name">
+                            <b>
+                            userEditModel</b>
+                            <a href="#userEditModel"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/UserEdit.html" target="_self" >UserEdit</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userId"></a>
+                        <span class="name">
+                            <b>
+                            userId</b>
+                            <a href="#userId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/user/pages/user-edit/user-edit.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import {MatSnackBar} from &#x27;@angular/material/snack-bar&#x27;;
+import {FormBuilder, FormGroup, FormControl, FormGroupDirective, Validators, NgForm} from &#x27;@angular/forms&#x27;;
+import { UserEdit } from &#x27;src/app/_models/userEdit.model&#x27;;
+import { ContextService } from &#x27;src/app/_services/context.service&#x27;;
+import { UserService } from &#x27;src/app/_services/user.service&#x27;;
 
 @Component({
   selector: &#x27;app-user-edit&#x27;,
@@ -227,9 +701,71 @@
 })
 export class UserEditComponent implements OnInit {
 
-  constructor() { }
+  editUserFormMain: FormGroup;
+  userEditModel: UserEdit;
+  userId: number;
+
+  constructor(private formBuilder: FormBuilder, private contextService: ContextService,
+              private userService: UserService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.userId &#x3D; 0;
+    this.createForm();
+    this.getUserData();
+  }
+
+  createForm() {
+    this.userEditModel &#x3D; new UserEdit();
+
+    this.editUserFormMain &#x3D; this.formBuilder.group({
+      nameCtrl: new FormControl(&#x27;&#x27;, Validators.required),
+      surnameCtrl: new FormControl(&#x27;&#x27;, Validators.required),
+      loginCtrl: new FormControl(&#x27;&#x27;, Validators.required),
+      emailCtrl: new FormControl(&#x27;&#x27;, Validators.compose([Validators.required, Validators.email])),
+    });
+  }
+
+  getUserData() {
+    this.contextService.getContext().subscribe(
+      data &#x3D;&gt; {
+        this.userEditModel.name &#x3D; data.data.user.name;
+        this.userEditModel.surname &#x3D; data.data.user.surname;
+        this.userEditModel.login &#x3D; data.data.user.login;
+        this.userEditModel.eMail &#x3D; data.data.user.eMail;
+        this.userEditModel.value &#x3D; data.data.user.value;
+
+        this.userId &#x3D; data.data.user.id;
+      }
+    );
+  }
+  
+  updateUserData() {
+    this.userService.update(this.userId, this.userEditModel).subscribe(
+      response &#x3D;&gt; {
+        if(response) {
+          this.snackBar.open(&#x27;User data updated successfully&#x27;, &#x27;Close&#x27;, {
+            duration: 2000,
+          });
+        } else {
+          this.snackBar.open(&#x27;An error occurred while updating user data&#x27;, &#x27;Close&#x27;, {
+            duration: 2000,
+          });
+      }
+  }
+  );
+}
+
+  getFormControl(form: FormGroup, name: string) {
+    if (form) {
+      return form.get(name);
+    } else {
+      return null;
+    }
+  }
+
+  hasError(form: FormGroup, name: string) {
+    const it &#x3D; this.getFormControl(form, name);
+    return it &amp;&amp; (it.dirty || it.touched) &amp;&amp; !it.valid;
   }
 
 }
@@ -237,14 +773,62 @@ export class UserEditComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;p&gt;user details&lt;/p&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;useredit-container&quot;&gt;
+    &lt;label style&#x3D;&quot;margin-bottom: 10px; text-align: center;&quot;&gt;Edit user data&lt;/label&gt;
+    &lt;form [formGroup]&#x3D;&quot;editUserFormMain&quot; class&#x3D;&quot;form-container&quot;&gt;
+        &lt;mat-form-field&gt;
+            &lt;input matInput [(ngModel)]&#x3D;&quot;userEditModel.name&quot; placeholder&#x3D;&quot;First name&quot; formControlName&#x3D;&quot;nameCtrl&quot; required&gt;
+            &lt;mat-error *ngIf&#x3D;&quot;hasError(editUserFormMain, &#x27;nameCtrl&#x27;)&quot;&gt;
+                Name is required!
+            &lt;/mat-error&gt;
+        &lt;/mat-form-field&gt;
+        &lt;mat-form-field&gt;
+            &lt;input matInput [(ngModel)]&#x3D;&quot;userEditModel.surname&quot; placeholder&#x3D;&quot;Last name&quot; formControlName&#x3D;&quot;surnameCtrl&quot; required&gt;
+            &lt;mat-error *ngIf&#x3D;&quot;hasError(editUserFormMain, &#x27;surnameCtrl&#x27;)&quot;&gt;
+                Surname is required!
+            &lt;/mat-error&gt;
+        &lt;/mat-form-field&gt;
+
+        &lt;mat-form-field&gt;
+            &lt;input matInput [(ngModel)]&#x3D;&quot;userEditModel.login&quot; placeholder&#x3D;&quot;Login&quot; formControlName&#x3D;&quot;loginCtrl&quot; required&gt;
+            &lt;mat-error *ngIf&#x3D;&quot;hasError(editUserFormMain, &#x27;loginCtrl&#x27;)&quot;&gt;
+                Login is required!
+            &lt;/mat-error&gt;
+        &lt;/mat-form-field&gt;
+        &lt;mat-form-field&gt;
+            &lt;input matInput [(ngModel)]&#x3D;&quot;userEditModel.eMail&quot; placeholder&#x3D;&quot;Email&quot; formControlName&#x3D;&quot;emailCtrl&quot; required&gt;
+            &lt;mat-error *ngIf&#x3D;&quot;hasError(editUserFormMain, &#x27;emailCtrl&#x27;)&quot;&gt;
+                Please enter a valid email!
+            &lt;/mat-error&gt;
+        &lt;/mat-form-field&gt;
+
+        &lt;button class&#x3D;&quot;saveBtn&quot; mat-button (click)&#x3D;&quot;updateUserData()&quot;&gt;Save&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
                 <p class="comment">
                     <code>./user-edit.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss"></code></pre>
+                <pre class="line-numbers"><code class="language-scss">.useredit-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.saveBtn {
+    align-items: center;
+}
+
+.form-container&gt;*:not(.saveBtn) {
+    width: 100%;
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">
@@ -272,8 +856,8 @@ export class UserEditComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><p>user details</p></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'OfferMainComponent', 'selector': 'app-offer-main'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'},{'name': 'UserSharesComponent', 'selector': 'app-user-shares'}];
+        var COMPONENT_TEMPLATE = '<div><div class="useredit-container">    <label style="margin-bottom: 10px; text-align: center;">Edit user data</label>    <form [formGroup]="editUserFormMain" class="form-container">        <mat-form-field>            <input matInput [(ngModel)]="userEditModel.name" placeholder="First name" formControlName="nameCtrl" required>            <mat-error *ngIf="hasError(editUserFormMain, \'nameCtrl\')">                Name is required!            </mat-error>        </mat-form-field>        <mat-form-field>            <input matInput [(ngModel)]="userEditModel.surname" placeholder="Last name" formControlName="surnameCtrl" required>            <mat-error *ngIf="hasError(editUserFormMain, \'surnameCtrl\')">                Surname is required!            </mat-error>        </mat-form-field>        <mat-form-field>            <input matInput [(ngModel)]="userEditModel.login" placeholder="Login" formControlName="loginCtrl" required>            <mat-error *ngIf="hasError(editUserFormMain, \'loginCtrl\')">                Login is required!            </mat-error>        </mat-form-field>        <mat-form-field>            <input matInput [(ngModel)]="userEditModel.eMail" placeholder="Email" formControlName="emailCtrl" required>            <mat-error *ngIf="hasError(editUserFormMain, \'emailCtrl\')">                Please enter a valid email!            </mat-error>        </mat-form-field>        <button class="saveBtn" mat-button (click)="updateUserData()">Save</button>    </form></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfirmDialogComponent', 'selector': 'app-confirm-dialog'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'OfferMainComponent', 'selector': 'app-offer-main'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ServiceStatusComponent', 'selector': 'app-service-status'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'},{'name': 'UserSharesComponent', 'selector': 'app-user-shares'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'UserEditComponent'};
 </script>

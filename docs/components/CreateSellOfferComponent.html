@@ -133,6 +133,9 @@
                                 <a href="#sellOffer">sellOffer</a>
                             </li>
                             <li>
+                                <a href="#serviceStatus">serviceStatus</a>
+                            </li>
+                            <li>
                                 <a href="#shareData">shareData</a>
                             </li>
                             <li>
@@ -200,7 +203,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:53</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:55</a></div>
                             </td>
                         </tr>
 
@@ -343,8 +346,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="118"
-                            class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:118</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:124</a></div>
                 </td>
             </tr>
 
@@ -384,8 +387,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:97</a></div>
                 </td>
             </tr>
 
@@ -425,8 +428,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="111"
-                            class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:111</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:117</a></div>
                 </td>
             </tr>
 
@@ -466,8 +469,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:82</a></div>
                 </td>
             </tr>
 
@@ -508,8 +511,8 @@ Initialize new form group with validators.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="153"
-                            class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:153</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="159"
+                            class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:159</a></div>
                 </td>
             </tr>
 
@@ -563,6 +566,33 @@ Initialize new form group with validators.</p>
 </div>
                     </td>
                 </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="serviceStatus"></a>
+                        <span class="name">
+                            <b>
+                            serviceStatus</b>
+                            <a href="#serviceStatus"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/modules/offer/pages/create-sell-offer/create-sell-offer.component.ts:55</a></div>
+                            </td>
+                        </tr>
+
 
             </tbody>
         </table>
@@ -805,9 +835,9 @@ export class CreateSellOfferComponent implements OnInit {
    * Selected Stock id
    */
   stockId: number;
-    /**
-   * Selected share id
-   */
+  /**
+ * Selected share id
+ */
   shareId: number;
   /**
    * Selected stock data
@@ -833,6 +863,8 @@ export class CreateSellOfferComponent implements OnInit {
    * Summary offer value
    */
   sumValue: number &#x3D; 0;
+
+  serviceStatus: string;
 
   /**
    * Constructor injecting dependencies
@@ -875,6 +907,7 @@ export class CreateSellOfferComponent implements OnInit {
    * Get user, stock and user share data from API
    */
   getData() {
+    this.serviceStatus &#x3D; &#x27;loading&#x27;
     forkJoin([
       this.stockService.getStock(this.stockId),
       this.contextService.getContext()
@@ -883,15 +916,18 @@ export class CreateSellOfferComponent implements OnInit {
         this.stockData &#x3D; s.data;
         this.user &#x3D; c.data.user;
         this.shareData &#x3D; c.data.shares.find(share &#x3D;&gt; share.stockId &#x3D;&#x3D; this.stockId);
-        console.log(this.shareData);
-      })
+        this.serviceStatus &#x3D; &#x27;OK&#x27;
+      },
+        error &#x3D;&gt; {
+          this.serviceStatus &#x3D; &#x27;error&#x27;
+        })
   }
 
   /**
    * When button &quot;Back&quot; is pressed go to stock Component
    */
   goBack() {
-    this.router.navigate([&#x27;stock&#x27;]);
+    this.router.navigate([&#x27;user/shares&#x27;]);
   }
 
   /**
@@ -911,7 +947,7 @@ export class CreateSellOfferComponent implements OnInit {
           duration: 5000,
         })
         this.router.navigate([&#x27;stock&#x27;]);
-    },
+      },
       err &#x3D;&gt; {
         this.snackBar.open(&quot;Couldn&#x27;t create offer: Service is temporarily not available.&quot;, &quot;Close&quot;, {
           duration: 5000,
@@ -944,7 +980,8 @@ export class CreateSellOfferComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;mat-card anlign&#x3D;&#x27;center&#x27;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;app-service-status [serviceStatus]&#x3D;serviceStatus *ngIf&#x3D;&quot;serviceStatus !&#x3D; &#x27;OK&#x27;&quot;&gt;&lt;/app-service-status&gt;
+&lt;mat-card anlign&#x3D;&#x27;center&#x27; *ngIf&#x3D;&quot;serviceStatus &#x3D;&#x3D; &#x27;OK&#x27;&quot;&gt;
     &lt;mat-card-title&gt; {{stockData?.name}} ( {{stockData?.abbreviation}} ) Owned: {{shareData?.amount}} &lt;/mat-card-title&gt;
     &lt;mat-grid-list cols&#x3D;&quot;2&quot; rowHeight&#x3D;&quot;100px&quot;&gt;
         &lt;mat-grid-tile&gt;
@@ -1014,8 +1051,8 @@ export class CreateSellOfferComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-card anlign=\'center\'>    <mat-card-title> {{stockData?.name}} ( {{stockData?.abbreviation}} ) Owned: {{shareData?.amount}} </mat-card-title>    <mat-grid-list cols="2" rowHeight="100px">        <mat-grid-tile>            <p>Current pize: {{stockData?.currentPrice}}</p>        </mat-grid-tile>        <mat-grid-tile>            <p>Price delta: {{stockData?.priceDelta}}%</p>        </mat-grid-tile>        <mat-grid-tile [colspan]=2>            <form [formGroup]="sellForm">                <mat-form-field>                    <input matInput type="number" formControlName="amount" placeholder="Amount"                        (change)="updateSumValue()">                </mat-form-field>                <mat-form-field>                    <input matInput type="number" formControlName="price" placeholder="Price"                        (change)="updateSumValue()">                </mat-form-field>            </form>        </mat-grid-tile>        <mat-grid-tile [colspan]=2>            <p> Sum: {{sumValue}} </p>        </mat-grid-tile>        <mat-grid-tile [colspan]=2>            <mat-card-actions>                <button mat-button (click)="createOffer()" [disabled]="!isValidForm(sellForm)">Create Sell                    Offer</button>                <button mat-button (click)="goBack()">Back</button>            </mat-card-actions>        </mat-grid-tile>    </mat-grid-list></mat-card></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'OfferMainComponent', 'selector': 'app-offer-main'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'},{'name': 'UserSharesComponent', 'selector': 'app-user-shares'}];
+        var COMPONENT_TEMPLATE = '<div><app-service-status [serviceStatus]=serviceStatus *ngIf="serviceStatus != \'OK\'"></app-service-status><mat-card anlign=\'center\' *ngIf="serviceStatus == \'OK\'">    <mat-card-title> {{stockData?.name}} ( {{stockData?.abbreviation}} ) Owned: {{shareData?.amount}} </mat-card-title>    <mat-grid-list cols="2" rowHeight="100px">        <mat-grid-tile>            <p>Current pize: {{stockData?.currentPrice}}</p>        </mat-grid-tile>        <mat-grid-tile>            <p>Price delta: {{stockData?.priceDelta}}%</p>        </mat-grid-tile>        <mat-grid-tile [colspan]=2>            <form [formGroup]="sellForm">                <mat-form-field>                    <input matInput type="number" formControlName="amount" placeholder="Amount"                        (change)="updateSumValue()">                </mat-form-field>                <mat-form-field>                    <input matInput type="number" formControlName="price" placeholder="Price"                        (change)="updateSumValue()">                </mat-form-field>            </form>        </mat-grid-tile>        <mat-grid-tile [colspan]=2>            <p> Sum: {{sumValue}} </p>        </mat-grid-tile>        <mat-grid-tile [colspan]=2>            <mat-card-actions>                <button mat-button (click)="createOffer()" [disabled]="!isValidForm(sellForm)">Create Sell                    Offer</button>                <button mat-button (click)="goBack()">Back</button>            </mat-card-actions>        </mat-grid-tile>    </mat-grid-list></mat-card></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfirmDialogComponent', 'selector': 'app-confirm-dialog'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'OfferMainComponent', 'selector': 'app-offer-main'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ServiceStatusComponent', 'selector': 'app-service-status'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'},{'name': 'UserSharesComponent', 'selector': 'app-user-shares'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CreateSellOfferComponent'};
 </script>

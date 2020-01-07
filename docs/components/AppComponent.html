@@ -137,18 +137,18 @@ export class AppComponent {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;app-nav-header class&#x3D;&quot;fixedTopPosition&quot;&gt;&lt;/app-nav-header&gt;
-&lt;div class&#x3D;&quot;container-fluid text-center pb-5&quot;&gt;
+&lt;!-- &lt;div class&#x3D;&quot;container-fluid text-center pb-5&quot;&gt;
     &lt;div style&#x3D;&quot;text-align:center&quot;&gt;
         &lt;h1&gt;
             Work in Progress
         &lt;/h1&gt;
     &lt;/div&gt;
-&lt;/div&gt;
-&lt;mat-drawer-container style&#x3D;&quot;height: calc(100vh - 64px) &quot; class&#x3D;&quot;main-container&quot; autosize&gt;
+&lt;/div&gt; --&gt;
+&lt;mat-drawer-container style&#x3D;&quot;top: 64px&quot; class&#x3D;&quot;main-container&quot; autosize&gt;
     &lt;mat-drawer mode&#x3D;&quot;side&quot; opened position&#x3D;&quot;end&quot; class&#x3D;&quot;static-sidebar&quot;&gt;
         &lt;app-static-sidebar&gt;&lt;/app-static-sidebar&gt;
     &lt;/mat-drawer&gt;
-  &lt;mat-drawer-content class&#x3D;&quot;main-content&quot;&gt;
+    &lt;mat-drawer-content class&#x3D;&quot;main-content&quot;&gt;
         &lt;router-outlet&gt;&lt;/router-outlet&gt;
     &lt;/mat-drawer-content&gt;
 &lt;/mat-drawer-container&gt;</code></pre>
@@ -202,8 +202,8 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><app-nav-header class="fixedTopPosition"></app-nav-header><div class="container-fluid text-center pb-5">    <div style="text-align:center">        <h1>            Work in Progress        </h1>    </div></div><mat-drawer-container style="height: calc(100vh - 64px) " class="main-container" autosize>    <mat-drawer mode="side" opened position="end" class="static-sidebar">        <app-static-sidebar></app-static-sidebar>    </mat-drawer>  <mat-drawer-content class="main-content">        <router-outlet></router-outlet>    </mat-drawer-content></mat-drawer-container></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'OfferMainComponent', 'selector': 'app-offer-main'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'},{'name': 'UserSharesComponent', 'selector': 'app-user-shares'}];
+        var COMPONENT_TEMPLATE = '<div><app-nav-header class="fixedTopPosition"></app-nav-header><!-- <div class="container-fluid text-center pb-5">    <div style="text-align:center">        <h1>            Work in Progress        </h1>    </div></div> --><mat-drawer-container style="top: 64px" class="main-container" autosize>    <mat-drawer mode="side" opened position="end" class="static-sidebar">        <app-static-sidebar></app-static-sidebar>    </mat-drawer>    <mat-drawer-content class="main-content">        <router-outlet></router-outlet>    </mat-drawer-content></mat-drawer-container></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfirmDialogComponent', 'selector': 'app-confirm-dialog'},{'name': 'CreateBuyOfferComponent', 'selector': 'app-create-buy-offer'},{'name': 'CreateSellOfferComponent', 'selector': 'app-create-sell-offer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginFormComponent', 'selector': 'app-login-form'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'NavHeaderComponent', 'selector': 'app-nav-header'},{'name': 'OfferMainComponent', 'selector': 'app-offer-main'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ServiceStatusComponent', 'selector': 'app-service-status'},{'name': 'StaticSidebarComponent', 'selector': 'app-static-sidebar'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'TableUpdateTimeComponent', 'selector': 'table-update-time'},{'name': 'UserBuyOffersComponent', 'selector': 'app-user-buy-offers'},{'name': 'UserEditComponent', 'selector': 'app-user-edit'},{'name': 'UserHistoryComponent', 'selector': 'app-user-history'},{'name': 'UserSellOffersComponent', 'selector': 'app-user-sell-offers'},{'name': 'UserSharesComponent', 'selector': 'app-user-shares'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};
 </script>
