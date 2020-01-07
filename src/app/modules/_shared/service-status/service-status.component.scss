@@ -1,12 +1,12 @@
-div{
-    position: absolute;
-    top: 20%;
+mat-spinner{
+    position: relative;
+    top: 150%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%)
 }
 
 mat-card{
     color: red;
     font-weight: bold;
+    text-align: center;
 }
