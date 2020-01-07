@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatTableModule, MatSortModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatStepperModule, MatSnackBarModule, MatCardModule, MatProgressSpinnerModule, MatButtonToggleModule, MatDialogModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, MatTableModule, MatSortModule, MatSidenavModule, MatFormFieldModule, MatInputModule, MatStepperModule, MatSnackBarModule, MatCardModule, MatProgressSpinnerModule, MatButtonToggleModule, MatDialogModule, MatPaginatorModule } from '@angular/material';
 import { MiniCalendarModule } from 'mini-calendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -49,7 +49,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     ReactiveFormsModule,
     CommonModule,
     FlexLayoutModule,
-    SharedModule
+    SharedModule,
+    MatPaginatorModule
   ],
   entryComponents: [UserSellOffersComponent, ConfirmDialogComponent],
   bootstrap: [MainComponent]

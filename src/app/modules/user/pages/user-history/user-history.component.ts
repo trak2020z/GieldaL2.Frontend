@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Transaction } from 'src/app/_models/transaction';
 import { TransactionService } from 'src/app/_services/transaction.service';
 import { UserHistoryDataElement } from './userHistoryDataElement';
@@ -8,6 +8,7 @@ import { Stock } from 'src/app/_models/stock.model';
 import { ApiResponse } from 'src/app/_models/apiResponse';
 import { ContextService } from 'src/app/_services/context.service';
 import { MatTableDataSource } from '@angular/material';
+import {PageEvent, MatPaginator} from '@angular/material/paginator';
 
 /**
  * The User transaction history component
@@ -26,14 +27,19 @@ export class UserHistoryComponent implements OnInit {
   /**
    * Stores data displayed by table
    */
-  dataSource;
+  dataSource: MatTableDataSource<UserHistoryDataElement>;
 
   /**
    * Currently logged ueser id
    */
   loggedUserId: Number;
 
+  /**
+   * Used by serviveStatus component
+   */
   serviceStatus: string;
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   /**
   * Default constructor defining services
@@ -66,6 +72,7 @@ export class UserHistoryComponent implements OnInit {
       this.loggedUserId = c.data.user.id;
       var transactions = t.data.filter(t => t.buyerId == this.loggedUserId || t.sellerId == this.loggedUserId)
       this.dataSource = new MatTableDataSource(this.pushDataElemet(transactions, s.data));
+      this.dataSource.paginator = this.paginator;
       this.serviceStatus = 'OK'
     },
       error => {
@@ -92,5 +99,4 @@ export class UserHistoryComponent implements OnInit {
     })
     return tableDataSource;
   }
-
 }

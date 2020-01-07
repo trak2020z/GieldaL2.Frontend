@@ -1,5 +1,6 @@
 <app-service-status [serviceStatus]=serviceStatus *ngIf="serviceStatus != 'OK'"></app-service-status>
-<div *ngIf="serviceStatus == 'OK'">
+
+<div [ngClass]="{'tableVisible': serviceStatus == 'OK', 'tableHidden': serviceStatus != 'OK'}">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="stockName">
             <th mat-header-cell *matHeaderCellDef> Stock Name </th>
@@ -30,10 +31,12 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"
             [ngClass]="{'greenRow': row.type == 'bougth', 'redRow': row.type == 'sold'}"></tr>
     </table>
-    <table class='legendTable'>
-        <tr>
-            <th class='greenRow'>Bought </th>
-            <th class='redRow'>Sold</th>
-        </tr>
-    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
+<table class='legendTable'>
+    <tr>
+        <th class='greenRow'>Bought </th>
+        <th class='redRow'>Sold</th>
+    </tr>
+</table>
