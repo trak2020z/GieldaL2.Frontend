@@ -225,6 +225,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/ApiResponse.html" data-type="entity-link">ApiResponse</a>
                             </li>
                             <li class="link">
+                                <a href="classes/BuyOffer.html" data-type="entity-link">BuyOffer</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/Context.html" data-type="entity-link">Context</a>
                             </li>
                             <li class="link">
