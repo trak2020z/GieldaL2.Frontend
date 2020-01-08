@@ -1,0 +1,6 @@
+<div>
+    <mat-spinner *ngIf="serviceStatus == 'loading'"></mat-spinner>
+    <mat-card *ngIf="serviceStatus == 'error'">
+        Application has encountered error while connecting to server. Try again later.
+    </mat-card>
+</div>

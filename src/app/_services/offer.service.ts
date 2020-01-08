@@ -11,12 +11,20 @@ export class OffersService {
 
   constructor(private http: HttpClient) { }
 
-  createBuyOffer(buyOffer: Offer): Observable<any>{
+  createBuyOffer(buyOffer: Offer): Observable<any> {
     return this.http.post<Offer>(API_URL + '/Offers/buy', buyOffer);
   }
 
-  createSellOffer(sellOffer: Offer): Observable<any>{
+  createSellOffer(sellOffer: Offer): Observable<any> {
     return this.http.post<Offer>(API_URL + '/Offers/sell', sellOffer);
+  }
+
+  deleteSellOffer(sellOfferId: number): Observable<any> {
+    return this.http.delete<Offer>(API_URL + '/Offers/sell/' + sellOfferId);
+  }
+
+  deleteBuyOffer(buyOfferId: number): Observable<any> {
+    return this.http.delete<Offer>(API_URL + '/Offers/buy/' + buyOfferId);
   }
 
 }

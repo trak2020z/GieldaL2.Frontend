@@ -1,1 +1,32 @@
-<p>user details</p>
+<div class="useredit-container">
+    <label style="margin-bottom: 10px; text-align: center;">Edit user data</label>
+    <form [formGroup]="editUserFormMain" class="form-container">
+        <mat-form-field>
+            <input matInput [(ngModel)]="userEditModel.name" placeholder="First name" formControlName="nameCtrl" required>
+            <mat-error *ngIf="hasError(editUserFormMain, 'nameCtrl')">
+                Name is required!
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [(ngModel)]="userEditModel.surname" placeholder="Last name" formControlName="surnameCtrl" required>
+            <mat-error *ngIf="hasError(editUserFormMain, 'surnameCtrl')">
+                Surname is required!
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [(ngModel)]="userEditModel.login" placeholder="Login" formControlName="loginCtrl" required>
+            <mat-error *ngIf="hasError(editUserFormMain, 'loginCtrl')">
+                Login is required!
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [(ngModel)]="userEditModel.eMail" placeholder="Email" formControlName="emailCtrl" required>
+            <mat-error *ngIf="hasError(editUserFormMain, 'emailCtrl')">
+                Please enter a valid email!
+            </mat-error>
+        </mat-form-field>
+
+        <button class="saveBtn" mat-button (click)="updateUserData()">Save</button>
+    </form>
+</div>

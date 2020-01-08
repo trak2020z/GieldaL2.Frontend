@@ -81,6 +81,12 @@
                             <li>
                                 <a href="#createSellOffer">createSellOffer</a>
                             </li>
+                            <li>
+                                <a href="#deleteBuyOffer">deleteBuyOffer</a>
+                            </li>
+                            <li>
+                                <a href="#deleteSellOffer">deleteSellOffer</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -287,6 +293,146 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteBuyOffer"></a>
+                    <span class="name">
+                        <b>
+                            deleteBuyOffer
+                        </b>
+                        <a href="#deleteBuyOffer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteBuyOffer(buyOfferId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/_services/offer.service.ts:26</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>buyOfferId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteSellOffer"></a>
+                    <span class="name">
+                        <b>
+                            deleteSellOffer
+                        </b>
+                        <a href="#deleteSellOffer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteSellOffer(sellOfferId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/_services/offer.service.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sellOfferId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
     </div>
@@ -306,12 +452,20 @@ export class OffersService {
 
   constructor(private http: HttpClient) { }
 
-  createBuyOffer(buyOffer: Offer): Observable&lt;any&gt;{
+  createBuyOffer(buyOffer: Offer): Observable&lt;any&gt; {
     return this.http.post&lt;Offer&gt;(API_URL + &#x27;/Offers/buy&#x27;, buyOffer);
   }
 
-  createSellOffer(sellOffer: Offer): Observable&lt;any&gt;{
+  createSellOffer(sellOffer: Offer): Observable&lt;any&gt; {
     return this.http.post&lt;Offer&gt;(API_URL + &#x27;/Offers/sell&#x27;, sellOffer);
+  }
+
+  deleteSellOffer(sellOfferId: number): Observable&lt;any&gt; {
+    return this.http.delete&lt;Offer&gt;(API_URL + &#x27;/Offers/sell/&#x27; + sellOfferId);
+  }
+
+  deleteBuyOffer(buyOfferId: number): Observable&lt;any&gt; {
+    return this.http.delete&lt;Offer&gt;(API_URL + &#x27;/Offers/buy/&#x27; + buyOfferId);
   }
 
 }
