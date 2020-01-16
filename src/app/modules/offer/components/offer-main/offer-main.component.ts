@@ -5,10 +5,20 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './offer-main.component.html',
   styleUrls: ['./offer-main.component.scss']
 })
+
+/**
+ * Router outlet for offer module 
+ */
 export class OfferMainComponent implements OnInit {
 
+  /**
+   * @ignore
+   */
   constructor() { }
 
+  /**
+   * @ignore
+   */
   ngOnInit() {
   }
 
