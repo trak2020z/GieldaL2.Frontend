@@ -716,6 +716,7 @@ export class UserHistoryComponent implements OnInit {
       dataElement.type &#x3D; (transaction.buyerId &#x3D;&#x3D; this.loggedUserId) ? &quot;bougth&quot; : (transaction.sellerId &#x3D;&#x3D; this.loggedUserId) ? &quot;sold&quot; : &quot; &quot;;
       tableDataSource.push(dataElement);
     })
+    tableDataSource.reverse();
     return tableDataSource;
   }
 }

@@ -188,7 +188,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -257,14 +257,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:28</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Updates user&#39;s login and cash placed in button</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -300,7 +302,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -332,7 +334,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -364,7 +366,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -396,7 +398,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -423,7 +425,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -450,7 +452,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -477,7 +479,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/root/components/nav-header/nav-header.component.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -491,10 +493,8 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import {TokenStorage} from &#x27;../token.storage&#x27;;
 import {AuthService} from &#x27;../../../../_services/auth.service&#x27;;
 import {Observable} from &#x27;rxjs&#x27;;
-import {ContextService} from &#x27;../../../../_services/context.service&#x27;;
 
 @Component({
   selector: &#x27;app-nav-header&#x27;,
@@ -516,6 +516,9 @@ export class NavHeaderComponent implements OnInit {
     this.cash &#x3D; this.auth.getUserCash;
   }
 
+  /**
+   * Updates user&#x27;s login and cash placed in button
+   */
   ngOnInit() {
       this.username.subscribe(d &#x3D;&gt; this.userLogin &#x3D; d);
       this.cash.subscribe(d &#x3D;&gt; this.userCash &#x3D; d);

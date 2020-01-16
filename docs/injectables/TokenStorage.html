@@ -146,14 +146,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/app/modules/root/components/token.storage.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/modules/root/components/token.storage.ts:32</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Returns token from session storage</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
@@ -187,14 +189,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/app/modules/root/components/token.storage.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/app/modules/root/components/token.storage.ts:24</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Removes previous token and saves token to the session storage</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -257,14 +261,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/modules/root/components/token.storage.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/app/modules/root/components/token.storage.ts:15</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Removes token from session storage and clear</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -291,16 +297,26 @@ export class TokenStorage {
   constructor() {
   }
 
+  /**
+   * Removes token from session storage and clear
+   */
   signOut() {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.clear();
   }
 
+  /**
+   * Removes previous token and saves token to the session storage
+   * @param token
+   */
   public saveToken(token: string) {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
 
+  /**
+   * Returns token from session storage
+   */
   public getToken(): string {
     return sessionStorage.getItem(TOKEN_KEY);
   }
