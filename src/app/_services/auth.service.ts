@@ -12,12 +12,18 @@ import {ContextService} from './context.service';
 })
 export class AuthService {
 
+  /**
+   * Object which provides online update of user's login in menu button
+   */
   private userLogin = new BehaviorSubject<string>('');
 
   get getUserLogin() {
     return this.userLogin.asObservable();
   }
 
+  /**
+   * Object which provides online update of user's cash value in menu button
+   */
   private userCash = new BehaviorSubject<string>('');
 
   get getUserCash() {
@@ -29,11 +35,21 @@ export class AuthService {
 
   }
 
+  /**
+   * Sends request with credentials in order to get authorization
+   * @param user
+   * @param pass
+   */
   attemptAuth(user: string, pass: string): Observable<any> {
     const credentials = {username: user, password: pass};
     return this.http.post<any>(API_URL + '/Auth', credentials);
   }
 
+  /**
+   * Performs login action, sends user's login and cash to navigation button and opens user panel
+   * @param username
+   * @param password
+   */
   login(username: string, password: string) {
     this.attemptAuth(username, password).subscribe(
       data => {
@@ -54,11 +70,17 @@ export class AuthService {
     );
   }
 
+  /**
+   * Logs out and open home page
+   */
   logout() {
     this.token.signOut();
     this.router.navigate(['']);
   }
 
+  /**
+   * Checks if in session there is a logged in user
+   */
   isLoggedIn(): boolean {
     if (window.sessionStorage.getItem('AuthToken') != null) {
       return true;

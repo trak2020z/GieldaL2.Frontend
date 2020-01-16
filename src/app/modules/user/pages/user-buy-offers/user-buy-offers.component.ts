@@ -95,7 +95,7 @@ export class UserBuyOffersComponent implements OnInit {
   }
 
   /**
-   * Delete sale offer with given id
+   * Delete buy offer with given id
    * @param id id of sale offer to delete
    */
   deleteOffer(id: number): void {

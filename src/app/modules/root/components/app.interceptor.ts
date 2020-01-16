@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {
-  HttpInterceptor, HttpRequest, HttpHandler, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent,
-  HttpResponse, HttpUserEvent, HttpErrorResponse, HttpEvent
+  HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse, HttpEvent
 } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
@@ -13,9 +12,19 @@ const TOKEN_HEADER_KEY = 'Authorization';
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
+  /**
+   * Constructor which injects TokenStorage and Router objects
+   * @param token
+   * @param router
+   */
   constructor(private token: TokenStorage, private router: Router) {
   }
 
+  /**
+   * When user is logged in, interceptor adds header with token to each http request
+   * @param req
+   * @param next
+   */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authReq = req;
     if (this.token.getToken() != null) {
