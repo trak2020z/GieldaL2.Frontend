@@ -405,7 +405,8 @@ import {
   MatStepperModule,
   MatSnackBarModule,
   MatCardModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatPaginatorModule
 } from &#x27;@angular/material&#x27;;
 import { MiniCalendarModule } from &#x27;mini-calendar&#x27;;
 import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
@@ -452,7 +453,8 @@ import { SharedModule } from &#x27;../_shared/shared.module&#x27;;
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    MatPaginatorModule
   ],
   exports: [AppComponent],
   providers: [AuthService, TokenStorage, AuthGuard,

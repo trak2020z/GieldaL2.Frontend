@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {TokenStorage} from '../token.storage';
 import {AuthService} from '../../../../_services/auth.service';
 import {Observable} from 'rxjs';
-import {ContextService} from '../../../../_services/context.service';
 
 @Component({
   selector: 'app-nav-header',
@@ -24,6 +22,9 @@ export class NavHeaderComponent implements OnInit {
     this.cash = this.auth.getUserCash;
   }
 
+  /**
+   * Updates user's login and cash placed in button
+   */
   ngOnInit() {
       this.username.subscribe(d => this.userLogin = d);
       this.cash.subscribe(d => this.userCash = d);

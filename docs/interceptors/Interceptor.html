@@ -101,12 +101,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/root/components/app.interceptor.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/root/components/app.interceptor.ts:13</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor which injects TokenStorage and Router objects</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -178,14 +180,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/modules/root/components/app.interceptor.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/app/modules/root/components/app.interceptor.ts:28</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>When user is logged in, interceptor adds header with token to each http request</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -246,8 +250,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
 import {
-  HttpInterceptor, HttpRequest, HttpHandler, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent,
-  HttpResponse, HttpUserEvent, HttpErrorResponse, HttpEvent
+  HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse, HttpEvent
 } from &#x27;@angular/common/http&#x27;;
 import {Observable} from &#x27;rxjs&#x27;;
 import {Router} from &#x27;@angular/router&#x27;;
@@ -259,9 +262,19 @@ const TOKEN_HEADER_KEY &#x3D; &#x27;Authorization&#x27;;
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
+  /**
+   * Constructor which injects TokenStorage and Router objects
+   * @param token
+   * @param router
+   */
   constructor(private token: TokenStorage, private router: Router) {
   }
 
+  /**
+   * When user is logged in, interceptor adds header with token to each http request
+   * @param req
+   * @param next
+   */
   intercept(req: HttpRequest&lt;any&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;any&gt;&gt; {
     let authReq &#x3D; req;
     if (this.token.getToken() !&#x3D; null) {

@@ -97,6 +97,7 @@ export class UserHistoryComponent implements OnInit {
       dataElement.type = (transaction.buyerId == this.loggedUserId) ? "bougth" : (transaction.sellerId == this.loggedUserId) ? "sold" : " ";
       tableDataSource.push(dataElement);
     })
+    tableDataSource.reverse();
     return tableDataSource;
   }
 }

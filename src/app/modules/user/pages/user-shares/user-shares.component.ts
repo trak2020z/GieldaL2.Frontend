@@ -4,7 +4,7 @@ import { TokenStorage } from 'src/app/modules/root/components/token.storage';
 import { ContextService } from 'src/app/_services/context.service';
 import { forkJoin } from 'rxjs';
 import { ApiResponse } from 'src/app/_models/apiResponse';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { SHARE } from 'src/app/_mocks/shareMock';
 import { Stock } from 'src/app/_models/stock.model';
 import { Share } from 'src/app/_models/share.model';
@@ -33,6 +33,8 @@ export class UserSharesComponent implements OnInit {
   serviceStatus: string;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  
   constructor(
     private stockService: StockService,
     private tokenStorage: TokenStorage,
@@ -58,6 +60,7 @@ export class UserSharesComponent implements OnInit {
       console.log(this.userContext);
       this.dataSource = new MatTableDataSource(this.createDataSource(s.data, this.userContext.shares));
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator; 
       this.serviceStatus = 'OK'
     },
       error => {

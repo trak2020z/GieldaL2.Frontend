@@ -16,6 +16,7 @@ import { SHARE } from 'src/app/_mocks/shareMock';
 import { StockTableDataSource } from 'src/app/_helpers/stockTableDataSource';
 import { Share } from 'src/app/_models/share.model';
 import { share } from 'rxjs/operators';
+import { MatPaginator } from '@angular/material';
 
 /**
  * The Stock component
@@ -55,6 +56,7 @@ export class StockComponent implements OnInit {
   serviceStatus: string;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   /**
   * @ignore
@@ -94,6 +96,7 @@ export class StockComponent implements OnInit {
       console.log(this.userContext);
       this.dataSource = new MatTableDataSource(this.createDataSource(s.data, this.userContext.shares));
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
       this.serviceStatus = 'OK'
     },
       error => {
