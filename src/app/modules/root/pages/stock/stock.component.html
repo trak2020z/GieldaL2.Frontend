@@ -1,5 +1,5 @@
 <app-service-status [serviceStatus]=serviceStatus *ngIf="serviceStatus != 'OK'"></app-service-status>
-<div *ngIf="serviceStatus == 'OK'">
+<div [ngClass]="{'tableVisible': serviceStatus == 'OK', 'tableHidden': serviceStatus != 'OK'}">
     <mat-form-field>
         <input type="text" matInput (keyup)="applyFilterName($event.target.value)" placeholder="Name">
     </mat-form-field>
