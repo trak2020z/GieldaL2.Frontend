@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+/**
+ * Crate service status indicator
+ */
 @Component({
   selector: 'app-service-status',
   templateUrl: './service-status.component.html',
   styleUrls: ['./service-status.component.scss']
 })
 
-/**
- * Crate service status indicator
- */
 export class ServiceStatusComponent implements OnInit {
   /**
    * 'loading' - waiting for data
